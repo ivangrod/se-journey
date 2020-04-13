@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Culture on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/culture/</link>
+    <description>Recent content in Culture on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 17:53:18 +0200</lastBuildDate>
+    
+	<atom:link href="https://ivangrod.github.io/se-journey/culture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code Review</title>
+      <link>https://ivangrod.github.io/se-journey/culture/code-review/</link>
+      <pubDate>Mon, 13 Apr 2020 18:00:20 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/culture/code-review/</guid>
+      <description>Code review is a human communication process
+ 3-steps process   The developer who wrote the code creates a pull request (PR) and lets the team know that the PR was created. (Slack bot)
+  Once the PR is created, someone else starts reviewing the code, in accordance with a guide providing rules, standards and processes.
+  After one or two developers have reviewed the code, one or both steps should be followed:</description>
+    </item>
+    
+  </channel>
+</rss>

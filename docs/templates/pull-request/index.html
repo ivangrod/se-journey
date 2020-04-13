@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Tags :: Software Engineer Journey</title>
+    <title>Pull Request :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1586800693" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/tags/">
+  <body class="" data-url="/se-journey/templates/pull-request/">
     <nav id="sidebar" class="">
 
 
@@ -361,7 +361,7 @@
   
     
     <li data-nav-id="/se-journey/templates/" title="Templates" class="dd-item 
-        
+        parent
         
         
         ">
@@ -408,7 +408,7 @@
  
   
     
-      <li data-nav-id="/se-journey/templates/pull-request/" title="Pull Request" class="dd-item ">
+      <li data-nav-id="/se-journey/templates/pull-request/" title="Pull Request" class="dd-item active">
         <a href="/se-journey/templates/pull-request/">
         Pull Request
         
@@ -527,7 +527,13 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > Tags
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/templates/'>Templates</a> > Pull Request
+          
+         
           
          
           
@@ -538,7 +544,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pull-request-type">Pull request type</a></li>
+    <li><a href="#what-is-the-current-behavior">What is the current behavior?</a></li>
+    <li><a href="#what-is-the-new-behavior">What is the new behavior?</a></li>
+    <li><a href="#does-this-introduce-a-breaking-change">Does this introduce a breaking change?</a></li>
+    <li><a href="#other-information">Other information</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -554,7 +568,7 @@
           
             <h1>
               
-              Tags
+              Pull Request
             </h1>
           
 
@@ -562,15 +576,44 @@
 
 
 
-
-
-
+<p><strong>Checklist</strong></p>
+<p>Please check if your PR fulfills the following requirements:</p>
 <ul>
-	
+<li><input disabled="" type="checkbox"> Tests for the changes have been added (for bug fixes / features)</li>
+<li><input disabled="" type="checkbox"> Docs have been reviewed and added / updated if needed (for bug fixes / features)</li>
+<li><input disabled="" type="checkbox"> Build was run locally and any changes were pushed</li>
+<li><input disabled="" type="checkbox"> Lint has passed locally and any fixes were made for failures</li>
 </ul>
+<h2 id="pull-request-type">Pull request type</h2>
+<p>Please check the type of change your PR introduces:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Bugfix</li>
+<li><input disabled="" type="checkbox"> Feature</li>
+<li><input disabled="" type="checkbox"> Code style update (formatting, renaming)</li>
+<li><input disabled="" type="checkbox"> Refactoring (no functional changes, no api changes)</li>
+<li><input disabled="" type="checkbox"> Build related changes</li>
+<li><input disabled="" type="checkbox"> Documentation content changes</li>
+<li><input disabled="" type="checkbox"> Other (please describe):</li>
+</ul>
+<h2 id="what-is-the-current-behavior">What is the current behavior?</h2>
+<p>Issue Number: N/A</p>
+<h2 id="what-is-the-new-behavior">What is the new behavior?</h2>
+<ul>
+<li>&hellip;</li>
+<li>&hellip;</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="does-this-introduce-a-breaking-change">Does this introduce a breaking change?</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Yes</li>
+<li><input disabled="" type="checkbox"> No</li>
+</ul>
+<p>If this introduces a breaking change, please describe the impact and migration path for existing applications below.</p>
+<h2 id="other-information">Other information</h2>
+<p>Any other information that is important to this PR such as screenshots of how the component looks before and after the change.</p>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -784,6 +827,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -796,6 +840,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -813,6 +860,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -831,6 +879,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -894,3 +945,4 @@
 
   </body>
 </html>
+

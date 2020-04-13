@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Glossary on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/glossary/</link>
+    <description>Recent content in Glossary on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 18:54:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://ivangrod.github.io/se-journey/glossary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Terms</title>
+      <link>https://ivangrod.github.io/se-journey/glossary/terms/</link>
+      <pubDate>Mon, 13 Apr 2020 18:55:01 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/glossary/terms/</guid>
+      <description> ACL -&amp;gt; Access Control Lists are network traffic filters that can control incoming or outgoing traffic. FIRST -&amp;gt; Testing context: Fast, Independent, Repeatable, Self-validated, Timely. YAGNI -&amp;gt; You ain&amp;rsquo;t gonna need it  </description>
+    </item>
+    
+  </channel>
+</rss>

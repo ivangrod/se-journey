@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Tags :: Software Engineer Journey</title>
+    <title>Git Commit Message :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1586800693" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/tags/">
+  <body class="" data-url="/se-journey/git/git-commit-message/">
     <nav id="sidebar" class="">
 
 
@@ -306,7 +306,7 @@
   
     
     <li data-nav-id="/se-journey/git/" title="Git" class="dd-item 
-        
+        parent
         
         
         ">
@@ -332,7 +332,7 @@
  
   
     
-      <li data-nav-id="/se-journey/git/git-commit-message/" title="Git Commit Message" class="dd-item ">
+      <li data-nav-id="/se-journey/git/git-commit-message/" title="Git Commit Message" class="dd-item active">
         <a href="/se-journey/git/git-commit-message/">
         Git Commit Message
         
@@ -527,7 +527,13 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > Tags
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/git/'>Git</a> > Git Commit Message
+          
+         
           
          
           
@@ -538,7 +544,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -554,7 +560,7 @@
           
             <h1>
               
-              Tags
+              Git Commit Message
             </h1>
           
 
@@ -562,15 +568,40 @@
 
 
 
+<pre><code>Capitalized, short (50 chars or less) summary
 
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
 
+Write your commit message in the imperative: &quot;Fix bug&quot; and not &quot;Fixed bug&quot;
+or &quot;Fixes bug.&quot;  This convention matches up with commit messages generated
+by commands like git merge and git revert.
 
-<ul>
-	
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+
+- Typically a hyphen or asterisk is used for the bullet, followed by a
+  single space, with blank lines in between, but conventions vary here
+
+- Use a hanging indent
+</code></pre><ul>
+<li>git log &ndash;pretty=oneline shows a terse history mapping containing the commit id and the summary</li>
+<li>git rebase &ndash;interactive provides the summary for each commit in the editor it invokes</li>
+<li>If the config option merge.summary is set, the summaries from all merged commits will make their way into the merge commit message
+git shortlog uses summary lines in the changelog-like output it produces</li>
+<li>git format-patch, git send-email, and related tools use it as the subject for emails
+reflogs, a local history accessible with git reflog intended to help you recover from stupid mistakes, get a copy of the summary</li>
+<li>gitk has a column for the summary</li>
+<li>GitHub uses the summary in various places in their user interface</li>
 </ul>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -752,6 +783,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -764,6 +796,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -783,6 +816,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -894,3 +930,4 @@
 
   </body>
 </html>
+

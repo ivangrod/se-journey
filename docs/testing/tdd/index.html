@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
+
+    <title>Test-Driven Development :: Software Engineer Journey</title>
+
+    
+    <link href="/se-journey/css/nucleus.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1586800693" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1586800693" rel="stylesheet">
+    
+
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1586800693"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/se-journey/testing/tdd/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://ivangrod.github.io/se-journey/">
+    <img id="grav-logo" alt=""
+        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2MCA4MCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDE2MCA4MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHJlY3QgaGVpZ2h0PSI2IiB3aWR0aD0iNiIgeD0iNjIiIHk9IjYiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI2MiIgeT0iNjAiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iMTIiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iMTgiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iMjQiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iNDIiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iNDgiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1NiIgeT0iNTQiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1MCIgeT0iMzAiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI1MCIgeT0iMzYiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI5MiIgeT0iNjAiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSI5MiIgeT0iNiIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSI1NCIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSI0OCIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSI0MiIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSIyNCIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSIxOCIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9Ijk4IiB5PSIxMiIvPjxyZWN0IGhlaWdodD0iNiIgd2lkdGg9IjYiIHg9IjEwNCIgeT0iMzYiLz48cmVjdCBoZWlnaHQ9IjYiIHdpZHRoPSI2IiB4PSIxMDQiIHk9IjMwIi8+PC9nPjwvc3ZnPg==">
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1586800693"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1586800693"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
+    
+</script>
+<script type="text/javascript" src="/se-journey/js/search.js?1586800693"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/agile/" title="Agile" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/se-journey/agile/">
+          Agile
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/agile/user-story/" title="User Story" class="dd-item ">
+        <a href="/se-journey/agile/user-story/">
+        User Story
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/culture/" title="Culture" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/se-journey/culture/">
+          Culture
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/culture/code-review/" title="Code Review" class="dd-item ">
+        <a href="/se-journey/culture/code-review/">
+        Code Review
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/testing/" title="Testing" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/se-journey/testing/">
+          Testing
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/testing/tdd/" title="Test-Driven Development" class="dd-item active">
+        <a href="/se-journey/testing/tdd/">
+        Test-Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/testing/test-types/" title="Test Types" class="dd-item ">
+        <a href="/se-journey/testing/test-types/">
+        Test Types
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/testing/testing-resources/" title="Testing Resources" class="dd-item ">
+        <a href="/se-journey/testing/testing-resources/">
+        Testing Resources
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/testing/double-patterns/" title="Double Patterns" class="dd-item ">
+        <a href="/se-journey/testing/double-patterns/">
+        Double Patterns
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/git/" title="Git" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/se-journey/git/">
+          Git
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/git/git-commit-message/" title="Git Commit Message" class="dd-item ">
+        <a href="/se-journey/git/git-commit-message/">
+        Git Commit Message
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/templates/" title="Templates" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/se-journey/templates/">
+          Templates
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/templates/issue/" title="Issue" class="dd-item ">
+        <a href="/se-journey/templates/issue/">
+        Issue
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/templates/pull-request/" title="Pull Request" class="dd-item ">
+        <a href="/se-journey/templates/pull-request/">
+        Pull Request
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/se-journey/glossary/" title="Glossary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/se-journey/glossary/">
+          Glossary
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/se-journey/glossary/terms/" title="Terms" class="dd-item ">
+        <a href="/se-journey/glossary/terms/">
+        Terms
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/ivangrod/se-journey"><i class="fas fa-heart"></i></a> by <a href="https://www.linkedin.com/in/ivangutierrezrodriguez/">Iván</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/testing/'>Testing</a> > Test-Driven Development
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#steps">Steps</a>
+      <ul>
+        <li><a href="#points-of-interest">Points of interest</a></li>
+      </ul>
+    </li>
+    <li><a href="#beginning">Beginning</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#three-laws-of-tdd">Three Laws of TDD</a></li>
+    <li><a href="#rule-of-three">Rule of Three</a></li>
+    <li><a href="#test-driven-development-patterns">Test-Driven Development Patterns</a>
+      <ul>
+        <li><a href="#test-noun">TEST (NOUN)</a></li>
+        <li><a href="#isolated-test">ISOLATED TEST</a></li>
+        <li><a href="#test-list">TEST LIST</a></li>
+        <li><a href="#test-first">TEST FIRST</a></li>
+        <li><a href="#assert-first">ASSERT FIRST</a></li>
+        <li><a href="#test-data">TEST DATA</a></li>
+        <li><a href="#evident-data">EVIDENT DATA</a></li>
+      </ul>
+    </li>
+    <li><a href="#red-bar-patterns">Red Bar Patterns</a>
+      <ul>
+        <li><a href="#one-step-test">ONE STEP TEST</a></li>
+        <li><a href="#starter-test">STARTER TEST</a></li>
+        <li><a href="#explanation-test">EXPLANATION TEST</a></li>
+        <li><a href="#learning-test">LEARNING TEST</a></li>
+        <li><a href="#another-test">ANOTHER TEST</a></li>
+        <li><a href="#regression-test">REGRESSION TEST</a></li>
+        <li><a href="#break">BREAK</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing-patterns">Testing Patterns</a>
+      <ul>
+        <li><a href="#child-test">CHILD TEST</a></li>
+        <li><a href="#mock-object">MOCK OBJECT</a></li>
+        <li><a href="#self-shunt">SELF SHUNT</a></li>
+        <li><a href="#log-string">LOG STRING</a></li>
+        <li><a href="#crash-test-dummy">CRASH TEST DUMMY</a></li>
+        <li><a href="#broken-test">BROKEN TEST</a></li>
+        <li><a href="#clean-check-in">CLEAN CHECK-IN</a></li>
+      </ul>
+    </li>
+    <li><a href="#green-bar-patterns">Green Bar Patterns</a>
+      <ul>
+        <li><a href="#fake-it-til-you-make-it">FAKE IT (&lsquo;TIL YOU MAKE IT)</a></li>
+        <li><a href="#triangulation">TRIANGULATION</a></li>
+        <li><a href="#obvious-implementation">OBVIOUS IMPLEMENTATION</a></li>
+        <li><a href="#one-to-many">ONE TO MANY</a></li>
+        <li><a href="#tpp---transformation-priority-premise">TPP - TRANSFORMATION PRIORITY PREMISE</a></li>
+      </ul>
+    </li>
+    <li><a href="#xunit-patterns">xUnit Patterns</a>
+      <ul>
+        <li><a href="#assertion">ASSERTION</a></li>
+        <li><a href="#fixture">FIXTURE</a></li>
+        <li><a href="#external-fixture">EXTERNAL FIXTURE</a></li>
+        <li><a href="#test-method">TEST METHOD</a></li>
+        <li><a href="#exception-test">EXCEPTION TEST</a></li>
+        <li><a href="#all-tests">ALL TESTS</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#git">Git</a></li>
+    <li><a href="#legacy-code">Legacy code</a></li>
+    <li><a href="#exceptions">Exceptions</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Test-Driven Development
+            </h1>
+          
+
+        
+
+
+
+<h2 id="steps">Steps</h2>
+<ol>
+<li>
+<p>Quickly add a test.</p>
+</li>
+<li>
+<p>Run all tests and see the new one fail.</p>
+</li>
+<li>
+<p>Make a little change.</p>
+</li>
+<li>
+<p>Run all tests and see them all succeed.</p>
+</li>
+<li>
+<p>Refactor to remove duplication.</p>
+<p>The problem is the dependency between the code and the test—you can&rsquo;t change one without changing the other. Our goal is to be able to write another test that “makes sense” to us, without having to change the code.</p>
+<p>If <strong>dependency</strong> is the problem, <strong>duplication</strong> is the symptom.</p>
+<p><em>By eliminating duplication before we go on to the next test, we maximize our chance of being able to get the next test running with one and only one change.</em></p>
+</li>
+</ol>
+<h3 id="points-of-interest">Points of interest</h3>
+<ul>
+<li>How each test can cover a small increment of functionality</li>
+<li>How small and ugly the changes can be to make the new tests run</li>
+<li>How often the tests are run</li>
+<li>How many teensy-weensy steps make up the refactorings</li>
+</ul>
+<h2 id="beginning">Beginning</h2>
+<ul>
+<li>We&rsquo;ll make a to-do list to remind us what we need to do, to keep us focused and to tell us when we are finished.</li>
+</ul>
+<blockquote>
+<p>We don&rsquo;t start with objects, we start with tests.</p>
+</blockquote>
+<ul>
+<li>
+<p>Told a story with a snippet of code about how we wanted to view one operation</p>
+</li>
+<li>
+<p>Ignored the details of JUnit for the moment</p>
+</li>
+<li>
+<p>Made the test compile with stubs</p>
+</li>
+<li>
+<p>Made the test run by committing horrible sins</p>
+</li>
+<li>
+<p>Gradually generalized the working code, replacing constants with variables</p>
+</li>
+<li>
+<p>Added items to our to-do list rather than addressing them all at once</p>
+</li>
+</ul>
+<h1 id="tdd-patterns">TDD Patterns</h1>
+<h2 id="three-laws-of-tdd">Three Laws of TDD</h2>
+<ol>
+<li>
+<p><strong>Law 1</strong>: You can’t write any production code until you have first written a failing spec.</p>
+</li>
+<li>
+<p><strong>Law 2</strong>: You can’t write more of a unit test than is sufficient to fail, and not compiling is failing.</p>
+</li>
+<li>
+<p><strong>Law 3</strong>: You can’t write more production code than is sufficient to pass the currently failing unit test.</p>
+</li>
+</ol>
+<h2 id="rule-of-three">Rule of Three</h2>
+<p><strong>Rule of three</strong> (&ldquo;Three strikes and you refactor&rdquo;) is a code refactoring rule of thumb to decide when similar pieces of code should be refactored to avoid duplication. It states that two instances of similar code don&rsquo;t require refactoring, but when similar code is used three times, it should be extracted into a new procedure.</p>
+<h2 id="test-driven-development-patterns">Test-Driven Development Patterns</h2>
+<h3 id="test-noun">TEST (NOUN)</h3>
+<p>Positive feedback loop. The more stress you feel, the less testing you will do. The less testing you do, the more errors you will make. The more errors you make, the more stress you feel.</p>
+<h3 id="isolated-test">ISOLATED TEST</h3>
+<blockquote>
+<p>Make the tests so fast to run that you can run them myself, and run them often. That way you can catch errors before anyone else sees them</p>
+<p>A huge stack of errors didn&rsquo;t usually mean a huge list of problems</p>
+</blockquote>
+<p>One convenient implication of isolated tests is that the <strong>tests are order independent</strong>.</p>
+<p>A second implication of isolated tests is that you have to work, sometimes work hard, to <strong>break your problem</strong> into little orthogonal dimensions</p>
+<h3 id="test-list">TEST LIST</h3>
+<h3 id="test-first">TEST FIRST</h3>
+<h3 id="assert-first">ASSERT FIRST</h3>
+<blockquote>
+<p>&ldquo;What is the right answer?&rdquo; || &ldquo;How am I going to check?&rdquo;</p>
+</blockquote>
+<h3 id="test-data">TEST DATA</h3>
+<blockquote>
+<p>Use data that makes the tests easy to read and follow.</p>
+<p>Don&rsquo;t have a list of ten items as the input data if a list of three items will lead you to the same design and implementation decisions.</p>
+</blockquote>
+<h3 id="evident-data">EVIDENT DATA</h3>
+<p>Include expected and actual results in the test itself, and try to make their relationship apparent.</p>
+<h2 id="red-bar-patterns">Red Bar Patterns</h2>
+<h3 id="one-step-test">ONE STEP TEST</h3>
+<p>Pick a test from the list that will teach you something and that you are <strong>confident you can implement</strong>. Each test should represent one step toward your overall goal.</p>
+<h3 id="starter-test">STARTER TEST</h3>
+<p>Start by testing a variant of an operation that doesn&rsquo;t do anything.</p>
+<blockquote>
+<p>The first question you have to ask with a new operation is, &ldquo;Where does it belong?&rdquo; Until you&rsquo;ve answered this question, you won&rsquo;t know what to type for the test.</p>
+</blockquote>
+<p><del>If you write a realistic test first, then you will find yourself solving a bunch of problems at once.</del> Beginning with a realistic test will leave you too long without feedback.</p>
+<h3 id="explanation-test">EXPLANATION TEST</h3>
+<p>Ask for and give explanations in terms of tests.</p>
+<p>A companion technique is to start giving explanations in terms of tests: &ldquo;Here&rsquo;s how it works now. When I have a Foo like this and a Bar like that, then the answer is 76. If I have a Foo like that and a Bar like this, though, I would like the answer to be 67.&rdquo;</p>
+<h3 id="learning-test">LEARNING TEST</h3>
+<p>When do you write tests for externally produced software? Before the first time you are going to use a new facility in the package.</p>
+<p>Ex.: A project in which Learning Tests were routinely written. When new releases of the package arrived, first the tests were run (and fixed, if necessary). If the tests didn&rsquo;t run, then there was no sense running the application because it certainly wouldn&rsquo;t run.</p>
+<h3 id="another-test">ANOTHER TEST</h3>
+<p>How do you keep a technical discussion from straying off topic? When a tangential idea arises, <strong>add a test to the list</strong> and go back to the topic.</p>
+<h3 id="regression-test">REGRESSION TEST</h3>
+<p>When a defect is reported write the smallest possible test that fails and that, once run, will be repaired.</p>
+<p>Regression tests for the application give your users a chance to speak concretely to you about what is wrong and what they expect.</p>
+<h3 id="break">BREAK</h3>
+<blockquote>
+<p>If you know what to type, type the Obvious Implementation. If you don&rsquo;t know what to type, then Fake It. If the right design still isn&rsquo;t clear, then Triangulate. If you still don&rsquo;t know what to type, then you can take that shower.</p>
+</blockquote>
+<h2 id="testing-patterns">Testing Patterns</h2>
+<h3 id="child-test">CHILD TEST</h3>
+<p>Write a smaller test case that represents the broken part of the bigger test case. Get the smaller test case running. Reintroduce the larger test case.</p>
+<h3 id="mock-object">MOCK OBJECT</h3>
+<p>When you have an object that <strong>relies on an expensive or complicated resource</strong>, you must create a fake version of the resource that answers constants.</p>
+<h3 id="self-shunt">SELF SHUNT</h3>
+<p>For testing that one object communicates correctly with another, the best way is having the object under test communicate with the test case instead of with the object it expects.</p>
+<p>// TODO Review it</p>
+<h3 id="log-string">LOG STRING</h3>
+<p>Test that the sequence in which messages are called is correct -&gt; Keep a log in a string, and append to the string when a message is called.</p>
+<p>Log Strings are particularly useful when you are implementing Observer and you expect notifications to come in a certain order.</p>
+<h3 id="crash-test-dummy">CRASH TEST DUMMY</h3>
+<p>Test error code that is unlikely to be invoked -&gt; Invoke it anyway with a special object that throws an exception instead of doing real work. <strong>Code that isn&rsquo;t tested doesn&rsquo;t work</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FullFile</span> <span style="color:#66d9ef">extends</span> File <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">FullFile</span><span style="color:#f92672">(</span>String path<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	   <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>path<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">createNewFile</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+	   <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IOException<span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testFileSystemError</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+	File f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FullFile<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+		saveAs<span style="color:#f92672">(</span>f<span style="color:#f92672">);</span>
+		fail<span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>A Crash Test Dummy is like a Mock Object, except you don&rsquo;t need to mock up the whole object. Java&rsquo;s anonymous inner classes work well for sabotaging just the right method to simulate the error we want to exercise:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testFileSystemError</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+   File f<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">createNewFile</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+         <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IOException<span style="color:#f92672">();</span>
+      <span style="color:#f92672">}</span>
+   <span style="color:#f92672">};</span>
+   <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+		saveAs<span style="color:#f92672">(</span>f<span style="color:#f92672">);</span>
+		fail<span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="broken-test">BROKEN TEST</h3>
+<p>Finish a solo session by writing a test case and running it to be sure it doesn&rsquo;t pass. When you come back to the code, you then have an obvious place to start.</p>
+<p>You have an obvious, concrete <strong>bookmark</strong> to help you remember what you were thinking.</p>
+<h3 id="clean-check-in">CLEAN CHECK-IN</h3>
+<p>How do you leave a programming session when you&rsquo;re programming in a team? Leave all of the tests running.</p>
+<p>You need to start from a place of confidence and certainty.</p>
+<h2 id="green-bar-patterns">Green Bar Patterns</h2>
+<h3 id="fake-it-til-you-make-it">FAKE IT (&lsquo;TIL YOU MAKE IT)</h3>
+<p>Return a constant and gradually replace constants with variables until you have the real code. Remove <strong>duplication</strong> between the test and the production code.</p>
+<ul>
+<li>
+<p>Having a green bar feels completely different from having a red bar. When the bar is green, you know where you stand. You can refactor from there with confidence.</p>
+</li>
+<li>
+<p>Starting with one concrete example and generalizing from there prevents you from prematurely confusing yourself with extraneous concerns.</p>
+</li>
+</ul>
+<h3 id="triangulation">TRIANGULATION</h3>
+<p>We only generalize code (abstract) when we have two examples or more.</p>
+<p>We briefly ignore the duplication between test and model code. When the second example demands a more general solution, then and only then do we generalize.</p>
+<p>Once we have the two assertions and we have abstracted the correct implementation for plus, we <strong>can delete</strong> one of the assertions on the grounds that it is completely redundant with the other.</p>
+<h3 id="obvious-implementation">OBVIOUS IMPLEMENTATION</h3>
+<p>Type in the real implementation.</p>
+<blockquote>
+<p><strong>Advice</strong>
+Commonly shift between two modes of implementation. When everything is going smoothly and you know what to type, you put in <strong>Obvious Implementation</strong> after Obvious Implementation (running the tests each time to ensure that what&rsquo;s obvious to yours is still obvious to the computer). As soon as you get an unexpected red bar, you back up, shift to <strong>Faking</strong> implementations, and refactor to the right code. When you confidence returns, you go back to Obvious Implementations.</p>
+</blockquote>
+<h3 id="one-to-many">ONE TO MANY</h3>
+<p>An operation that works with collections of objects -&gt; Implement it without the collections first, then make it work with collections.</p>
+<h3 id="tpp---transformation-priority-premise">TPP - TRANSFORMATION PRIORITY PREMISE</h3>
+<p>Cada nuevo test que convertimos a verde debe provocar una transformación en el código de producción que lo haga un poco más genérico de lo que era antes de añadir ese test. Secuencia de transformaciones propuesta por Robert C. Martin:</p>
+<ol>
+<li>{} –&gt; nil: De no haber código a devolver nulo.</li>
+<li>nil -&gt; constant: De nulo a devolver un valor literal.</li>
+<li>constant -&gt; constant+: De un valor literal simple a uno más complejo.</li>
+<li>constant -&gt; scalar: De un valor literal a una variable.</li>
+<li>statement -&gt; statements: Añadir más líneas de código sin condicionales.</li>
+<li>unconditional -&gt; if: Introducir un condicional</li>
+<li>scalar -&gt; array: De variable simple a colección.</li>
+<li>array -&gt; container: De colección a contenedor.</li>
+<li>statement -&gt; recursion: Introducir recursión.</li>
+<li>if -&gt; while: Convertir condicional en bucle.</li>
+<li>expression -&gt; function: Reemplazar expresión con llamada a función.</li>
+<li>variable -&gt; assignment: Mutar el valor de una variable.</li>
+</ol>
+<h2 id="xunit-patterns">xUnit Patterns</h2>
+<h3 id="assertion">ASSERTION</h3>
+<p>Write boolean expressions that automate your judgment about whether the code worked.</p>
+<blockquote>
+<p>Si para validar un único comportamiento necesitamos varias líneas de asserts, a veces es mejor crear un método propio.
+Otra opción es implementar <strong>Custom Matchers</strong></p>
+</blockquote>
+<p>Optional first parameter -&gt; Add information about the assertion that will be printed if it ever fails. Some teams adopt the convention that all assertions must be accompanied by an informative error message.</p>
+<h3 id="fixture">FIXTURE</h3>
+<p>Cada test debería ser autosuficiente para crear el conjunto de datos que necesita. Estos datos son los <strong>fixtures</strong>.</p>
+<p>How do you create common objects needed by several tests -&gt; Convert the local variables in the tests into instance variables. Override setUp() and initialize those variables.</p>
+<ul>
+<li>
+<p>Test-fixture-creating code with the test -&gt; Tests written with the setup code right there with the assertions are readable from top to bottom.</p>
+</li>
+<li>
+<p>Test-fixture-creating code into a method called setUp() -&gt; Set instance variables to the objects that will be used in the test. We would have to remember that the method was called, and remember what the objects looked like, before we could write the rest of the test.</p>
+</li>
+</ul>
+<blockquote>
+<p>In general, if I find myself wanting a <strong>slightly different fixture</strong>, then I <strong>start a new subclass of TestCase</strong>. @Before annotation may help us to evaluate the test class context.</p>
+</blockquote>
+<p><a href="http://xunitpatterns.com/Fixture%20Setup%20Patterns.html">Fixture Setup Patterns</a></p>
+<h3 id="external-fixture">EXTERNAL FIXTURE</h3>
+<p>How do you release external resources in the fixture? Override tearDown() and release the resources.</p>
+<h3 id="test-method">TEST METHOD</h3>
+<p>Los nombres de los test deberían seguir siendo válidos cuando los pequeños detalles de implementación cambien. No deberían cambiar mientras que las reglas de negocio no cambien</p>
+<p>Tip: Usar <strong>snake_case</strong> debido a que los nombres de los test tienden a ser muy largos. Al ser métodos que no van a ser invocados desde ninguna otra parte del código productivo, no supone problema que rompan la convención del lenguaje que se esté utilizando.</p>
+<h3 id="exception-test">EXCEPTION TEST</h3>
+<p>How do you test for expected exceptions? Catch expected exceptions and ignore them, failing only if the exception isn&rsquo;t thrown.</p>
+<p><a href="https://github.com/ivangrod/testing-pills/tree/master/testing_exceptions">Testing Exceptions (GitHub)</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testMissingRate</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+	   exchange<span style="color:#f92672">.</span><span style="color:#a6e22e">findRate</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;USD&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;GBP&#34;</span><span style="color:#f92672">);</span>
+	   fail<span style="color:#f92672">();</span>
+   <span style="color:#75715e">/* Notice that we are careful only to catch the 
+</span><span style="color:#75715e">   particular exception we expect, so we will also be 
+</span><span style="color:#75715e">   notified if the wrong kind of exception is thrown */</span>   
+	<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalArgumentException expected<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="all-tests">ALL TESTS</h3>
+<p>How do you run all tests together? Make a suite of all the suites—one for each package, and one aggregating the package tests for the whole application.</p>
+<h1 id="best-practice">Best Practice</h1>
+<h2 id="git">Git</h2>
+<ul>
+<li>
+<p>Para descartar los cambios locales en el paso green -&gt; refactor basta con un <em>git reset</em> para volver al punto en el que los test pasan.</p>
+</li>
+<li>
+<p>Commit en pequeños cambios incrementales. Para que nos formen parte del historial de Git, por algún motivo o por política de equipo, pueden unificarse con <em>git squash</em></p>
+</li>
+</ul>
+<p>// TODO ¿Guía TDD con VCS?</p>
+<h2 id="legacy-code">Legacy code</h2>
+<p>Al no tener garantías de que el sistema se comporte como uno espera que lo haga, puede ser que plantear test partiendo de premisas incorrectas sea una pérdida de tiempo. Proceso para abordar ésto:</p>
+<ol>
+<li>Guardar cualquier cambio pendiente que tuvieras hasta ese momento (<em>git commit</em>)</li>
+<li>Añadir la nueva funcionalidad</li>
+<li>Ejecutar la aplicación a mano para validar que funciona como se espera</li>
+<li>Explorar la aplicación como tester/usuario para asegurar que ninguna otra funcionalidad está rota</li>
+<li><strong>Añadir test automáticos</strong> que den cobertura a la nueva funcionalidad</li>
+<li>Verlos ejecutarse en verde</li>
+<li>Volver a dejar el código como estaba al principio (volviendo al commit anterior si es necesario)</li>
+<li>Lanzar de nuevo los test y verlos en rojo, confirmando que el error es el esperado</li>
+<li>Recuperar la última versión del código para ver los test en verde de nuevo</li>
+</ol>
+<h2 id="exceptions">Exceptions</h2>
+<p>Utilizar assert también para excepciones &gt; código simétrico suele ser más fácil de entender :) :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">should_fail_if_the_file_is_empty</span><span style="color:#f92672">(){</span>
+   assertThatExceptionOfType<span style="color:#f92672">(</span>IllegalFileException<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+     <span style="color:#f92672">.</span><span style="color:#a6e22e">isThrownBy</span><span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+        filter<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">(</span>emptyFile<span style="color:#f92672">);</span>
+     <span style="color:#f92672">})</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Sentencia declarativa: La expresión se evalúa de dentro hacia fuera. La función <em>isThownBy</em> nunca llegará a ejecutarse, porque el test se detendría antes con un rojo.</p>
+<p><a href="https://github.com/ivangrod/testing-pills/tree/master/testing_exceptions">Testing Exceptions (GitHub)</a></p>
+<h1 id="pitfalls">Pitfalls</h1>
+<ul>
+<li><strong>Infravalorar el nombre de los test</strong>: Mayor entendimiento del problema y de la solución. Simplificar. Documentación viva y expresiva.</li>
+<li><strong>Testar estructuras y asignaciones</strong>: Test demasiado acoplados a la implementación del código sin necesidad. No ayudan a implementar ninguna funcionalidad.</li>
+<li><strong>Falta de refactoring en test</strong>: En un primer momento, no importa si el test tiene diez líneas. Cuando esté en verde, podremos mejorar la legilibilidad del test.</li>
+<li><strong>Mocks return mocks</strong>: Tests que entorpecen, encarecen el mantenimiento. Pueden ser test de usar y tirar.</li>
+<li><strong>Uso de variables estáticas/compartidas</strong>: Es recomendable lanzar baterías con las diferentes suites de test en paralelo en máquinasde varios núcleos.</li>
+<li><strong>Ignorar test en rojo</strong>: No dejarlos ignorados más de un/dos días.</li>
+<li><strong>Más de una regla por test</strong>: El test debe poner de manifiesto sólo una de las reglas de negocio. Cuando falle, tendremos mejor entendimiento de las consecuencias que puede acarrear.</li>
+<li><strong>Introducir complejidad ciclomática</strong>: Cualquier cambio que añada indirección o cualquier otra posible complejidad en los test debe hacerse en la fase de refactor.</li>
+<li><strong>Test parametrizados</strong>: Pocas veces es útil, ya que usando triangulación con dos o tres casos podríamos obtener el mismo resultado. Si fuera necesario, utilizar herramientas de test basados en propiedades.</li>
+<li><strong>Forzar el diseño para poder probar</strong>: La interfaz publica de un módulo o de una clase es un compromiso adquirido con sus consumidores.</li>
+<li><strong>Esperas aleatorias para resolver asincronía</strong>: Para que los test inspiren confianza tienen que ser deterministas y además rápidos en la ejecución.</li>
+<li><strong>Dependencias de plataforma y de máquina</strong>.</li>
+<li><strong>Ausencia de exploratory testing</strong>: Probar funcionalidades que no hemos probado nosotros.</li>
+<li><strong>Exceso de test de la GUI</strong>: Tests que atacan a la interfaz gráfica son los más frágiles de todos.</li>
+<li><strong>Cadenas de transiciones entre estados</strong>: Partir el test en varios, de forma que cada uno se limita a verificar una sola transición de estado. Quizás necesitemos alguna vía de configuración de partida.</li>
+<li><strong>Ausencia de documentación</strong>.</li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/se-journey/js/clipboard.min.js?1586800693"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1586800693"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1586800693"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1586800693"></script>
+    <script src="/se-journey/js/featherlight.min.js?1586800693"></script>
+    <script src="/se-journey/js/highlight.pack.js?1586800693"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1586800693"></script>
+    <script src="/se-journey/js/learn.js?1586800693"></script>
+    <script src="/se-journey/js/hugo-learn.js?1586800693"></script>
+
+    <link href="/se-journey/mermaid/mermaid.css?1586800693" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1586800693"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

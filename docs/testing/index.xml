@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Testing on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/testing/</link>
+    <description>Recent content in Testing on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 18:55:50 +0200</lastBuildDate>
+    
+	<atom:link href="https://ivangrod.github.io/se-journey/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test-Driven Development</title>
+      <link>https://ivangrod.github.io/se-journey/testing/tdd/</link>
+      <pubDate>Mon, 13 Apr 2020 18:55:59 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/tdd/</guid>
+      <description>Steps   Quickly add a test.
+  Run all tests and see the new one fail.
+  Make a little change.
+  Run all tests and see them all succeed.
+  Refactor to remove duplication.
+The problem is the dependency between the code and the test—you can&amp;rsquo;t change one without changing the other. Our goal is to be able to write another test that “makes sense” to us, without having to change the code.</description>
+    </item>
+    
+    <item>
+      <title>Test Types</title>
+      <link>https://ivangrod.github.io/se-journey/testing/test-types/</link>
+      <pubDate>Mon, 13 Apr 2020 18:58:03 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/test-types/</guid>
+      <description>Claros, concisos y certeros: Arrange - Act - Assert / Given - When - Then. Datos mínimos relevantes para entender y distinguir cada escenario. Feedback rápido e informativo Simplicidad: Dependencias - librerías, frameworks - ¿cuánto cuesta entender como funcionan todas estas piezas? Robustez: Cuando un test se rompe debería hacerlo por un solo motivo. Debería ser muy expresivo, señalando el motivo del fallo como para que no haga falta depurar el sistema.</description>
+    </item>
+    
+    <item>
+      <title>Testing Resources</title>
+      <link>https://ivangrod.github.io/se-journey/testing/testing-resources/</link>
+      <pubDate>Mon, 13 Apr 2020 18:57:36 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/testing-resources/</guid>
+      <description>xUnit  xUnit Patterns  BDD  Example mapping  Outside-in / Inside-out </description>
+    </item>
+    
+    <item>
+      <title>Double Patterns</title>
+      <link>https://ivangrod.github.io/se-journey/testing/double-patterns/</link>
+      <pubDate>Mon, 13 Apr 2020 18:58:55 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/double-patterns/</guid>
+      <description>http://xunitpatterns.com/Test%20Double%20Patterns.html</description>
+    </item>
+    
+  </channel>
+</rss>

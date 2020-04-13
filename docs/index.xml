@@ -6,9 +6,112 @@
     <description>Recent content on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 19:00:20 +0200</lastBuildDate>
     
 	<atom:link href="https://ivangrod.github.io/se-journey/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Test-Driven Development</title>
+      <link>https://ivangrod.github.io/se-journey/testing/tdd/</link>
+      <pubDate>Mon, 13 Apr 2020 18:55:59 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/tdd/</guid>
+      <description>Steps   Quickly add a test.
+  Run all tests and see the new one fail.
+  Make a little change.
+  Run all tests and see them all succeed.
+  Refactor to remove duplication.
+The problem is the dependency between the code and the test—you can&amp;rsquo;t change one without changing the other. Our goal is to be able to write another test that “makes sense” to us, without having to change the code.</description>
+    </item>
+    
+    <item>
+      <title>Test Types</title>
+      <link>https://ivangrod.github.io/se-journey/testing/test-types/</link>
+      <pubDate>Mon, 13 Apr 2020 18:58:03 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/test-types/</guid>
+      <description>Claros, concisos y certeros: Arrange - Act - Assert / Given - When - Then. Datos mínimos relevantes para entender y distinguir cada escenario. Feedback rápido e informativo Simplicidad: Dependencias - librerías, frameworks - ¿cuánto cuesta entender como funcionan todas estas piezas? Robustez: Cuando un test se rompe debería hacerlo por un solo motivo. Debería ser muy expresivo, señalando el motivo del fallo como para que no haga falta depurar el sistema.</description>
+    </item>
+    
+    <item>
+      <title>Testing Resources</title>
+      <link>https://ivangrod.github.io/se-journey/testing/testing-resources/</link>
+      <pubDate>Mon, 13 Apr 2020 18:57:36 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/testing-resources/</guid>
+      <description>xUnit  xUnit Patterns  BDD  Example mapping  Outside-in / Inside-out </description>
+    </item>
+    
+    <item>
+      <title>Double Patterns</title>
+      <link>https://ivangrod.github.io/se-journey/testing/double-patterns/</link>
+      <pubDate>Mon, 13 Apr 2020 18:58:55 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/double-patterns/</guid>
+      <description>http://xunitpatterns.com/Test%20Double%20Patterns.html</description>
+    </item>
+    
+    <item>
+      <title>User Story</title>
+      <link>https://ivangrod.github.io/se-journey/agile/user-story/</link>
+      <pubDate>Mon, 13 Apr 2020 19:00:20 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/agile/user-story/</guid>
+      <description>   How to split user stories   Story-Splitting-Flowchart.pdf  (744 ko)    </description>
+    </item>
+    
+    <item>
+      <title>Terms</title>
+      <link>https://ivangrod.github.io/se-journey/glossary/terms/</link>
+      <pubDate>Mon, 13 Apr 2020 18:55:01 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/glossary/terms/</guid>
+      <description> ACL -&amp;gt; Access Control Lists are network traffic filters that can control incoming or outgoing traffic. FIRST -&amp;gt; Testing context: Fast, Independent, Repeatable, Self-validated, Timely. YAGNI -&amp;gt; You ain&amp;rsquo;t gonna need it  </description>
+    </item>
+    
+    <item>
+      <title>Issue</title>
+      <link>https://ivangrod.github.io/se-journey/templates/issue/</link>
+      <pubDate>Mon, 13 Apr 2020 18:37:53 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/templates/issue/</guid>
+      <description>I&amp;rsquo;m submitting a &amp;hellip;  bug report feature request support request  What is the current behavior? …
+If the current behavior is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem via https://plnkr.co or similar (you can use this template as a starting point: http://plnkr.co/edit/tpl:AvJOMERrnz94ekVua0u5).
+Any logs, error output, etc? (If it’s long, please paste to https://ghostbin.com/ and insert the link here.</description>
+    </item>
+    
+    <item>
+      <title>Pull Request</title>
+      <link>https://ivangrod.github.io/se-journey/templates/pull-request/</link>
+      <pubDate>Mon, 13 Apr 2020 18:37:47 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/templates/pull-request/</guid>
+      <description>Checklist
+Please check if your PR fulfills the following requirements:
+ Tests for the changes have been added (for bug fixes / features) Docs have been reviewed and added / updated if needed (for bug fixes / features) Build was run locally and any changes were pushed Lint has passed locally and any fixes were made for failures  Pull request type Please check the type of change your PR introduces:</description>
+    </item>
+    
+    <item>
+      <title>Git Commit Message</title>
+      <link>https://ivangrod.github.io/se-journey/git/git-commit-message/</link>
+      <pubDate>Mon, 13 Apr 2020 18:07:27 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/git/git-commit-message/</guid>
+      <description>Capitalized, short (50 chars or less) summary More detailed explanatory text, if necessary. Wrap it to about 72 characters or so. In some contexts, the first line is treated as the subject of an email and the rest of the text as the body. The blank line separating the summary from the body is critical (unless you omit the body entirely); tools like rebase can get confused if you run the two together.</description>
+    </item>
+    
+    <item>
+      <title>Code Review</title>
+      <link>https://ivangrod.github.io/se-journey/culture/code-review/</link>
+      <pubDate>Mon, 13 Apr 2020 18:00:20 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/culture/code-review/</guid>
+      <description>Code review is a human communication process
+ 3-steps process   The developer who wrote the code creates a pull request (PR) and lets the team know that the PR was created. (Slack bot)
+  Once the PR is created, someone else starts reviewing the code, in accordance with a guide providing rules, standards and processes.
+  After one or two developers have reviewed the code, one or both steps should be followed:</description>
+    </item>
     
   </channel>
 </rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agile on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/agile/</link>
+    <description>Recent content in Agile on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 18:59:30 +0200</lastBuildDate>
+    
+	<atom:link href="https://ivangrod.github.io/se-journey/agile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>User Story</title>
+      <link>https://ivangrod.github.io/se-journey/agile/user-story/</link>
+      <pubDate>Mon, 13 Apr 2020 19:00:20 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/agile/user-story/</guid>
+      <description>   How to split user stories   Story-Splitting-Flowchart.pdf  (744 ko)    </description>
+    </item>
+    
+  </channel>
+</rss>
