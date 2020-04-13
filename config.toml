@@ -1,4 +1,4 @@
-baseURL = "https://ivangrod.github.io/se-journey"
+baseURL = "https://ivangrod.github.io/se-journey/"
 languageCode = "en-us"
 title = "Software Engineer Journey"
 publishDir = "docs"
