@@ -70,13 +70,6 @@
 	"content": "Glossary "
 },
 {
-	"uri": "https://ivangrod.github.io/se-journey/",
-	"title": "Software Engineer Journey",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
 	"uri": "https://ivangrod.github.io/se-journey/agile/user-story/",
 	"title": "User Story",
 	"tags": [],
@@ -89,6 +82,13 @@
 	"tags": [],
 	"description": "",
 	"content": " ACL -\u0026gt; Access Control Lists are network traffic filters that can control incoming or outgoing traffic. FIRST -\u0026gt; Testing context: Fast, Independent, Repeatable, Self-validated, Timely. YAGNI -\u0026gt; You ain\u0026rsquo;t gonna need it  "
+},
+{
+	"uri": "https://ivangrod.github.io/se-journey/",
+	"title": "Software Engineer Journey",
+	"tags": [],
+	"description": "",
+	"content": "Software Engineer Journey  Agile   Culture   Testing   Git   Templates   Glossary   "
 },
 {
 	"uri": "https://ivangrod.github.io/se-journey/templates/issue/",
