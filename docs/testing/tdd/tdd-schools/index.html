@@ -12,18 +12,18 @@
     <title>TDD Schools :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1586981779" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1586981779" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1586994872" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1586994872" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1586981779"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1586994872"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1586981779"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1586981779"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1586994872"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1586994872"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1586981779"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1586994872"></script>
 
     
   </div>
@@ -599,6 +599,7 @@
   <ul>
     <li><a href="#inside-out-classic-school---algorithms">Inside-out (Classic school) - Algorithms</a></li>
     <li><a href="#outside-in-london-school---interactions">Outside-in (London school) - Interactions</a></li>
+    <li><a href="#demo-outside-in-tdd">Demo Outside-in TDD</a></li>
   </ul>
 </nav>
     </div>
@@ -636,10 +637,53 @@
 <p><strong>Patterns</strong>: <a href="/se-journey/testing/double-patterns/">Test Double</a></p>
 <p><strong>Approach</strong>:</p>
 <p>Identify the roles, responsibilities and key interactions/collaborations between roles in an end-to-end implementation of the solution to satisfy a system-level scenario or acceptance test. Implement the code needed in each collaborator, one at a time, <a href="/se-journey/testing/tdd/##fake-it-til-you-make-it">faking</a> it&rsquo;s direct collaborators and then work your way down through the &ldquo;call stack&rdquo; of interactions until you have a working end-to-end implementation that passes the front-end test.</p>
+<h2 id="demo-outside-in-tdd">Demo Outside-in TDD</h2>
 <p><a href="https://www.youtube.com/watch?v=XHnuMjah6ps">https://www.youtube.com/watch?v=XHnuMjah6ps</a></p>
 <p><a href="https://www.youtube.com/watch?v=gs0rqDdz3ko">https://www.youtube.com/watch?v=gs0rqDdz3ko</a></p>
 <p><a href="https://www.youtube.com/watch?v=R9OAt9AOrzI">https://www.youtube.com/watch?v=R9OAt9AOrzI</a></p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>
+<p>Use verify().methodXXX -&gt; Test over <strong>commands</strong> method (void)</p>
+</li>
+<li>
+<p>For command methods you need to test the side effects. After you identify the trigger for them.</p>
+</li>
+<li>
+<p>You can&rsquo;t test what you can&rsquo;t control it</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Clock</span><span style="color:#f92672">{</span>
 
+   <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">todayAsString</span><span style="color:#f92672">(){</span>
+      LocalDate today <span style="color:#f92672">=</span> today<span style="color:#f92672">();</span>
+      <span style="color:#66d9ef">return</span> today<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span>DateTimeFormatter<span style="color:#f92672">.</span><span style="color:#a6e22e">ofPattern</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;dd/MM/yyyy&#34;</span><span style="color:#f92672">));</span>
+   <span style="color:#f92672">}</span>
+
+   <span style="color:#75715e">// Extract the randomness
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">protected</span> LocalDate <span style="color:#a6e22e">today</span><span style="color:#f92672">(){</span>
+      <span style="color:#66d9ef">return</span> LocalDate<span style="color:#f92672">.</span><span style="color:#a6e22e">now</span><span style="color:#f92672">();</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClockShould</span><span style="color:#f92672">{</span>
+
+   <span style="color:#a6e22e">@Test</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">return_todays_date_in_dd_MM_yyyy_format</span><span style="color:#f92672">(){</span>
+      Clock clock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TesteableClock<span style="color:#f92672">();</span>
+
+      <span style="color:#f92672">...</span>
+   <span style="color:#f92672">}</span>
+
+   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TesteableClock</span> <span style="color:#66d9ef">extends</span> Clock<span style="color:#f92672">{</span>
+
+      <span style="color:#75715e">// Override and control the behaviour of the randomness
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">@Override</span>
+      <span style="color:#66d9ef">protected</span> LocalDate <span style="color:#a6e22e">today</span><span style="color:#f92672">(){</span>
+      <span style="color:#66d9ef">return</span> LocalDate<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>2020<span style="color:#f92672">,</span>3<span style="color:#f92672">,</span>04<span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
 
 
 
@@ -974,19 +1018,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1586981779"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1586981779"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1586981779"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1586981779"></script>
-    <script src="/se-journey/js/featherlight.min.js?1586981779"></script>
-    <script src="/se-journey/js/highlight.pack.js?1586981779"></script>
+    <script src="/se-journey/js/clipboard.min.js?1586994872"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1586994872"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1586994872"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1586994872"></script>
+    <script src="/se-journey/js/featherlight.min.js?1586994872"></script>
+    <script src="/se-journey/js/highlight.pack.js?1586994872"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1586981779"></script>
-    <script src="/se-journey/js/learn.js?1586981779"></script>
-    <script src="/se-journey/js/hugo-learn.js?1586981779"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1586994872"></script>
+    <script src="/se-journey/js/learn.js?1586994872"></script>
+    <script src="/se-journey/js/hugo-learn.js?1586994872"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1586981779" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1586981779"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1586994872" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1586994872"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

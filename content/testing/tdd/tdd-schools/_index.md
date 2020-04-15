@@ -26,8 +26,53 @@ Focusing on roles, responsibilities and interactions, as opposed to algorithms. 
 
 Identify the roles, responsibilities and key interactions/collaborations between roles in an end-to-end implementation of the solution to satisfy a system-level scenario or acceptance test. Implement the code needed in each collaborator, one at a time, [faking]({{< ref "/testing/tdd/_index.md##fake-it-til-you-make-it" >}}) it's direct collaborators and then work your way down through the "call stack" of interactions until you have a working end-to-end implementation that passes the front-end test.
 
+## Demo Outside-in TDD
+
 https://www.youtube.com/watch?v=XHnuMjah6ps
 
 https://www.youtube.com/watch?v=gs0rqDdz3ko
 
 https://www.youtube.com/watch?v=R9OAt9AOrzI
+
+**Notes**
+
+* Use verify().methodXXX -> Test over **commands** method (void)
+* For command methods you need to test the side effects. After you identify the trigger for them.
+  
+* You can't test what you can't control it
+
+```java
+class Clock{
+
+   public String todayAsString(){
+      LocalDate today = today();
+      return today.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+   }
+
+   // Extract the randomness
+   protected LocalDate today(){
+      return LocalDate.now();
+   }
+}
+```
+
+```java
+class ClockShould{
+
+   @Test
+   public void return_todays_date_in_dd_MM_yyyy_format(){
+      Clock clock = new TesteableClock();
+
+      ...
+   }
+
+   private class TesteableClock extends Clock{
+
+      // Override and control the behaviour of the randomness
+      @Override
+      protected LocalDate today(){
+      return LocalDate.of(2020,3,04);
+   }
+   }
+}
+```
