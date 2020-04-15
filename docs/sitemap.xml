@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ivangrod.github.io/se-journey/testing/tdd/tdd-schools/</loc>
+    <lastmod>2020-04-15T18:40:27+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ivangrod.github.io/se-journey/agile/</loc>
     <lastmod>2020-04-13T18:59:30+02:00</lastmod>
   </url>
@@ -23,13 +28,13 @@
   </url>
   
   <url>
-    <loc>https://ivangrod.github.io/se-journey/testing/testing-resources/</loc>
-    <lastmod>2020-04-13T18:57:36+02:00</lastmod>
+    <loc>https://ivangrod.github.io/se-journey/testing/double-patterns/</loc>
+    <lastmod>2020-04-13T18:58:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://ivangrod.github.io/se-journey/testing/double-patterns/</loc>
-    <lastmod>2020-04-13T18:58:55+02:00</lastmod>
+    <loc>https://ivangrod.github.io/se-journey/testing/testing-resources/</loc>
+    <lastmod>2020-04-13T18:57:36+02:00</lastmod>
   </url>
   
   <url>

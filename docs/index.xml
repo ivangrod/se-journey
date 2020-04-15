@@ -12,20 +12,6 @@
     
     
     <item>
-      <title>Test-Driven Development</title>
-      <link>https://ivangrod.github.io/se-journey/testing/tdd/</link>
-      <pubDate>Mon, 13 Apr 2020 18:55:59 +0200</pubDate>
-      
-      <guid>https://ivangrod.github.io/se-journey/testing/tdd/</guid>
-      <description>Steps   Quickly add a test.
-  Run all tests and see the new one fail.
-  Make a little change.
-  Run all tests and see them all succeed.
-  Refactor to remove duplication.
-The problem is the dependency between the code and the test—you can&amp;rsquo;t change one without changing the other. Our goal is to be able to write another test that “makes sense” to us, without having to change the code.</description>
-    </item>
-    
-    <item>
       <title>Test Types</title>
       <link>https://ivangrod.github.io/se-journey/testing/test-types/</link>
       <pubDate>Mon, 13 Apr 2020 18:58:03 +0200</pubDate>
@@ -35,21 +21,21 @@ The problem is the dependency between the code and the test—you can&amp;rsquo;
     </item>
     
     <item>
-      <title>Testing Resources</title>
-      <link>https://ivangrod.github.io/se-journey/testing/testing-resources/</link>
-      <pubDate>Mon, 13 Apr 2020 18:57:36 +0200</pubDate>
-      
-      <guid>https://ivangrod.github.io/se-journey/testing/testing-resources/</guid>
-      <description>xUnit  xUnit Patterns  BDD  Example mapping  Outside-in / Inside-out </description>
-    </item>
-    
-    <item>
       <title>Double Patterns</title>
       <link>https://ivangrod.github.io/se-journey/testing/double-patterns/</link>
       <pubDate>Mon, 13 Apr 2020 18:58:55 +0200</pubDate>
       
       <guid>https://ivangrod.github.io/se-journey/testing/double-patterns/</guid>
       <description>http://xunitpatterns.com/Test%20Double%20Patterns.html</description>
+    </item>
+    
+    <item>
+      <title>Testing Resources</title>
+      <link>https://ivangrod.github.io/se-journey/testing/testing-resources/</link>
+      <pubDate>Mon, 13 Apr 2020 18:57:36 +0200</pubDate>
+      
+      <guid>https://ivangrod.github.io/se-journey/testing/testing-resources/</guid>
+      <description>xUnit  xUnit Patterns  BDD  Example mapping  </description>
     </item>
     
     <item>

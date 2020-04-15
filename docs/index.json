@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://ivangrod.github.io/se-journey/testing/tdd/tdd-schools/",
+	"title": "TDD Schools",
+	"tags": [],
+	"description": "",
+	"content": "Inside-out (Classic school) - Algorithms Enfocada en la verificación del estado de los objetos, siendo por ello imprescindible que el contexto de los test siempre deba estar formado por \u0026ldquo;objetos reales\u0026rdquo;, configurados previamente.\nPatterns: Mother Objects, Factory\nApproach:\nWe generalise the solution one failing test at a time so we end up with a simple, elegant solution that satisfies all of the tests up to that point. Based on triangulation\nOutside-in (London school) - Interactions Enfocada en verificar que el comportamiento de los objetos es el esperado. Verificar las correctas interacciones entre objetos, y no el estado en sí mismo de los objetos.\nFocusing on roles, responsibilities and interactions, as opposed to algorithms. It\u0026rsquo;s born out of the furnace of component-based, distributed and service-oriented applications\nPatterns: Test Double\nApproach:\nIdentify the roles, responsibilities and key interactions/collaborations between roles in an end-to-end implementation of the solution to satisfy a system-level scenario or acceptance test. Implement the code needed in each collaborator, one at a time, faking it\u0026rsquo;s direct collaborators and then work your way down through the \u0026ldquo;call stack\u0026rdquo; of interactions until you have a working end-to-end implementation that passes the front-end test.\nhttps://www.youtube.com/watch?v=XHnuMjah6ps\nhttps://www.youtube.com/watch?v=gs0rqDdz3ko\nhttps://www.youtube.com/watch?v=R9OAt9AOrzI\n"
+},
+{
 	"uri": "https://ivangrod.github.io/se-journey/agile/",
 	"title": "Agile",
 	"tags": [],
@@ -28,18 +35,18 @@
 	"content": "Culture "
 },
 {
-	"uri": "https://ivangrod.github.io/se-journey/testing/testing-resources/",
-	"title": "Testing Resources",
-	"tags": [],
-	"description": "",
-	"content": "xUnit  xUnit Patterns  BDD  Example mapping  Outside-in / Inside-out "
-},
-{
 	"uri": "https://ivangrod.github.io/se-journey/testing/double-patterns/",
 	"title": "Double Patterns",
 	"tags": [],
 	"description": "",
 	"content": "http://xunitpatterns.com/Test%20Double%20Patterns.html\n"
+},
+{
+	"uri": "https://ivangrod.github.io/se-journey/testing/testing-resources/",
+	"title": "Testing Resources",
+	"tags": [],
+	"description": "",
+	"content": "xUnit  xUnit Patterns  BDD  Example mapping  "
 },
 {
 	"uri": "https://ivangrod.github.io/se-journey/testing/",
