@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/aws/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/aws/ec2/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ivangrod.github.io/se-journey/testing/tdd/tdd-schools/</loc>
     <lastmod>2020-04-15T18:40:27+02:00</lastmod>
   </url>
@@ -18,6 +28,11 @@
   </url>
   
   <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/aws/security/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ivangrod.github.io/se-journey/testing/test-types/</loc>
     <lastmod>2020-04-13T18:58:03+02:00</lastmod>
   </url>
@@ -28,8 +43,18 @@
   </url>
   
   <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/aws/ops/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ivangrod.github.io/se-journey/testing/double-patterns/</loc>
     <lastmod>2020-04-13T18:58:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/aws/infrastructure/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
   </url>
   
   <url>
@@ -40,6 +65,11 @@
   <url>
     <loc>https://ivangrod.github.io/se-journey/testing/</loc>
     <lastmod>2020-04-13T18:55:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ivangrod.github.io/se-journey/cloud/</loc>
+    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
   </url>
   
   <url>

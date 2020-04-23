@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/cloud/aws/</link>
+    <description>Recent content in AWS on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Apr 2020 10:49:11 +0200</lastBuildDate>
+    
+	<atom:link href="https://ivangrod.github.io/se-journey/cloud/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

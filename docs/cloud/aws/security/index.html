@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Templates :: Software Engineer Journey</title>
+    <title>AWS - Security :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1587658499" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/templates/">
+  <body class="" data-url="/se-journey/cloud/aws/security/">
     <nav id="sidebar" class="">
 
 
@@ -351,7 +351,7 @@
   
     
     <li data-nav-id="/se-journey/cloud/" title="Cloud" class="dd-item 
-        
+        parent
         
         
         ">
@@ -380,7 +380,7 @@
   
     
     <li data-nav-id="/se-journey/cloud/aws/" title="AWS" class="dd-item 
-        
+        parent
         
         
         ">
@@ -436,7 +436,7 @@
     
     <li data-nav-id="/se-journey/cloud/aws/security/" title="AWS - Security" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/se-journey/cloud/aws/security/">
@@ -585,7 +585,7 @@
     
     <li data-nav-id="/se-journey/templates/" title="Templates" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/se-journey/templates/">
@@ -738,6 +738,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -748,7 +750,19 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > Templates
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/cloud/'>Cloud</a> > <a href='/se-journey/cloud/aws/'>AWS</a> > AWS - Security
+          
+         
+          
+         
           
          
           
@@ -757,6 +771,22 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#security-groups">Security Groups</a></li>
+        <li><a href="#elastic-ip">Elastic IP</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -764,9 +794,12 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              AWS - Security
+            </h1>
           
 
         
@@ -774,7 +807,46 @@
 
 
 
-	<h1 id="templates">Templates</h1>
+	<p><strong>IAM</strong> - Identity and Access Management. Global view (non-region)</p>
+<p><strong>User</strong> -&gt; Usually a physical person
+<strong>Group</strong> -&gt; Functions (admin, devops) / Teams (engineering, design)
+<strong>Role</strong> -&gt; Internal usage within AWS resources</p>
+<p><strong>Policies</strong> -&gt; Defines what each of the above can or can&rsquo;t do. Permissions are governed by Policies. <code>+</code> Least Privilege principle</p>
+<h3 id="security-groups">Security Groups</h3>
+<p>Network security in AWS. They control how traffic will be allowed into your EC2 Machines.</p>
+<ul>
+<li>
+<p>Access to ports</p>
+</li>
+<li>
+<p>Authorised IP ranges - IPv4 and IPv6</p>
+</li>
+<li>
+<p>Control of inbound network</p>
+</li>
+<li>
+<p>Control of outbound network</p>
+</li>
+<li>
+<p>Can be attached to multiple instances</p>
+</li>
+<li>
+<p>Locked down to a region/VPC (Virtual Private Cloud) combination</p>
+</li>
+</ul>
+<blockquote>
+<p>It&rsquo;s good to maintain one separate security group for SSH access</p>
+</blockquote>
+<h3 id="elastic-ip">Elastic IP</h3>
+<ul>
+<li>Stop -&gt; Start an instance EC2 -&gt; Change the public IP</li>
+<li>Elastic IP -&gt; Fixed public IPv4</li>
+</ul>
+<blockquote>
+<p>Avoid Elastic IP. Often reflect poor architectural decisions
+It&rsquo;s better use a random public IP and register a DNS name to it
+It&rsquo;s better use a Load Balancer and don&rsquo;t use a public IP</p>
+</blockquote>
 
 
 
@@ -784,8 +856,6 @@
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -984,20 +1054,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1013,6 +1069,61 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1041,38 +1152,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1116,7 +1195,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1129,9 +1207,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
