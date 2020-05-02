@@ -12,18 +12,18 @@
     <title>User Story :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1587658499" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1587658499" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1588457829" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1588457829" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1587658499"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1588457829"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1587658499"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1587658499"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1588457829"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1588457829"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1587658499"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1588457829"></script>
 
     
   </div>
@@ -91,6 +91,8 @@
         <ul>
           
           
+            
+          
           
           
         
@@ -104,13 +106,18 @@
  
   
     
-      <li data-nav-id="/se-journey/agile/user-story/" title="User Story" class="dd-item active">
-        <a href="/se-journey/agile/user-story/">
-        User Story
+    <li data-nav-id="/se-journey/agile/user-story/" title="User Story" class="dd-item 
         
-        </a>
+        active
+        
+        ">
+      <a href="/se-journey/agile/user-story/">
+          User Story
+          
+      </a>
+      
+              
     </li>
-     
   
  
 
@@ -767,7 +774,35 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#writing-stories-invest">Writing Stories (INVEST)</a>
+      <ul>
+        <li><a href="#independent">Independent</a></li>
+        <li><a href="#negotiable">Negotiable</a></li>
+        <li><a href="#valuable-to-users-or-customers">Valuable to users or customers</a></li>
+        <li><a href="#estimatable">Estimatable</a></li>
+        <li><a href="#small">Small</a></li>
+        <li><a href="#testable">Testable</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-role-modeling">User Role Modeling</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#gathering-stories">Gathering Stories</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -792,6 +827,118 @@
 
 
 
+	<p>A <strong>user story</strong> describes functionality that will be valuable to either a user or purchaser of a system or software.</p>
+<ul>
+<li><strong>CARD</strong>: A written description of the story used for planning and as a reminder</li>
+<li><strong>CONVERSATION</strong> (++): About the story that serve to flesh out the details of the story</li>
+<li><strong>CONFIRMATION</strong>: Tests that convey and document details and that can be used to determine when a story is complete. <a href="/se-journey/testing/test-types/#acceptance">Acceptance test</a></li>
+</ul>
+<blockquote>
+<p>Size: Stories that can be coded and tested between half a day and perhaps two weeks by one or a pair of programmers</p>
+</blockquote>
+<h4 id="epic">Epic</h4>
+<p>When a story is too large it is sometimes referred to as an <strong>epic</strong>.</p>
+<p>Epic &ldquo;A user can search for a job&rdquo;. Split:</p>
+<ol>
+<li>A user can search for jobs by attributes like location, salary range, job title, company name, and the date the job was posted.</li>
+<li>A user can view information about each job that is matched by a search. (We don&rsquo;t need to further divide it into more specific user stories)</li>
+<li>A user can view detailed information about a company that has posted a job.</li>
+</ol>
+<p><strong>Benefits</strong></p>
+<ul>
+<li>User stories emphasize verbal rather than written communication.</li>
+<li>User stories are comprehensible by both you and the developers.</li>
+<li>User stories are the right size for planning.</li>
+<li>User stories work for iterative development.</li>
+<li>User stories encourage deferring detail until you have the best understanding you are going to have about what you really need.</li>
+</ul>
+<h2 id="writing-stories-invest">Writing Stories (INVEST)</h2>
+<h3 id="independent">Independent</h3>
+<p>Avoid introducing dependencies between stories. Dependencies between stories lead to prioritization and planning problems.</p>
+<p><strong>Problem</strong></p>
+<ol>
+<li><em>A company can pay for a job posting with a Visa card.</em></li>
+<li><em>A company can pay for a job posting with a MasterCard.</em></li>
+<li><em>A company can pay for a job posting with an American Express card.</em></li>
+</ol>
+<p>Estimating that it will take three days to support the first credit card type (regardless of which it is) and then one day each for the second and third.</p>
+<p><strong>Solution</strong></p>
+<ul>
+<li>Combine the dependent stories into one larger but independent story</li>
+<li>Find a different way of splitting the stories</li>
+<li>Putting two estimates on the card: one estimate if the story is done before the other story, a lower estimate if it is done after</li>
+</ul>
+<ol>
+<li><em>A customer can pay with one type of credit card.</em></li>
+<li><em>A customer can pay with two additional types of credit cards.</em></li>
+</ol>
+<h3 id="negotiable">Negotiable</h3>
+<p>Details are negotiated -&gt; Notes on the card help a developer and the customer to resume a conversation where it left off previously.</p>
+<p>Regardless of whether it is the same developer and customer who resume the conversation.</p>
+<p><strong>Problem</strong></p>
+<p>When as much detail is added can lead to the mistaken belief that the story cards reflect all the details and that there’s no further need to discuss the story with the customer.</p>
+<p><strong>Solution</strong></p>
+<ul>
+<li>
+<p>Story card as containing:</p>
+<ul>
+<li>phrase or two that act as reminders to hold the conversation</li>
+<li>notes about issues to be resolved during the conversation</li>
+</ul>
+</li>
+<li>
+<p>Details that have already been determined through conversations become <a href="/se-journey/testing/test-types/#acceptance">tests</a></p>
+</li>
+<li>
+<p>Story card with few details. Discussion between customer and developer is somewhat abstract, Missing details or them to mistakenlyview their discussion as definitve or their estimate as accurate.</p>
+</li>
+</ul>
+<h3 id="valuable-to-users-or-customers">Valuable to users or customers</h3>
+<p>Ex. stories valued by purchasers contemplating buying the product but would not be valued by actual users:</p>
+<ul>
+<li><em>Throughout the development process, the development team will produce documentation suitable for an ISO 9001 audit.</em></li>
+<li><em>The development team will produce the software in accordance with CMM Level 3.
+What you want to .</em></li>
+</ul>
+<p><strong>Problem</strong></p>
+<p>Avoid stories that are only valued by developers</p>
+<ul>
+<li><em>All connections to the database are through a connection pool.</em></li>
+<li><em>All error handling and logging is done through a set of common classes.</em></li>
+</ul>
+<p><strong>Solution</strong></p>
+<ul>
+<li><em>Up to fifty users should be able to use the application with a five-user database license.</em></li>
+<li><em>All errors are presented to the user and logged in a consistent manner.</em></li>
+</ul>
+<h3 id="estimatable">Estimatable</h3>
+<p><strong>Problem</strong></p>
+<p>There are three common reasons why a story may not be estimatable:</p>
+<ol>
+<li>Developers lack domain knowledge.</li>
+<li>Developers lack technical knowledge.</li>
+<li>The story is too big.</li>
+</ol>
+<p><strong>Solution</strong></p>
+<ol>
+<li>Developers should discuss it with the customer who wrote the story</li>
+<li><strong>Spike</strong>: A brief experiment to learn about an area of the application. Developers learn just enough that they can estimate the task. Timebox: maximum amount of time.</li>
+</ol>
+<blockquote>
+<p>Consider putting the spike in a different iteration</p>
+</blockquote>
+<ol start="3">
+<li>Developers will need to disaggregate it into smaller, constituent stories.</li>
+</ol>
+<h3 id="small">Small</h3>
+<p><strong>Problem</strong></p>
+<p>Epics typically fall into one of two categories:</p>
+<ul>
+<li>The compound story. An epic that comprises multiple shorter stories</li>
+<li>The complex story. An user story that is inherently large and cannot easily be disaggregated into a set of constituent stories.</li>
+</ul>
+<p><strong>Solution</strong></p>
+
 <section class="attachments blue">
 	<label>
 		<i class="fas fa-paperclip" aria-hidden="true"></i>
@@ -806,7 +953,7 @@
 		
 			
 				<li>
-					<a href="/se-journey/agile/user-story.files/Story-Splitting-Flowchart.pdf" >
+					<a href="/se-journey/agile/user-story/_index.files/Story-Splitting-Flowchart.pdf" >
 						Story-Splitting-Flowchart.pdf
 					</a>
 					(744 ko)
@@ -819,9 +966,115 @@
 </section>
 
 
+<h3 id="testable">Testable</h3>
+<p>Stories must be written so as to be testable. Whenever possible, tests should be automated.</p>
+<p><strong>Problem</strong></p>
+<p>Untestable stories commonly show up for nonfunctional requirements, which are requirements about the software but not directly about its functionality.</p>
+<ul>
+<li><em>A user must find the software easy to use.</em></li>
+<li><em>A user must never have to wait long for any screen to appear.</em></li>
+</ul>
+<p><strong>Solution</strong></p>
+<ul>
+<li><em>New screens appear within two seconds in 95% of all cases.</em></li>
+</ul>
+<h2 id="user-role-modeling">User Role Modeling</h2>
+<p>A user role is a collection of defining attributes that characterize a population of users and their intended interactions with the system. There will be some overlap between different user roles.</p>
+<p>Ex. Job Seeker, First Timer, Layoff Victim, Geographic Searcher, Monitor, Job Poster, Resume Reader</p>
+<h4 id="brainstorm-an-initial-set-of-user-roles">Brainstorm an initial set of user roles</h4>
+<p>Steps:</p>
+<ol>
+<li>The customer and as many of the developers as possible meet in a room.</li>
+<li>Start with everyone writing role names on cards</li>
+<li>The name of the new role and nothing more. No dicsussion.</li>
+<li>Continue until progress stalls and participants are having a hard time thinking up new roles.</li>
+</ol>
+<blockquote>
+<p>A User Role is One User</p>
+</blockquote>
+<h4 id="organize-the-initial-set">Organize the initial set</h4>
+<p>Relationships between the roles.</p>
+<p>Overlapping roles are placed so that their cards overlap. If the roles overlap a little, overlap the cards a little. If the roles overlap entirely, overlap the cards entirely.</p>
+<blockquote>
+<p>System Roles -&gt; If you think it will help, then identify an occasional non-human user role.</p>
+</blockquote>
+<blockquote>
+<p>We don’t need user roles for every conceivable user of the system, but we need roles for the ones who can make or break the success of the project.</p>
+</blockquote>
+<h4 id="consolidate-roles">Consolidate roles</h4>
+<p>The authors of overlapping cards describe what they meant by those role names. After a brief discusson the group decides if the roles are equivalent.</p>
+<ul>
+<li><em>Job Poster | Resume Reader -&gt; Recruiter</em></li>
+<li><em>Recruiter -&gt; Internal Recruiter | External Recruiter</em>. A generic role, is positioned above specialized versions of that role.</li>
+</ul>
+<h4 id="refine-the-roles">Refine the roles</h4>
+<p>Model those roles by defining attributes of each role. A <strong>role attribute</strong> is a fact or bit of useful information about the users who fulfill the role. Any information about the user roles that distinguishes one role from another may be used as a role attribute.</p>
+<ul>
+<li>The frequency with which the user will use the software.</li>
+<li>The user’s level of expertise with the domain.</li>
+<li>The user’s general level of proficiency with computers and software.</li>
+<li>The user’s level of proficiency with the software being developed.</li>
+<li>The user’s general goal for using the software. Some users are after convenience, others favor a rich experience, and so on.</li>
+</ul>
+<h4 id="extra-technique---personas">Extra Technique - Personas</h4>
+<p>Creating a persona for the role. A persona is an imaginary representation of a user role. A persona should be described sufficiently that everyone on the team feels like they know the persona.</p>
+<p>For example, Mario - Posting new job - may be described as follows:</p>
+<p><em>Mario works as a recruiter in the Personnel department of SpeedyNetworks, a manufacturer of high-end networking components. He’s worked for SpeedyNetworks six years. Mario has a flex-time arrangement and works from home every Friday. Mario is very strong with computers and considers himself a power user of just about all the products he uses. Mario’s wife, Kim, is finishing her Ph.D. in chemistry at Stanford University. Because SpeedyNetworks has been growing almost consistently, Mario is always looking for good engineers.</em></p>
+<blockquote>
+<p>Think about writing a persona definition for one or two of the primary user roles.</p>
+</blockquote>
+<h4 id="extra-technique---extreme-characters">Extra Technique - Extreme Characters</h4>
+<p>Use extreme characters when considering the design of a new system.</p>
+<p>For example: <em>PDA for a drug dealer, the Pope, and a twenty-year-old woman who is juggling multiple boyfriends.</em></p>
+<h2 id="gathering-stories">Gathering Stories</h2>
+<ul>
+<li>
+<p>X -&gt; Get all of the user stories in one pass.</p>
+</li>
+<li>
+<p>The relevance of a story changes based on the passage of time and on what stories were added to the product in prior iterations.</p>
+</li>
+</ul>
+<blockquote>
+<p>Write user stories that decrease in detail as the time horizon increases</p>
+</blockquote>
+<p>Having a rough idea of what a project will cost and what benefits it will deliver before getting funding and approval to start the project:</p>
+<h4 id="user-interviews">User interviews</h4>
+<ul>
+<li>Selection of interviewees. Real users whenever possible. Users who fill different user roles.</li>
+<li>Open-Ended and Context-Free questions, which are ones that do not include an implied answer or preference</li>
+</ul>
+<h4 id="questionnaires">Questionnaires</h4>
+<ul>
+<li>Information about stories you already have.</li>
+<li>Large user population
+<ul>
+<li>Information about how to prioritize the stories.</li>
+<li>Answers to specific questions.</li>
+</ul>
+</li>
+<li>It&rsquo;s not recommend using questionnaires when trawling for stories</li>
+</ul>
+<h4 id="observation">Observation</h4>
+<ul>
+<li>Observing users interact -&gt; pick up insights. Rapid and direct feedback.
+<ul>
+<li>Release software as early and often as possible.</li>
+</ul>
+</li>
+</ul>
+<h4 id="story-writing-workshops">Story-Writing workshops</h4>
+<ul>
+<li>Meeting that includes developers, users, the product customer and other parties who can contribute by writing stories.</li>
+<li>Write as many stories as they can.</li>
+<li>No priorities are associated with the stories at this point.</li>
+</ul>
 
 
-<footer class="footline">
+
+
+
+<footer class=" footline" >
 	
 </footer>
 
@@ -861,6 +1114,8 @@
                 
 
                     
+                    
+                        
                     
                     
 
@@ -1247,19 +1502,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1587658499"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1587658499"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1587658499"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1587658499"></script>
-    <script src="/se-journey/js/featherlight.min.js?1587658499"></script>
-    <script src="/se-journey/js/highlight.pack.js?1587658499"></script>
+    <script src="/se-journey/js/clipboard.min.js?1588457829"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1588457829"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1588457829"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1588457829"></script>
+    <script src="/se-journey/js/featherlight.min.js?1588457829"></script>
+    <script src="/se-journey/js/highlight.pack.js?1588457829"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1587658499"></script>
-    <script src="/se-journey/js/learn.js?1587658499"></script>
-    <script src="/se-journey/js/hugo-learn.js?1587658499"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1588457829"></script>
+    <script src="/se-journey/js/learn.js?1588457829"></script>
+    <script src="/se-journey/js/hugo-learn.js?1588457829"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1587658499" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1587658499"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1588457829" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1588457829"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
@@ -1267,4 +1522,3 @@
 
   </body>
 </html>
-

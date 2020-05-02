@@ -15,6 +15,25 @@ weight: 2
 
 ## Integration
 
+## Acceptance
+
+Acceptance testing is the process of verifying that stories were developed such that each works exactly the way the customer team expected it to work. They represent the **expectations** of a project's users.
+
+#### Write early
+
+Tests should be written as early in an iteration as possible.
+
+More of the customer team’s assumptions and expectations are communicated earlier to the developers.
+
+User story "A user can pay for the items in her shopping cart with a credit card":
+
+* Test with Visa, MasterCard and American Express (pass).
+* Test with Diner’s Club (fail).
+* Test with a Visa debit card (pass).
+* Test with good, bad and missing card ID numbers from the back of the card.
+* Test with expired cards.
+* Test with different purchase amounts (including one over the card’s limit).
+
 ## End to end
 
 * Comparación con unit test
@@ -39,7 +58,7 @@ Explorar la aplicación para descubrir cómo romperla
 
 ## Property based
 
-Ejecutar miles de casos que ponen a prueba el código de forma que un humano escribindo test automáticos no haría.
+Ejecutar miles de casos que ponen a prueba el código de forma que un humano escribiendo test automáticos no haría.
 
 // TODO Karumi -> MaxibonKata -> Java y JUnit-QuickCheck
 
