@@ -229,4 +229,3 @@ Having a rough idea of what a project will cost and what benefits it will delive
 #### Story-Writing (++)
 
 [Story-Writing Workshops](https://github.com/ivangrod/agile-pills/blob/master/user-story/story-writing-workshop.md)
-
