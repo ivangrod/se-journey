@@ -226,8 +226,7 @@ Having a rough idea of what a project will cost and what benefits it will delive
 * Observing users interact -> pick up insights. Rapid and direct feedback.
   * Release software as early and often as possible.
 
-#### Story-Writing workshops
+#### Story-Writing (++)
 
-* Meeting that includes developers, users, the product customer and other parties who can contribute by writing stories.
-* Write as many stories as they can. 
-* No priorities are associated with the stories at this point.
+[Story-Writing Workshops](https://github.com/ivangrod/agile-pills/blob/master/user-story/story-writing-workshop.md)
+
