@@ -19,11 +19,28 @@ weight: 2
 
 Acceptance testing is the process of verifying that stories were developed such that each works exactly the way the customer team expected it to work. They represent the **expectations** of a project's users.
 
+Having basic criteria that tell us when something is done is the best way to avoid putting too much, or too little, time and effort into it. 
+
+> The acceptance tests need to be specified by the customer ->  Minimally the customer needs to specify the tests that will be used to know when a story has been correctly developed.
+
 #### Write early
 
-Tests should be written as early in an iteration as possible.
-
 More of the customer team’s assumptions and expectations are communicated earlier to the developers.
+
+Tests should be written as early in an iteration as possible. Tests are generally written at the following times:
+
+* Whenever the customer and developers talk about the story and want to capture explicit details
+* As part of a dedicated effort at the start of an iteration but before programming begins
+* Whenever new tests are discovered during or after the programming of the story
+  
+#### Questions from customer
+
+* What else do the programmers need to know about this story?
+* What am I assuming about how this story will be implemented?
+* Are there circumstances when this story may behave differently?
+* What can go wrong during the story?
+
+#### Example
 
 User story "A user can pay for the items in her shopping cart with a credit card":
 

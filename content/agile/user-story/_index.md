@@ -229,3 +229,71 @@ Having a rough idea of what a project will cost and what benefits it will delive
 #### Story-Writing (++)
 
 [Story-Writing Workshops](https://github.com/ivangrod/agile-pills/blob/master/user-story/story-writing-workshop.md)
+
+## User Proxies
+
+They may not be users themselves but are on a project to help represent users.
+
+> It is vital that a project include one or more real users on the customer team.
+
+#### The Users’ Manager
+
+* It is almost certain that the manager has different usage patterns of the software than does a typical user.
+* Features which were of very minimal importance to the users they supervised, and developers can overemphasized in the product.
+
+#### A Development Manager
+
+* The worst possible choices to act as a proxy user, unless perhaps you are writing software targeted at development managers.
+* It is far too likely that she will also have some conflicting goals.
+* If she is a development manager who does have domain expertise, then consider her a **domain expert**.
+
+#### Salespersons
+
+* The election as an user proxy does not lead to a comprehensive view of the product to be built. 
+* The most important story to a salesperson will usually be the story whose absence cost her the last sale. 
+* Salespeople are, however, a great conduit to users and you should use them in this way.
+
+#### Domain Experts
+
+* They are critical resources because of how well they understand the domain the software will be targeted at. 
+* Domain experts are ideal resources when building a domain model and identifying business rules, but workflow and usage issues are better derived from actual users.
+* Problem -> you may end up with software aimed only at users with similar levels of domain expertise.
+
+#### The Marketing Group
+
+* Marketing groups understand markets rather than users.
+* Focus more on the quantity of features in the product than on the quality of those features. 
+* Relative priorities.
+
+#### Former Users
+
+* She can be great as a proxy if her experience is very recent.
+
+#### Customers
+
+* Customers are those who make the buying decision; they are not necessarily users of the software. 
+* It is important to consider the desires of your customers because they, not your users, are the ones who write the check to buy the software. (Unless, of course, your users and customers are the same people.)
+
+#### Trainers and Technical Support
+
+* They spend their days talking to real users so they must certainly know what users want. 
+* :x: If you use a trainer as your user proxy, you will end up with a system that is easy to train.
+* :x: If you use someone from technical support, you will end up with a system that is easily supported.
+  
+#### Business or Systems Analysts
+
+* Good as user proxies because they have one foot in the technology world and one foot in the domain of the software.
+* :x: They prefer to think about a problem rather than research it.
+* :x: Desire to spend too much time in the project’s upfront activities.
+
+> Avoid falling into the trap of thinking you know your user's minds and do not need or can ignore your user proxy.
+
+### Customer Team
+
+> Real user beats a proxy any time.
+
+The customer team should be constructed so that the strengths of one member balance the weaknesses of another member. Follow the next steps:
+
+1. Add real users. Different types of users, try to include a user of each type.
+2. Identify a single project champion or “first among equals” on the customer team. This project champion becomes responsible for coordinating customer team collaboration.
+3. Determine the factors critical to project success. Supplement the customer team with user proxies with the relevant knowledge, skills, and experience to address the project’s critical success factors.
