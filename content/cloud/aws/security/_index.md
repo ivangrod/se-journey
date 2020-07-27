@@ -35,3 +35,8 @@ Network security in AWS. They control how traffic will be allowed into your EC2 
 > Avoid Elastic IP. Often reflect poor architectural decisions
 > It's better use a random public IP and register a DNS name to it
 > It's better use a Load Balancer and don't use a public IP
+
+### Load Balancer Security Groups
+
+* Load Balancer Security Group -> Source - 0.0.0.0/0 Allow HTTP from anywhere
+* Application Security Group -> Source - sg-054b5ff5eaa02f2b6e Allow Traffic only from Load balancer

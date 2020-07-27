@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Test Types :: Software Engineer Journey</title>
+    <title>AWS - ELB :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1595871197" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/testing/test-types/">
+  <body class="" data-url="/se-journey/cloud/aws/elb/">
     <nav id="sidebar" class="">
 
 
@@ -195,7 +195,7 @@
   
     
     <li data-nav-id="/se-journey/testing/" title="Testing" class="dd-item 
-        parent
+        
         
         
         ">
@@ -287,7 +287,7 @@
  
   
     
-      <li data-nav-id="/se-journey/testing/test-types/" title="Test Types" class="dd-item active">
+      <li data-nav-id="/se-journey/testing/test-types/" title="Test Types" class="dd-item ">
         <a href="/se-journey/testing/test-types/">
         Test Types
         
@@ -358,7 +358,7 @@
   
     
     <li data-nav-id="/se-journey/cloud/" title="Cloud" class="dd-item 
-        
+        parent
         
         
         ">
@@ -387,7 +387,7 @@
   
     
     <li data-nav-id="/se-journey/cloud/aws/" title="AWS" class="dd-item 
-        
+        parent
         
         
         ">
@@ -417,7 +417,7 @@
     
     <li data-nav-id="/se-journey/cloud/aws/elb/" title="AWS - ELB" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/se-journey/cloud/aws/elb/">
@@ -787,7 +787,13 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/testing/'>Testing</a> > Test Types
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/cloud/'>Cloud</a> > <a href='/se-journey/cloud/aws/'>AWS</a> > AWS - ELB
+          
+         
           
          
           
@@ -802,18 +808,7 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#unit">Unit</a></li>
-    <li><a href="#integration">Integration</a></li>
-    <li><a href="#acceptance">Acceptance</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#end-to-end">End to end</a></li>
-    <li><a href="#mutation">Mutation</a></li>
-    <li><a href="#exploratory">Exploratory</a></li>
-    <li><a href="#property-based">Property based</a></li>
-    <li><a href="#snapshot">Snapshot</a></li>
+    <li><a href="#elb-ec2-load-balancer">ELB (EC2 Load Balancer)</a></li>
   </ul>
 </nav>
     </div>
@@ -831,7 +826,7 @@
           
             <h1>
               
-              Test Types
+              AWS - ELB
             </h1>
           
 
@@ -839,80 +834,31 @@
 
 
 
+
+	<p>Load balancers are servers that forward internet traffic to multiple servers (EC2 Instances) downstream.</p>
 <ul>
-<li>Claros, concisos y certeros: Arrange - Act - Assert / Given - When - Then. Datos mínimos relevantes para entender y distinguir cada escenario.</li>
-<li>Feedback rápido e informativo</li>
-<li>Simplicidad: Dependencias - librerías, frameworks - ¿cuánto cuesta entender como funcionan todas estas piezas?</li>
-<li>Robustez: Cuando un test se <strong>rompe debería hacerlo por un solo motivo</strong>. Debería ser muy expresivo, señalando el motivo del fallo como para que no haga falta depurar el sistema.</li>
-<li>Flexibilidad: Refactoring</li>
-<li>Isolation: El resultado de un test no debería estar sujeto a la ejecución de otro test, deberían ser independientes a la hora de ejecutarse.</li>
+<li>Spread load across multiple downstream instances</li>
+<li>Expose a single point of access (DNS) to your application.</li>
+<li>Seamlessly handle failures of downstream instances through health checks</li>
+<li>Do regular health checks to your instances.</li>
+<li>Provide SSL termination (HTTPS) or HTTPS security, for your website directly on load balancer site,</li>
+<li>Enforce stickiness with cookies.</li>
+<li>High availability across availability zones.</li>
+<li>Separate public traffic from private traffic</li>
 </ul>
-<h2 id="unit">Unit</h2>
-<h2 id="integration">Integration</h2>
-<h2 id="acceptance">Acceptance</h2>
-<p>Acceptance testing is the process of verifying that stories were developed such that each works exactly the way the customer team expected it to work. They represent the <strong>expectations</strong> of a project&rsquo;s users.</p>
-<p>Having basic criteria that tell us when something is done is the best way to avoid putting too much, or too little, time and effort into it.</p>
-<blockquote>
-<p>The acceptance tests need to be specified by the customer -&gt;  Minimally the customer needs to specify the tests that will be used to know when a story has been correctly developed.</p>
-</blockquote>
-<h4 id="write-early">Write early</h4>
-<p>More of the customer team’s assumptions and expectations are communicated earlier to the developers.</p>
-<p>Tests should be written as early in an iteration as possible. Tests are generally written at the following times:</p>
+<h2 id="elb-ec2-load-balancer">ELB (EC2 Load Balancer)</h2>
+<p>Types of load balancer on AWS</p>
 <ul>
-<li>Whenever the customer and developers talk about the story and want to capture explicit details</li>
-<li>As part of a dedicated effort at the start of an iteration but before programming begins</li>
-<li>Whenever new tests are discovered during or after the programming of the story</li>
+<li>Classic Load Balancer (v1 - old generation) -&gt; HTTP, HTTPS TCP</li>
+<li>Application Load Balancer (v2 - new generation) -&gt; HTTP, HTTPS, Websocket</li>
+<li>Network Load Balancer (v2 - new generation) -&gt; TCP, TLS, UDP</li>
 </ul>
-<h4 id="questions-from-customer">Questions from customer</h4>
-<ul>
-<li>What else do the programmers need to know about this story?</li>
-<li>What am I assuming about how this story will be implemented?</li>
-<li>Are there circumstances when this story may behave differently?</li>
-<li>What can go wrong during the story?</li>
-</ul>
-<h4 id="example">Example</h4>
-<p>User story &ldquo;A user can pay for the items in her shopping cart with a credit card&rdquo;:</p>
-<ul>
-<li>Test with Visa, MasterCard and American Express (pass).</li>
-<li>Test with Diner’s Club (fail).</li>
-<li>Test with a Visa debit card (pass).</li>
-<li>Test with good, bad and missing card ID numbers from the back of the card.</li>
-<li>Test with expired cards.</li>
-<li>Test with different purchase amounts (including one over the card’s limit).</li>
-</ul>
-<h2 id="end-to-end">End to end</h2>
-<ul>
-<li>Comparación con unit test
-<ul>
-<li><code>+</code> granularidad</li>
-<li><code>-</code> velocidad</li>
-<li><code>+</code> complejidad</li>
-<li><code>+</code> fragilidad</li>
-<li><code>-</code> acoplamiento a la implementación del sistema</li>
-<li><code>+</code> requerimiento de infraestructura para poder ser inocuo</li>
-<li><code>+</code> dependencia del entorno de ejecución del sistema</li>
-</ul>
-</li>
-</ul>
-<h2 id="mutation">Mutation</h2>
-<p>Consiste en introducir pequeños cambios en el código de producción a modo de defectos, por ejemplo, invertir una condición lógica, y forzar así un fallo en los tests.</p>
-<h2 id="exploratory">Exploratory</h2>
-<p>Explorar la aplicación para descubrir cómo romperla</p>
-<ul>
-<li>Pair testing: Explorar el software a pares. Si una de las personas tiene más habilidad explorando y la otra escribiendo test automáticos, pueden aprovechar para ir automatizando las pruebas que están sin cubrir.</li>
-<li>Mob testing: Explorar el software en grupo.</li>
-</ul>
-<h2 id="property-based">Property based</h2>
-<p>Ejecutar miles de casos que ponen a prueba el código de forma que un humano escribiendo test automáticos no haría.</p>
-<p>// TODO Karumi -&gt; MaxibonKata -&gt; Java y JUnit-QuickCheck</p>
-<h2 id="snapshot">Snapshot</h2>
-<h1 id="testing-pyramid">Testing pyramid</h1>
-<blockquote>
-<p>Few e2e tests. A lot unit tests</p>
-</blockquote>
 
 
-<footer class="footline">
+
+
+
+<footer class=" footline" >
 	
 </footer>
 
@@ -1016,114 +962,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                 
                 
 
@@ -1165,10 +1003,116 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1382,4 +1326,3 @@
 
   </body>
 </html>
-
