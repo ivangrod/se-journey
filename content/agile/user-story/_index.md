@@ -297,3 +297,53 @@ The customer team should be constructed so that the strengths of one member bala
 1. Add real users. Different types of users, try to include a user of each type.
 2. Identify a single project champion or “first among equals” on the customer team. This project champion becomes responsible for coordinating customer team collaboration.
 3. Determine the factors critical to project success. Supplement the customer team with user proxies with the relevant knowledge, skills, and experience to address the project’s critical success factors.
+
+## Estimating Stories
+
+### Story Points
+
+Each team defines them as they see fit:
+
+* `+` An ideal day of work (that is, a day without any interruptions whatsoever—no meetings, no email, no phone calls, and so on).
+  * It is easier than estimating in elapsed time
+  * Gives our estimates a slightly better foundation than when they are estimated in entirely nebulous units
+* An ideal week of work.
+* Complexity of the story.
+* ...
+
+> Joshua Kerievsky has suggested that story points represent Nebulous Units of Time, or NUTs
+
+Story estimates **are owned by** the team. A story comprises multiple tasks and that a task estimate is owned by the individual who will perform the task.
+
+> Velocity. Number of story points a team completes (or expects to complete) in an iteration. 
+
+### Estimating
+
+Next, a estimation approach derived from the Wideband Delphi approach documented by Boehm:
+
+1. Gather together the customer and the developers who will participate in creating the estimates.
+2. Bring along the story cards and a stack of additional blank note cards
+3. The customer selects a story at random from the collection and reads it to the developers.
+(LOOP)
+4. Q/A. Not answer: take a guess / ask the team to defer estimating the story
+   * When the programmers estimate a story, they should include everything they’ll need to do to complete the story: testing their code, talking to the customer, perhaps helping the customer plan or automate acceptance tests, and so on.
+(/LOOP)
+(LOOP)
+5. Each developer writes an estimate on a card, not yet showing the estimate to the others
+6. The estimators turn over their cards or hold them up so everyone can see them. If estimates differ, the high and low estimators explain their estimates.
+7. At this point the group discusses it for up to a few minutes.
+(/LOOP)
+
+> The goal is for the estimators to converge on a single estimate that can be used for the story. It isn’t necessary that everyone in the room turn over a card with exactly the same estimate written down.
+
+**Triangulation**
+
+
+Triangulating an estimate refers to estimating a story based on its relationship to one or more other stories. Suppose a story is estimated at four story points and a second story is estimated at two story points:
+
+* When the two stories are considered together the programmers should agree that the four-point story is roughly twice the size of the two-point story. 
+* Then, when they estimate a story as being three points, they should agree that it is roughly larger than the two-point story yet smaller than the four-point story.
+
+NOT altering the meaning of a story point.
+
+
