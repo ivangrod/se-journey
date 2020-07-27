@@ -12,18 +12,18 @@
     <title>User Story :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1588523531" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1588523531" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1595864852" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1595864852" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1588523531"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1595864852"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1588523531"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1588523531"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1595864852"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1595864852"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1588523531"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1595864852"></script>
 
     
   </div>
@@ -807,6 +807,12 @@
         <li><a href="#customer-team">Customer Team</a></li>
       </ul>
     </li>
+    <li><a href="#estimating-stories">Estimating Stories</a>
+      <ul>
+        <li><a href="#story-points">Story Points</a></li>
+        <li><a href="#estimating">Estimating</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1139,6 +1145,56 @@ What you want to .</em></li>
 <li>Identify a single project champion or “first among equals” on the customer team. This project champion becomes responsible for coordinating customer team collaboration.</li>
 <li>Determine the factors critical to project success. Supplement the customer team with user proxies with the relevant knowledge, skills, and experience to address the project’s critical success factors.</li>
 </ol>
+<h2 id="estimating-stories">Estimating Stories</h2>
+<h3 id="story-points">Story Points</h3>
+<p>Each team defines them as they see fit:</p>
+<ul>
+<li><code>+</code> An ideal day of work (that is, a day without any interruptions whatsoever—no meetings, no email, no phone calls, and so on).
+<ul>
+<li>It is easier than estimating in elapsed time</li>
+<li>Gives our estimates a slightly better foundation than when they are estimated in entirely nebulous units</li>
+</ul>
+</li>
+<li>An ideal week of work.</li>
+<li>Complexity of the story.</li>
+<li>&hellip;</li>
+</ul>
+<blockquote>
+<p>Joshua Kerievsky has suggested that story points represent Nebulous Units of Time, or NUTs</p>
+</blockquote>
+<p>Story estimates <strong>are owned by</strong> the team. A story comprises multiple tasks and that a task estimate is owned by the individual who will perform the task.</p>
+<blockquote>
+<p>Velocity. Number of story points a team completes (or expects to complete) in an iteration.</p>
+</blockquote>
+<h3 id="estimating">Estimating</h3>
+<p>Next, a estimation approach derived from the Wideband Delphi approach documented by Boehm:</p>
+<ol>
+<li>Gather together the customer and the developers who will participate in creating the estimates.</li>
+<li>Bring along the story cards and a stack of additional blank note cards</li>
+<li>The customer selects a story at random from the collection and reads it to the developers.
+(LOOP)</li>
+<li>Q/A. Not answer: take a guess / ask the team to defer estimating the story
+<ul>
+<li>When the programmers estimate a story, they should include everything they’ll need to do to complete the story: testing their code, talking to the customer, perhaps helping the customer plan or automate acceptance tests, and so on.
+(/LOOP)
+(LOOP)</li>
+</ul>
+</li>
+<li>Each developer writes an estimate on a card, not yet showing the estimate to the others</li>
+<li>The estimators turn over their cards or hold them up so everyone can see them. If estimates differ, the high and low estimators explain their estimates.</li>
+<li>At this point the group discusses it for up to a few minutes.
+(/LOOP)</li>
+</ol>
+<blockquote>
+<p>The goal is for the estimators to converge on a single estimate that can be used for the story. It isn’t necessary that everyone in the room turn over a card with exactly the same estimate written down.</p>
+</blockquote>
+<p><strong>Triangulation</strong></p>
+<p>Triangulating an estimate refers to estimating a story based on its relationship to one or more other stories. Suppose a story is estimated at four story points and a second story is estimated at two story points:</p>
+<ul>
+<li>When the two stories are considered together the programmers should agree that the four-point story is roughly twice the size of the two-point story.</li>
+<li>Then, when they estimate a story as being three points, they should agree that it is roughly larger than the two-point story yet smaller than the four-point story.</li>
+</ul>
+<p>NOT altering the meaning of a story point.</p>
 
 
 
@@ -1572,19 +1628,19 @@ What you want to .</em></li>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1588523531"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1588523531"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1588523531"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1588523531"></script>
-    <script src="/se-journey/js/featherlight.min.js?1588523531"></script>
-    <script src="/se-journey/js/highlight.pack.js?1588523531"></script>
+    <script src="/se-journey/js/clipboard.min.js?1595864852"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1595864852"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1595864852"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1595864852"></script>
+    <script src="/se-journey/js/featherlight.min.js?1595864852"></script>
+    <script src="/se-journey/js/highlight.pack.js?1595864852"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1588523531"></script>
-    <script src="/se-journey/js/learn.js?1588523531"></script>
-    <script src="/se-journey/js/hugo-learn.js?1588523531"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1595864852"></script>
+    <script src="/se-journey/js/learn.js?1595864852"></script>
+    <script src="/se-journey/js/hugo-learn.js?1595864852"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1588523531" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1588523531"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1595864852" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1595864852"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
