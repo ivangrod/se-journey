@@ -344,6 +344,4 @@ Triangulating an estimate refers to estimating a story based on its relationship
 * When the two stories are considered together the programmers should agree that the four-point story is roughly twice the size of the two-point story. 
 * Then, when they estimate a story as being three points, they should agree that it is roughly larger than the two-point story yet smaller than the four-point story.
 
-NOT altering the meaning of a story point.
-
-
+**Goal** -> NOT altering the meaning of a story point.
