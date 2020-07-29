@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>User Story :: Software Engineer Journey</title>
+    <title>Software Design :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1596035798" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/agile/user-story/">
+  <body class="" data-url="/se-journey/software-design/">
     <nav id="sidebar" class="">
 
 
@@ -79,7 +79,7 @@
     
     <li data-nav-id="/se-journey/software-design/" title="Software Design" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/se-journey/software-design/">
@@ -140,7 +140,7 @@
   
     
     <li data-nav-id="/se-journey/agile/" title="Agile" class="dd-item 
-        parent
+        
         
         
         ">
@@ -170,7 +170,7 @@
     
     <li data-nav-id="/se-journey/agile/user-story/" title="User Story" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/se-journey/agile/user-story/">
@@ -833,8 +833,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-                  
                   <span class="links">
                  
                  
@@ -845,13 +843,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/agile/'>Agile</a> > User Story
-          
-         
+            <a href='/se-journey/'>Software Engineer Journey</a> > Software Design
           
          
           
@@ -860,53 +852,6 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#writing-stories-invest">Writing Stories (INVEST)</a>
-      <ul>
-        <li><a href="#independent">Independent</a></li>
-        <li><a href="#negotiable">Negotiable</a></li>
-        <li><a href="#valuable-to-users-or-customers">Valuable to users or customers</a></li>
-        <li><a href="#estimatable">Estimatable</a></li>
-        <li><a href="#small">Small</a></li>
-        <li><a href="#testable">Testable</a></li>
-      </ul>
-    </li>
-    <li><a href="#user-role-modeling">User Role Modeling</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#gathering-stories">Gathering Stories</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#user-proxies">User Proxies</a>
-      <ul>
-        <li></li>
-        <li><a href="#customer-team">Customer Team</a></li>
-      </ul>
-    </li>
-    <li><a href="#estimating-stories">Estimating Stories</a>
-      <ul>
-        <li><a href="#story-points">Story Points</a></li>
-        <li><a href="#estimating">Estimating</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-</div>
-
-                
               </div>
             </div>
             
@@ -914,12 +859,9 @@
         
         </div>
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>
-              
-              User Story
-            </h1>
           
 
         
@@ -927,362 +869,7 @@
 
 
 
-	<p>A <strong>user story</strong> describes functionality that will be valuable to either a user or purchaser of a system or software.</p>
-<ul>
-<li><strong>CARD</strong>: A written description of the story used for planning and as a reminder</li>
-<li><strong>CONVERSATION</strong> (++): About the story that serve to flesh out the details of the story</li>
-<li><strong>CONFIRMATION</strong>: Tests that convey and document details and that can be used to determine when a story is complete. <a href="/se-journey/testing/test-types/#acceptance">Acceptance test</a></li>
-</ul>
-<blockquote>
-<p>Size: Stories that can be coded and tested between half a day and perhaps two weeks by one or a pair of programmers</p>
-</blockquote>
-<h4 id="epic">Epic</h4>
-<p>When a story is too large it is sometimes referred to as an <strong>epic</strong>.</p>
-<p>Epic &ldquo;A user can search for a job&rdquo;. Split:</p>
-<ol>
-<li>A user can search for jobs by attributes like location, salary range, job title, company name, and the date the job was posted.</li>
-<li>A user can view information about each job that is matched by a search. (We don&rsquo;t need to further divide it into more specific user stories)</li>
-<li>A user can view detailed information about a company that has posted a job.</li>
-</ol>
-<p><strong>Benefits</strong></p>
-<ul>
-<li>User stories emphasize verbal rather than written communication.</li>
-<li>User stories are comprehensible by both you and the developers.</li>
-<li>User stories are the right size for planning.</li>
-<li>User stories work for iterative development.</li>
-<li>User stories encourage deferring detail until you have the best understanding you are going to have about what you really need.</li>
-</ul>
-<h2 id="writing-stories-invest">Writing Stories (INVEST)</h2>
-<h3 id="independent">Independent</h3>
-<p>Avoid introducing dependencies between stories. Dependencies between stories lead to prioritization and planning problems.</p>
-<p><strong>Problem</strong></p>
-<ol>
-<li><em>A company can pay for a job posting with a Visa card.</em></li>
-<li><em>A company can pay for a job posting with a MasterCard.</em></li>
-<li><em>A company can pay for a job posting with an American Express card.</em></li>
-</ol>
-<p>Estimating that it will take three days to support the first credit card type (regardless of which it is) and then one day each for the second and third.</p>
-<p><strong>Solution</strong></p>
-<ul>
-<li>Combine the dependent stories into one larger but independent story</li>
-<li>Find a different way of splitting the stories</li>
-<li>Putting two estimates on the card: one estimate if the story is done before the other story, a lower estimate if it is done after</li>
-</ul>
-<ol>
-<li><em>A customer can pay with one type of credit card.</em></li>
-<li><em>A customer can pay with two additional types of credit cards.</em></li>
-</ol>
-<h3 id="negotiable">Negotiable</h3>
-<p>Details are negotiated -&gt; Notes on the card help a developer and the customer to resume a conversation where it left off previously.</p>
-<p>Regardless of whether it is the same developer and customer who resume the conversation.</p>
-<p><strong>Problem</strong></p>
-<p>When as much detail is added can lead to the mistaken belief that the story cards reflect all the details and that there’s no further need to discuss the story with the customer.</p>
-<p><strong>Solution</strong></p>
-<ul>
-<li>
-<p>Story card as containing:</p>
-<ul>
-<li>phrase or two that act as reminders to hold the conversation</li>
-<li>notes about issues to be resolved during the conversation</li>
-</ul>
-</li>
-<li>
-<p>Details that have already been determined through conversations become <a href="/se-journey/testing/test-types/#acceptance">tests</a></p>
-</li>
-<li>
-<p>Story card with few details. Discussion between customer and developer is somewhat abstract, Missing details or them to mistakenlyview their discussion as definitve or their estimate as accurate.</p>
-</li>
-</ul>
-<h3 id="valuable-to-users-or-customers">Valuable to users or customers</h3>
-<p>Ex. stories valued by purchasers contemplating buying the product but would not be valued by actual users:</p>
-<ul>
-<li><em>Throughout the development process, the development team will produce documentation suitable for an ISO 9001 audit.</em></li>
-<li><em>The development team will produce the software in accordance with CMM Level 3.
-What you want to .</em></li>
-</ul>
-<p><strong>Problem</strong></p>
-<p>Avoid stories that are only valued by developers</p>
-<ul>
-<li><em>All connections to the database are through a connection pool.</em></li>
-<li><em>All error handling and logging is done through a set of common classes.</em></li>
-</ul>
-<p><strong>Solution</strong></p>
-<ul>
-<li><em>Up to fifty users should be able to use the application with a five-user database license.</em></li>
-<li><em>All errors are presented to the user and logged in a consistent manner.</em></li>
-</ul>
-<h3 id="estimatable">Estimatable</h3>
-<p><strong>Problem</strong></p>
-<p>There are three common reasons why a story may not be estimatable:</p>
-<ol>
-<li>Developers lack domain knowledge.</li>
-<li>Developers lack technical knowledge.</li>
-<li>The story is too big.</li>
-</ol>
-<p><strong>Solution</strong></p>
-<ol>
-<li>Developers should discuss it with the customer who wrote the story</li>
-<li><strong>Spike</strong>: A brief experiment to learn about an area of the application. Developers learn just enough that they can estimate the task. Timebox: maximum amount of time.</li>
-</ol>
-<blockquote>
-<p>Consider putting the spike in a different iteration</p>
-</blockquote>
-<ol start="3">
-<li>Developers will need to disaggregate it into smaller, constituent stories.</li>
-</ol>
-<h3 id="small">Small</h3>
-<p><strong>Problem</strong></p>
-<p>Epics typically fall into one of two categories:</p>
-<ul>
-<li>The compound story. An epic that comprises multiple shorter stories</li>
-<li>The complex story. An user story that is inherently large and cannot easily be disaggregated into a set of constituent stories.</li>
-</ul>
-<p><strong>Solution</strong></p>
-
-<section class="attachments blue">
-	<label>
-		<i class="fas fa-paperclip" aria-hidden="true"></i>
-		How to split user stories
-	</label>
-	
-		
-	
-	<div class="attachments-files">
-	
-		
-		
-			
-				<li>
-					<a href="/se-journey/agile/user-story/_index.files/Story-Splitting-Flowchart.pdf" >
-						Story-Splitting-Flowchart.pdf
-					</a>
-					(744 ko)
-				</li>
-			
-		
-	
-	<div>
-	
-</section>
-
-
-<h3 id="testable">Testable</h3>
-<p>Stories must be written so as to be testable. Whenever possible, tests should be automated.</p>
-<p><strong>Problem</strong></p>
-<p>Untestable stories commonly show up for nonfunctional requirements, which are requirements about the software but not directly about its functionality.</p>
-<ul>
-<li><em>A user must find the software easy to use.</em></li>
-<li><em>A user must never have to wait long for any screen to appear.</em></li>
-</ul>
-<p><strong>Solution</strong></p>
-<ul>
-<li><em>New screens appear within two seconds in 95% of all cases.</em></li>
-</ul>
-<h2 id="user-role-modeling">User Role Modeling</h2>
-<p>A user role is a collection of defining attributes that characterize a population of users and their intended interactions with the system. There will be some overlap between different user roles.</p>
-<p>Ex. Job Seeker, First Timer, Layoff Victim, Geographic Searcher, Monitor, Job Poster, Resume Reader</p>
-<h4 id="brainstorm-an-initial-set-of-user-roles">Brainstorm an initial set of user roles</h4>
-<p>Steps:</p>
-<ol>
-<li>The customer and as many of the developers as possible meet in a room.</li>
-<li>Start with everyone writing role names on cards</li>
-<li>The name of the new role and nothing more. No dicsussion.</li>
-<li>Continue until progress stalls and participants are having a hard time thinking up new roles.</li>
-</ol>
-<blockquote>
-<p>A User Role is One User</p>
-</blockquote>
-<h4 id="organize-the-initial-set">Organize the initial set</h4>
-<p>Relationships between the roles.</p>
-<p>Overlapping roles are placed so that their cards overlap. If the roles overlap a little, overlap the cards a little. If the roles overlap entirely, overlap the cards entirely.</p>
-<blockquote>
-<p>System Roles -&gt; If you think it will help, then identify an occasional non-human user role.</p>
-</blockquote>
-<blockquote>
-<p>We don’t need user roles for every conceivable user of the system, but we need roles for the ones who can make or break the success of the project.</p>
-</blockquote>
-<h4 id="consolidate-roles">Consolidate roles</h4>
-<p>The authors of overlapping cards describe what they meant by those role names. After a brief discusson the group decides if the roles are equivalent.</p>
-<ul>
-<li><em>Job Poster | Resume Reader -&gt; Recruiter</em></li>
-<li><em>Recruiter -&gt; Internal Recruiter | External Recruiter</em>. A generic role, is positioned above specialized versions of that role.</li>
-</ul>
-<h4 id="refine-the-roles">Refine the roles</h4>
-<p>Model those roles by defining attributes of each role. A <strong>role attribute</strong> is a fact or bit of useful information about the users who fulfill the role. Any information about the user roles that distinguishes one role from another may be used as a role attribute.</p>
-<ul>
-<li>The frequency with which the user will use the software.</li>
-<li>The user’s level of expertise with the domain.</li>
-<li>The user’s general level of proficiency with computers and software.</li>
-<li>The user’s level of proficiency with the software being developed.</li>
-<li>The user’s general goal for using the software. Some users are after convenience, others favor a rich experience, and so on.</li>
-</ul>
-<h4 id="extra-technique---personas">Extra Technique - Personas</h4>
-<p>Creating a persona for the role. A persona is an imaginary representation of a user role. A persona should be described sufficiently that everyone on the team feels like they know the persona.</p>
-<p>For example, Mario - Posting new job - may be described as follows:</p>
-<p><em>Mario works as a recruiter in the Personnel department of SpeedyNetworks, a manufacturer of high-end networking components. He’s worked for SpeedyNetworks six years. Mario has a flex-time arrangement and works from home every Friday. Mario is very strong with computers and considers himself a power user of just about all the products he uses. Mario’s wife, Kim, is finishing her Ph.D. in chemistry at Stanford University. Because SpeedyNetworks has been growing almost consistently, Mario is always looking for good engineers.</em></p>
-<blockquote>
-<p>Think about writing a persona definition for one or two of the primary user roles.</p>
-</blockquote>
-<h4 id="extra-technique---extreme-characters">Extra Technique - Extreme Characters</h4>
-<p>Use extreme characters when considering the design of a new system.</p>
-<p>For example: <em>PDA for a drug dealer, the Pope, and a twenty-year-old woman who is juggling multiple boyfriends.</em></p>
-<h2 id="gathering-stories">Gathering Stories</h2>
-<ul>
-<li>
-<p>X -&gt; Get all of the user stories in one pass.</p>
-</li>
-<li>
-<p>The relevance of a story changes based on the passage of time and on what stories were added to the product in prior iterations.</p>
-</li>
-</ul>
-<blockquote>
-<p>Write user stories that decrease in detail as the time horizon increases</p>
-</blockquote>
-<p>Having a rough idea of what a project will cost and what benefits it will deliver before getting funding and approval to start the project:</p>
-<h4 id="user-interviews">User interviews</h4>
-<ul>
-<li>Selection of interviewees. Real users whenever possible. Users who fill different user roles.</li>
-<li>Open-Ended and Context-Free questions, which are ones that do not include an implied answer or preference</li>
-</ul>
-<h4 id="questionnaires">Questionnaires</h4>
-<ul>
-<li>Information about stories you already have.</li>
-<li>Large user population
-<ul>
-<li>Information about how to prioritize the stories.</li>
-<li>Answers to specific questions.</li>
-</ul>
-</li>
-<li>It&rsquo;s not recommend using questionnaires when trawling for stories</li>
-</ul>
-<h4 id="observation">Observation</h4>
-<ul>
-<li>Observing users interact -&gt; pick up insights. Rapid and direct feedback.
-<ul>
-<li>Release software as early and often as possible.</li>
-</ul>
-</li>
-</ul>
-<h4 id="story-writing-">Story-Writing (++)</h4>
-<p><a href="https://github.com/ivangrod/agile-pills/blob/master/user-story/story-writing-workshop.md">Story-Writing Workshops</a></p>
-<h2 id="user-proxies">User Proxies</h2>
-<p>They may not be users themselves but are on a project to help represent users.</p>
-<blockquote>
-<p>It is vital that a project include one or more real users on the customer team.</p>
-</blockquote>
-<h4 id="the-users-manager">The Users’ Manager</h4>
-<ul>
-<li>It is almost certain that the manager has different usage patterns of the software than does a typical user.</li>
-<li>Features which were of very minimal importance to the users they supervised, and developers can overemphasized in the product.</li>
-</ul>
-<h4 id="a-development-manager">A Development Manager</h4>
-<ul>
-<li>The worst possible choices to act as a proxy user, unless perhaps you are writing software targeted at development managers.</li>
-<li>It is far too likely that she will also have some conflicting goals.</li>
-<li>If she is a development manager who does have domain expertise, then consider her a <strong>domain expert</strong>.</li>
-</ul>
-<h4 id="salespersons">Salespersons</h4>
-<ul>
-<li>The election as an user proxy does not lead to a comprehensive view of the product to be built.</li>
-<li>The most important story to a salesperson will usually be the story whose absence cost her the last sale.</li>
-<li>Salespeople are, however, a great conduit to users and you should use them in this way.</li>
-</ul>
-<h4 id="domain-experts">Domain Experts</h4>
-<ul>
-<li>They are critical resources because of how well they understand the domain the software will be targeted at.</li>
-<li>Domain experts are ideal resources when building a domain model and identifying business rules, but workflow and usage issues are better derived from actual users.</li>
-<li>Problem -&gt; you may end up with software aimed only at users with similar levels of domain expertise.</li>
-</ul>
-<h4 id="the-marketing-group">The Marketing Group</h4>
-<ul>
-<li>Marketing groups understand markets rather than users.</li>
-<li>Focus more on the quantity of features in the product than on the quality of those features.</li>
-<li>Relative priorities.</li>
-</ul>
-<h4 id="former-users">Former Users</h4>
-<ul>
-<li>She can be great as a proxy if her experience is very recent.</li>
-</ul>
-<h4 id="customers">Customers</h4>
-<ul>
-<li>Customers are those who make the buying decision; they are not necessarily users of the software.</li>
-<li>It is important to consider the desires of your customers because they, not your users, are the ones who write the check to buy the software. (Unless, of course, your users and customers are the same people.)</li>
-</ul>
-<h4 id="trainers-and-technical-support">Trainers and Technical Support</h4>
-<ul>
-<li>They spend their days talking to real users so they must certainly know what users want.</li>
-<li>:x: If you use a trainer as your user proxy, you will end up with a system that is easy to train.</li>
-<li>:x: If you use someone from technical support, you will end up with a system that is easily supported.</li>
-</ul>
-<h4 id="business-or-systems-analysts">Business or Systems Analysts</h4>
-<ul>
-<li>Good as user proxies because they have one foot in the technology world and one foot in the domain of the software.</li>
-<li>:x: They prefer to think about a problem rather than research it.</li>
-<li>:x: Desire to spend too much time in the project’s upfront activities.</li>
-</ul>
-<blockquote>
-<p>Avoid falling into the trap of thinking you know your user&rsquo;s minds and do not need or can ignore your user proxy.</p>
-</blockquote>
-<h3 id="customer-team">Customer Team</h3>
-<blockquote>
-<p>Real user beats a proxy any time.</p>
-</blockquote>
-<p>The customer team should be constructed so that the strengths of one member balance the weaknesses of another member. Follow the next steps:</p>
-<ol>
-<li>Add real users. Different types of users, try to include a user of each type.</li>
-<li>Identify a single project champion or “first among equals” on the customer team. This project champion becomes responsible for coordinating customer team collaboration.</li>
-<li>Determine the factors critical to project success. Supplement the customer team with user proxies with the relevant knowledge, skills, and experience to address the project’s critical success factors.</li>
-</ol>
-<h2 id="estimating-stories">Estimating Stories</h2>
-<h3 id="story-points">Story Points</h3>
-<p>Each team defines them as they see fit:</p>
-<ul>
-<li><code>+</code> An ideal day of work (that is, a day without any interruptions whatsoever—no meetings, no email, no phone calls, and so on).
-<ul>
-<li>It is easier than estimating in elapsed time</li>
-<li>Gives our estimates a slightly better foundation than when they are estimated in entirely nebulous units</li>
-</ul>
-</li>
-<li>An ideal week of work.</li>
-<li>Complexity of the story.</li>
-<li>&hellip;</li>
-</ul>
-<blockquote>
-<p>Joshua Kerievsky has suggested that story points represent Nebulous Units of Time, or NUTs</p>
-</blockquote>
-<p>Story estimates <strong>are owned by</strong> the team. A story comprises multiple tasks and that a task estimate is owned by the individual who will perform the task.</p>
-<blockquote>
-<p>Velocity. Number of story points a team completes (or expects to complete) in an iteration.</p>
-</blockquote>
-<h3 id="estimating">Estimating</h3>
-<p>Next, a estimation approach derived from the Wideband Delphi approach documented by Boehm:</p>
-<ol>
-<li>Gather together the customer and the developers who will participate in creating the estimates.</li>
-<li>Bring along the story cards and a stack of additional blank note cards</li>
-<li>The customer selects a story at random from the collection and reads it to the developers.
-(LOOP)</li>
-<li>Q/A. Not answer: take a guess / ask the team to defer estimating the story
-<ul>
-<li>When the programmers estimate a story, they should include everything they’ll need to do to complete the story: testing their code, talking to the customer, perhaps helping the customer plan or automate acceptance tests, and so on.
-(/LOOP)
-(LOOP)</li>
-</ul>
-</li>
-<li>Each developer writes an estimate on a card, not yet showing the estimate to the others</li>
-<li>The estimators turn over their cards or hold them up so everyone can see them. If estimates differ, the high and low estimators explain their estimates.</li>
-<li>At this point the group discusses it for up to a few minutes.
-(/LOOP)</li>
-</ol>
-<blockquote>
-<p>The goal is for the estimators to converge on a single estimate that can be used for the story. It isn’t necessary that everyone in the room turn over a card with exactly the same estimate written down.</p>
-</blockquote>
-<p><strong>Triangulation</strong></p>
-<p>Triangulating an estimate refers to estimating a story based on its relationship to one or more other stories. Suppose a story is estimated at four story points and a second story is estimated at two story points:</p>
-<ul>
-<li>When the two stories are considered together the programmers should agree that the four-point story is roughly twice the size of the two-point story.</li>
-<li>Then, when they estimate a story as being three points, they should agree that it is roughly larger than the two-point story yet smaller than the four-point story.</li>
-</ul>
-<p><strong>Goal</strong> -&gt; NOT altering the meaning of a story point.</p>
+	<h1 id="software-design">Software Design</h1>
 
 
 
@@ -1292,6 +879,8 @@ What you want to .</em></li>
 	
 </footer>
 
+        
+            </div> 
         
         </div> 
         
@@ -1323,8 +912,43 @@ What you want to .</em></li>
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1359,45 +983,6 @@ What you want to .</em></li>
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 

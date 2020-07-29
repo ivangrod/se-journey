@@ -1,10 +1,24 @@
 [
 {
+	"uri": "https://ivangrod.github.io/se-journey/software-design/",
+	"title": "Software Design",
+	"tags": [],
+	"description": "",
+	"content": "Software Design "
+},
+{
+	"uri": "https://ivangrod.github.io/se-journey/software-design/solid/",
+	"title": "SOLID Principles",
+	"tags": [],
+	"description": "",
+	"content": "SRP - Single responsibility principle OCP - Open/closed principle LSP - Liskov substitution principle ISP - Interface segregation principle DIP - Dependency inversion principle "
+},
+{
 	"uri": "https://ivangrod.github.io/se-journey/cloud/aws/elb/",
 	"title": "AWS - ELB",
 	"tags": [],
 	"description": "",
-	"content": "Load balancers are servers that forward internet traffic to multiple servers (EC2 Instances) downstream.\n Spread load across multiple downstream instances Expose a single point of access (DNS) to your application. Seamlessly handle failures of downstream instances through health checks Do regular health checks to your instances. Provide SSL termination (HTTPS) or HTTPS security, for your website directly on load balancer site, Enforce stickiness with cookies. High availability across availability zones. Separate public traffic from private traffic  ELB (EC2 Load Balancer) Types of load balancer on AWS\n Classic Load Balancer (v1 - old generation) -\u0026gt; HTTP, HTTPS TCP Application Load Balancer (v2 - new generation) -\u0026gt; HTTP, HTTPS, Websocket Network Load Balancer (v2 - new generation) -\u0026gt; TCP, TLS, UDP  "
+	"content": "Load balancers are servers that forward internet traffic to multiple servers (EC2 Instances) downstream.\n Spread load across multiple downstream instances Expose a single point of access (DNS) to your application. Seamlessly handle failures of downstream instances through health checks Do regular health checks to your instances. Provide SSL termination (HTTPS) or HTTPS security, for your website directly on load balancer site, Enforce stickiness with cookies. High availability across availability zones. Separate public traffic from private traffic  ELB (EC2 Load Balancer) Types of load balancer on AWS\n Classic Load Balancer (v1 - old generation) -\u0026gt; HTTP, HTTPS TCP Application Load Balancer (v2 - new generation) -\u0026gt; HTTP (HTTP2), HTTPS, Websocket Network Load Balancer (v2 - new generation) -\u0026gt; TCP, TLS, UDP  Application Load Balancer ++ Routing\n Routing tables to different target groups  Based on path in URL Based on hostname in URL Based on Query String, Headers     ALB are great fit for microservices \u0026amp; container-based application\n Target Groups\n EC2 instances - HTTP ECS tasks - HTTP Lambda functions - HTTP request is translated into a JSON event IP Addresses - private IPs  GTK (Good to Know)\n Fixed hostname with your Application Balancer The application servers don\u0026rsquo;t see the IP of the client directly.  The true IP of the client is going to be inserted in the header called X-Forwarded-For. You can also get the Port using X-Forwarded-Port and the protocol being used using X-Forwarded-Proto.    Load Balancer Stickiness Stickiness -\u0026gt; The same client will always be directed to the same underlying instance that is behind the load balancer. Classic Load Balancer and Application Load Balancer.\nThe cookie used for stickiness has an expiration date you control.\n Use Case: Make sure the user doesn\u0026rsquo;t lose his session data\n ¡¡¡ Enabling stickiness may bring imbalance to the load over the backend EC2 instance.\nCross-Zone Load Balancing When cross-zone balancing is enabled, that means that each load balancer instance will evenly distribute the traffic across all the instances in all AZ.\nSSL Certificates  Traffic between your clients and your load balancer to be encrypted in transit (in-flight encryption)   TLS (Transport Layer Security) \u0026gt; SSL (Secure Socket Layer)\n  The load balancer uses an X.509 certificate (SSL/TLS certificate) ACM (AWS Certificate Manager) SNI (Server Name Indication). It solves a very important problem, which is how do you load multiple SSL certificates onto one web server, in order for that web server to serve multiple websites.  Connection Draining  Time to complete \u0026ldquo;in-flight requests\u0026rdquo; while the instance is de-registering or unhealthy Stops sending new requests to the instance which is de-registering  :) Set a low value if your request are short (300 seconds by default)\n"
 },
 {
 	"uri": "https://ivangrod.github.io/se-journey/cloud/aws/",
@@ -144,7 +158,7 @@
 	"title": "Software Engineer Journey",
 	"tags": [],
 	"description": "",
-	"content": "Software Engineer Journey  Agile   Culture   Testing   Cloud   Git   Templates   Glossary   "
+	"content": "Software Engineer Journey  Software Design   Agile   Culture   Testing   Cloud   Git   Templates   Glossary   "
 },
 {
 	"uri": "https://ivangrod.github.io/se-journey/templates/issue/",
