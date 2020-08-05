@@ -128,6 +128,122 @@ final class StandardOutputHtmlPrinter implements Printer
 
 ## OCP - Open/closed principle
 
+**Concepto**:
+* El software debería estar abierto a extensión y cerrado a modificación.
+* Ésto aplica tanto a nuestras clases internas, servicios, microservicios, casos de usos, etc.
+
+**Cómo conseguirlo**:
+* Evitando depender de implementaciones específicas, haciendo uso de clases abstractas o interfaces.
+
+**Finalidad**:
+* Facilidad para añadir nuevos Casos de uso en nuestra aplicación.
+
+### Violación OCP
+
+```java
+final class Song {
+  private Double totalLength;
+  private Double sentLength;
+
+  public Double getSentLengthPercentage() {
+    return sentLength * 100 / totalLength;
+  }
+}
+```
+
+```java
+final class File {
+  private Double totalLength;
+  private Double sentLength;
+
+  public Double getSentLengthPercentage() {
+    return sentLength * 100 / totalLength;
+  }
+}
+```
+
+### OCP - Interface
+
+```java
+interface Measurable {
+  public Double getTotalLength();
+  public Double getSentLength();
+}
+```
+
+```java
+final class Song implements Measurable {
+    private Double totalLength;
+    private Double sentLength;
+    
+    @Override
+    public Double getTotalLength() {
+        return totalLength;
+    }
+    
+    @Override
+    public Double getSentLength() {
+        return sentLength;
+    }
+}
+```
+Clase *Progress* acoplada únicamente a la interface
+
+```java
+final class Progress {
+    public Double getSentLengthPercentage(Measurable measurable) {
+        return measurable.getSentLength() * 100 / measurable.getTotalLength();
+    }
+}
+```
+
+### OCP - Abstract class 
+
+```java
+abstract class Measurable {
+    abstract Double getTotalLength();
+    abstract Double getSentLength();
+    
+    public Double getSentLengthPercentage() {
+        return getSentLength() * 100 / getTotalLength();
+    }
+}
+```
+
+```java
+final class Song extends Measurable {
+    @Override
+    public Double getTotalLength() {
+        // ...
+    }
+
+    @Override
+    public Double getSentLength() {
+        // ...
+    } 
+}
+```
+
+```java
+final class Progress {
+    public Double getSentLengthPercentage(Measurable measurable) {
+        // Nos llevamos lógica a nuestro modelo de dominio
+        return measurable.getSentLengthPercentage();
+    }
+}
+```
+
+### Interface - Abstract class
+
+* Beneficios de Interface - Usar para **desacoplar entre capas**:
+  * No modifica el árbol de jerarquía
+  * Permite implementar N Interfaces
+
+* Beneficios de Abstract Class - Determinados casos para **Modelos de dominios**:
+  * Permite desarrollar el patrón [Template Method](https://github.com/iluwatar/java-design-patterns/tree/master/template-method) empujando la lógica al modelo
+    * Problema: Dificultad de trazar
+  * Getters privados (Tell don’t ask)
+
 ## LSP - Liskov substitution principle
 
 ## ISP - Interface segregation principle

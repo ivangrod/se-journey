@@ -12,18 +12,18 @@
     <title>SOLID Principles :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1596040589" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1596040589" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1596648753" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1596648753" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1596040589"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1596648753"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596040589"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596040589"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596648753"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596648753"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1596040589"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1596648753"></script>
 
     
   </div>
@@ -865,7 +865,14 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#srp---single-responsibility-principle">SRP - Single responsibility principle</a></li>
-    <li><a href="#ocp---openclosed-principle">OCP - Open/closed principle</a></li>
+    <li><a href="#ocp---openclosed-principle">OCP - Open/closed principle</a>
+      <ul>
+        <li><a href="#violación-ocp">Violación OCP</a></li>
+        <li><a href="#ocp---interface">OCP - Interface</a></li>
+        <li><a href="#ocp---abstract-class">OCP - Abstract class</a></li>
+        <li><a href="#interface---abstract-class">Interface - Abstract class</a></li>
+      </ul>
+    </li>
     <li><a href="#lsp---liskov-substitution-principle">LSP - Liskov substitution principle</a></li>
     <li><a href="#isp---interface-segregation-principle">ISP - Interface segregation principle</a></li>
     <li><a href="#dip---dependency-inversion-principle">DIP - Dependency inversion principle</a></li>
@@ -995,6 +1002,108 @@
 <p>Modelo de dominio anémico &lt;-&gt; DTOs</p>
 </blockquote>
 <h2 id="ocp---openclosed-principle">OCP - Open/closed principle</h2>
+<p><strong>Concepto</strong>:</p>
+<ul>
+<li>El software debería estar abierto a extensión y cerrado a modificación.</li>
+<li>Ésto aplica tanto a nuestras clases internas, servicios, microservicios, casos de usos, etc.</li>
+</ul>
+<p><strong>Cómo conseguirlo</strong>:</p>
+<ul>
+<li>Evitando depender de implementaciones específicas, haciendo uso de clases abstractas o interfaces.</li>
+</ul>
+<p><strong>Finalidad</strong>:</p>
+<ul>
+<li>Facilidad para añadir nuevos Casos de uso en nuestra aplicación.</li>
+</ul>
+<h3 id="violación-ocp">Violación OCP</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Song</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">private</span> Double totalLength<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">private</span> Double sentLength<span style="color:#f92672">;</span>
+
+  <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> sentLength <span style="color:#f92672">*</span> 100 <span style="color:#f92672">/</span> totalLength<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">File</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">private</span> Double totalLength<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">private</span> Double sentLength<span style="color:#f92672">;</span>
+
+  <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> sentLength <span style="color:#f92672">*</span> 100 <span style="color:#f92672">/</span> totalLength<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="ocp---interface">OCP - Interface</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Measurable</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getTotalLength</span><span style="color:#f92672">();</span>
+  <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLength</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Song</span> <span style="color:#66d9ef">implements</span> Measurable <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Double totalLength<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Double sentLength<span style="color:#f92672">;</span>
+    
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getTotalLength</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> totalLength<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLength</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> sentLength<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Clase <em>Progress</em> acoplada únicamente a la interface</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Progress</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">(</span>Measurable measurable<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> measurable<span style="color:#f92672">.</span><span style="color:#a6e22e">getSentLength</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> 100 <span style="color:#f92672">/</span> measurable<span style="color:#f92672">.</span><span style="color:#a6e22e">getTotalLength</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="ocp---abstract-class">OCP - Abstract class</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Measurable</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">abstract</span> Double <span style="color:#a6e22e">getTotalLength</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">abstract</span> Double <span style="color:#a6e22e">getSentLength</span><span style="color:#f92672">();</span>
+    
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> getSentLength<span style="color:#f92672">()</span> <span style="color:#f92672">*</span> 100 <span style="color:#f92672">/</span> getTotalLength<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Song</span> <span style="color:#66d9ef">extends</span> Measurable <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getTotalLength</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLength</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span> 
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Progress</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> Double <span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">(</span>Measurable measurable<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Nos llevamos lógica a nuestro modelo de dominio
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> measurable<span style="color:#f92672">.</span><span style="color:#a6e22e">getSentLengthPercentage</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="interface---abstract-class">Interface - Abstract class</h3>
+<ul>
+<li>
+<p>Beneficios de Interface - Usar para <strong>desacoplar entre capas</strong>:</p>
+<ul>
+<li>No modifica el árbol de jerarquía</li>
+<li>Permite implementar N Interfaces</li>
+</ul>
+</li>
+<li>
+<p>Beneficios de Abstract Class - Determinados casos para <strong>Modelos de dominios</strong>:</p>
+<ul>
+<li>Permite desarrollar el patrón <a href="https://github.com/iluwatar/java-design-patterns/tree/master/template-method">Template Method</a> empujando la lógica al modelo
+<ul>
+<li>Problema: Dificultad de trazar</li>
+</ul>
+</li>
+<li>Getters privados (Tell don’t ask)</li>
+</ul>
+</li>
+</ul>
 <h2 id="lsp---liskov-substitution-principle">LSP - Liskov substitution principle</h2>
 <h2 id="isp---interface-segregation-principle">ISP - Interface segregation principle</h2>
 <h2 id="dip---dependency-inversion-principle">DIP - Dependency inversion principle</h2>
@@ -1481,19 +1590,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1596040589"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1596040589"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596040589"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1596040589"></script>
-    <script src="/se-journey/js/featherlight.min.js?1596040589"></script>
-    <script src="/se-journey/js/highlight.pack.js?1596040589"></script>
+    <script src="/se-journey/js/clipboard.min.js?1596648753"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1596648753"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596648753"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1596648753"></script>
+    <script src="/se-journey/js/featherlight.min.js?1596648753"></script>
+    <script src="/se-journey/js/highlight.pack.js?1596648753"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596040589"></script>
-    <script src="/se-journey/js/learn.js?1596040589"></script>
-    <script src="/se-journey/js/hugo-learn.js?1596040589"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596648753"></script>
+    <script src="/se-journey/js/learn.js?1596648753"></script>
+    <script src="/se-journey/js/hugo-learn.js?1596648753"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1596040589" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1596040589"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1596648753" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1596648753"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
