@@ -246,6 +246,59 @@ final class Progress {
 
 ## LSP - Liskov substitution principle
 
+**Concepto**:
+* Si S es un subtipo de T, instancias de T deberían poderse sustituir por instancias de S sin alterar las propiedades del programa
+* Es decir, al tener una jerarquía nos supone que estamos estableciendo un contrato en el padre, por lo que, garantizar que se mantiene dicho contrato en el hijo, nos permitirá que podamos sustituir al padre y la aplicación seguirá funcionando perfectamente.
+
+**Cómo**:
+* El comportamiento de las subclases debe respetar el contrato establecido en la superclase.
+
+**Finalidad**:
+* Mantener correctitud funcional para poder aplicar OCP
+
+```php
+final class UserRepositoryMySql extends Repository implements UserRepository
+{
+    public function save(User $user): void{
+        $this->entityManager()->persist($user);
+    }
+
+    public function flush(User $user)
+    {
+        $this->entityManager()->flush($user);
+    }
+
+    public function saveAll(Users $users)
+    {
+        each($this->persister(),$users);
+    }
+}
+```
+
+Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero ojo! con la característica de utilizar Doctrine como ORM. Doctrine implementa el *Unit of work pattern*, que nos ofrece algunas características:
+
+* Utiliza una 'caché' en memoria (unit of work) donde almacena inicialmente los datos antes de persistir en BD, haciendo más rápida su recuperación durante ese proceso.
+* Cuando editamos estos objetos, compara las diferencias con el estado almacenado para saber él mismo qué atributos deben actualizarse.
+
+### Violación del LSP
+
+Como clientes externos que sólo conocemos la interface publicada, podríamos esperar que cuando se llamase al método save, con nuestra implementación se persistieran la información en BD.
+
+```php
+interface UserRepository
+{
+    public function save(User $user): void;
+    
+    public function saveAll(Users $users): void;
+    
+    public function search(UserId $id): ?User;
+    
+    public function all(): Users;
+}
+```
+
+Sin embargo nuestra implementación del método **save** internamente llama a **persist**, que simplemente almacenará los datos en la *unit of work* sin forzar la persistencia real en BD. Como vemos, aunque se ha mantenido la firma de los métodos definidos en la interface, estaríamos violando el LSP puesto que no podríamos utilizarla para reemplazar otras implementaciones que no utilizan el *Unit of work pattern* y si estarían persistiendo en su BD al llamar al método **save**.
+
 ## ISP - Interface segregation principle
 
 ## DIP - Dependency inversion principle
