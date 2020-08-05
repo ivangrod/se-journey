@@ -39,3 +39,6 @@ home = [ "HTML", "RSS", "JSON"]
   ordersectionsby = "weight"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = ""
+  # Need a style sheet. hugo gen chromastyles --style=monokai > syntax.css
+  pygmentsUseClasses = true
+  pygmentsCodeFences = true

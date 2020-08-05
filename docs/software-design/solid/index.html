@@ -12,18 +12,18 @@
     <title>SOLID Principles :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1596651278" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1596651278" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1596665575" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1596651278"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1596665575"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596651278"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596651278"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596665575"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596665575"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1596651278"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1596665575"></script>
 
     
   </div>
@@ -1137,8 +1137,8 @@
     {
         each($this-&gt;persister(),$users);
     }
-}</code></pre></div>
-<p>Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero ojo! con la característica de utilizar Doctrine como ORM. Doctrine implementa el <em>Unit of work pattern</em>, que nos ofrece algunas características:</p>
+}
+</code></pre></div><p>Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero ojo! con la característica de utilizar Doctrine como ORM. Doctrine implementa el <em>Unit of work pattern</em>, que nos ofrece algunas características:</p>
 <ul>
 <li>Utiliza una &lsquo;caché&rsquo; en memoria (unit of work) donde almacena inicialmente los datos antes de persistir en BD, haciendo más rápida su recuperación durante ese proceso.</li>
 <li>Cuando editamos estos objetos, compara las diferencias con el estado almacenado para saber él mismo qué atributos deben actualizarse.</li>
@@ -1154,9 +1154,64 @@
     public function search(UserId $id): ?User;
     
     public function all(): Users;
-}</code></pre></div>
-<p>Sin embargo nuestra implementación del método <strong>save</strong> internamente llama a <strong>persist</strong>, que simplemente almacenará los datos en la <em>unit of work</em> sin forzar la persistencia real en BD. Como vemos, aunque se ha mantenido la firma de los métodos definidos en la interface, estaríamos violando el LSP puesto que no podríamos utilizarla para reemplazar otras implementaciones que no utilizan el <em>Unit of work pattern</em> y si estarían persistiendo en su BD al llamar al método <strong>save</strong>.</p>
+}
+</code></pre></div><p>Sin embargo nuestra implementación del método <strong>save</strong> internamente llama a <strong>persist</strong>, que simplemente almacenará los datos en la <em>unit of work</em> sin forzar la persistencia real en BD. Como vemos, aunque se ha mantenido la firma de los métodos definidos en la interface, estaríamos violando el LSP puesto que no podríamos utilizarla para reemplazar otras implementaciones que no utilizan el <em>Unit of work pattern</em> y si estarían persistiendo en su BD al llamar al método <strong>save</strong>.</p>
 <h2 id="isp---interface-segregation-principle">ISP - Interface segregation principle</h2>
+<p><strong>Concepto</strong>:</p>
+<ul>
+<li>Ningún cliente debería verse forzado a depender de métodos que no usa</li>
+</ul>
+<p><strong>Cómo</strong>:</p>
+<ul>
+<li>Definir contratos de interfaces basándonos en los clientes que las usan y no en las implementaciones que pudiéramos tener (<strong>Las interfaces pertenecen a los clientes</strong>)</li>
+<li>Evitar <a href="https://martinfowler.com/bliki/HeaderInterface.html">Header Interfaces</a> promoviendo <a href="https://martinfowler.com/bliki/RoleInterface.html">Role Interfaces</a></li>
+</ul>
+<p><strong>Finalidad</strong>:</p>
+<ul>
+<li>Alta cohesión y bajo acoplamiento estructural</li>
+</ul>
+<p>En el ejemplo anterior, con el patrón Unit of work necesitábamos dos métodos save y flush para persistir en BD.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">interface UserRepository
+{
+    public function save(User $user): void;
+    
+    public function flush(User $user): void;
+
+    public function saveAll(Users $users): void;
+    
+    public function search(UserId $id): ?User;
+    
+    public function all(): Users;
+}
+</code></pre></div><p>De este modo, nuestra interface UserRepository tendría que tener el aspecto que vemos arriba, haciendo <strong>Header Interface</strong> hemos definido la cabecera de los métodos <em>save</em> y <em>flush</em> en nuestra interface.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">public function __invoke(UserId $id)
+{
+    $user = $this-&gt;finder-&gt;__invoke($id);
+       
+    $user-&gt;increaseTotalVideosCreated();
+       
+    $this-&gt;repository-&gt;save($user);
+    $this-&gt;repository-&gt;flush($user);
+}
+</code></pre></div><p>Si quisiéramos implementar ciertas bases de datos como Redis, que no contemplan el patrón <em>Unit of work</em>, nos estaría sobrando la llamada al método <strong>flush</strong>.</p>
+<p>Nuestro caso de uso no tiene por qué conocer qué hace la implementación por detrás, de modo que simplemente llamaría al método <strong>save</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">final class UserRepositoryMySql extends Repository implements UserRepository
+{
+    public function save(User $user): void
+    {
+        $this-&gt;entityManager()-&gt;persist($user);
+        $this-&gt;entityManager()-&gt;flush($user);
+    }
+
+    public function saveAll(Users $users)
+    {
+        each($this-&gt;persister(),$users);
+    }
+}
+</code></pre></div><p>Aunque el código inicial podríamos pensar que estaba desacoplado de la implementación gracias a la interface, si que estaba <strong>acoplado estructuralmente</strong>:</p>
+<blockquote>
+<p>Desde nuestro caso de uso sabíamos que debíamos de llamar primero al método save y después al método flush</p>
+</blockquote>
 <h2 id="dip---dependency-inversion-principle">DIP - Dependency inversion principle</h2>
 
 
@@ -1641,19 +1696,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1596651278"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1596651278"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596651278"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1596651278"></script>
-    <script src="/se-journey/js/featherlight.min.js?1596651278"></script>
-    <script src="/se-journey/js/highlight.pack.js?1596651278"></script>
+    <script src="/se-journey/js/clipboard.min.js?1596665575"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1596665575"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596665575"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1596665575"></script>
+    <script src="/se-journey/js/featherlight.min.js?1596665575"></script>
+    <script src="/se-journey/js/highlight.pack.js?1596665575"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596651278"></script>
-    <script src="/se-journey/js/learn.js?1596651278"></script>
-    <script src="/se-journey/js/hugo-learn.js?1596651278"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596665575"></script>
+    <script src="/se-journey/js/learn.js?1596665575"></script>
+    <script src="/se-journey/js/hugo-learn.js?1596665575"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1596651278" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1596651278"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1596665575" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1596665575"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

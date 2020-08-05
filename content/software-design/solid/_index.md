@@ -256,7 +256,7 @@ final class Progress {
 **Finalidad**:
 * Mantener correctitud funcional para poder aplicar OCP
 
-{{< highlight php >}}
+```php
 final class UserRepositoryMySql extends Repository implements UserRepository
 {
     public function save(User $user): void{
@@ -273,7 +273,7 @@ final class UserRepositoryMySql extends Repository implements UserRepository
         each($this->persister(),$users);
     }
 }
-{{< /highlight >}}
+```
 
 Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero ojo! con la característica de utilizar Doctrine como ORM. Doctrine implementa el *Unit of work pattern*, que nos ofrece algunas características:
 
@@ -284,7 +284,7 @@ Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero
 
 Como clientes externos que sólo conocemos la interface publicada, podríamos esperar que cuando se llamase al método save, con nuestra implementación se persistieran la información en BD.
 
-{{< highlight php >}}
+```php
 interface UserRepository
 {
     public function save(User $user): void;
@@ -295,11 +295,77 @@ interface UserRepository
     
     public function all(): Users;
 }
-{{< /highlight >}}
+```
 
 Sin embargo nuestra implementación del método **save** internamente llama a **persist**, que simplemente almacenará los datos en la *unit of work* sin forzar la persistencia real en BD. Como vemos, aunque se ha mantenido la firma de los métodos definidos en la interface, estaríamos violando el LSP puesto que no podríamos utilizarla para reemplazar otras implementaciones que no utilizan el *Unit of work pattern* y si estarían persistiendo en su BD al llamar al método **save**.
 
 ## ISP - Interface segregation principle
+
+**Concepto**:
+* Ningún cliente debería verse forzado a depender de métodos que no usa
+
+**Cómo**:
+* Definir contratos de interfaces basándonos en los clientes que las usan y no en las implementaciones que pudiéramos tener (**Las interfaces pertenecen a los clientes**)
+* Evitar [Header Interfaces](https://martinfowler.com/bliki/HeaderInterface.html) promoviendo [Role Interfaces](https://martinfowler.com/bliki/RoleInterface.html)
+
+**Finalidad**:
+* Alta cohesión y bajo acoplamiento estructural
+
+
+En el ejemplo anterior, con el patrón Unit of work necesitábamos dos métodos save y flush para persistir en BD.
+
+```php
+interface UserRepository
+{
+    public function save(User $user): void;
+    
+    public function flush(User $user): void;
+
+    public function saveAll(Users $users): void;
+    
+    public function search(UserId $id): ?User;
+    
+    public function all(): Users;
+}
+```
+
+De este modo, nuestra interface UserRepository tendría que tener el aspecto que vemos arriba, haciendo **Header Interface** hemos definido la cabecera de los métodos *save* y *flush* en nuestra interface.
+
+```php
+public function __invoke(UserId $id)
+{
+    $user = $this->finder->__invoke($id);
+       
+    $user->increaseTotalVideosCreated();
+       
+    $this->repository->save($user);
+    $this->repository->flush($user);
+}
+```
+
+Si quisiéramos implementar ciertas bases de datos como Redis, que no contemplan el patrón *Unit of work*, nos estaría sobrando la llamada al método **flush**.
+
+Nuestro caso de uso no tiene por qué conocer qué hace la implementación por detrás, de modo que simplemente llamaría al método **save**
+
+```php
+final class UserRepositoryMySql extends Repository implements UserRepository
+{
+    public function save(User $user): void
+    {
+        $this->entityManager()->persist($user);
+        $this->entityManager()->flush($user);
+    }
+
+    public function saveAll(Users $users)
+    {
+        each($this->persister(),$users);
+    }
+}
+```
+
+Aunque el código inicial podríamos pensar que estaba desacoplado de la implementación gracias a la interface, si que estaba **acoplado estructuralmente**:
+
+> Desde nuestro caso de uso sabíamos que debíamos de llamar primero al método save y después al método flush
 
 ## DIP - Dependency inversion principle
 
