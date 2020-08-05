@@ -256,7 +256,7 @@ final class Progress {
 **Finalidad**:
 * Mantener correctitud funcional para poder aplicar OCP
 
-```php
+{{< highlight php >}}
 final class UserRepositoryMySql extends Repository implements UserRepository
 {
     public function save(User $user): void{
@@ -273,7 +273,7 @@ final class UserRepositoryMySql extends Repository implements UserRepository
         each($this->persister(),$users);
     }
 }
-```
+{{< /highlight >}}
 
 Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero ojo! con la característica de utilizar Doctrine como ORM. Doctrine implementa el *Unit of work pattern*, que nos ofrece algunas características:
 
@@ -284,7 +284,7 @@ Nuestra UserRepositoryMySql es una implementación de un repositorio MySql, pero
 
 Como clientes externos que sólo conocemos la interface publicada, podríamos esperar que cuando se llamase al método save, con nuestra implementación se persistieran la información en BD.
 
-```php
+{{< highlight php >}}
 interface UserRepository
 {
     public function save(User $user): void;
@@ -295,7 +295,7 @@ interface UserRepository
     
     public function all(): Users;
 }
-```
+{{< /highlight >}}
 
 Sin embargo nuestra implementación del método **save** internamente llama a **persist**, que simplemente almacenará los datos en la *unit of work* sin forzar la persistencia real en BD. Como vemos, aunque se ha mantenido la firma de los métodos definidos en la interface, estaríamos violando el LSP puesto que no podríamos utilizarla para reemplazar otras implementaciones que no utilizan el *Unit of work pattern* y si estarían persistiendo en su BD al llamar al método **save**.
 
