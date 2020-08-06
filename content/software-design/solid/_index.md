@@ -599,3 +599,5 @@ final class UserSearcherShould {
 ```
 
 > **Consejo**: Una forma de ver si estamos violando DIP es comprobar nuestras clases del *Servicio de aplicación* si alguna de las dependencias está apuntando fuera de nuestro *Dominio*
+
+> [Specification pattern](https://github.com/iluwatar/java-design-patterns/tree/master/specification) (a.k.a. Criteria)
