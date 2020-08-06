@@ -12,18 +12,18 @@
     <title>SOLID Principles :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1596665575" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1596665575" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1596697445" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1596697445" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1596665575"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1596697445"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596665575"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596665575"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596697445"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596697445"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1596665575"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1596697445"></script>
 
     
   </div>
@@ -879,7 +879,14 @@
       </ul>
     </li>
     <li><a href="#isp---interface-segregation-principle">ISP - Interface segregation principle</a></li>
-    <li><a href="#dip---dependency-inversion-principle">DIP - Dependency inversion principle</a></li>
+    <li><a href="#dip---dependency-inversion-principle">DIP - Dependency inversion principle</a>
+      <ul>
+        <li><a href="#violación-de-dip">Violación de DIP</a></li>
+        <li><a href="#refactor---inyección-de-dependencias">Refactor - Inyección de dependencias</a></li>
+        <li><a href="#refactor---inyección-de-dependencias-de-parámetros">Refactor - Inyección de dependencias de parámetros</a></li>
+        <li><a href="#inversión-de-dependencias">Inversión de dependencias</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1213,6 +1220,204 @@
 <p>Desde nuestro caso de uso sabíamos que debíamos de llamar primero al método save y después al método flush</p>
 </blockquote>
 <h2 id="dip---dependency-inversion-principle">DIP - Dependency inversion principle</h2>
+<p><strong>Concepto</strong>:</p>
+<ul>
+<li>Módulos de alto nivel no deberían depender de los de bajo nivel. Ambos deberían depender de abstracciones</li>
+</ul>
+<p><strong>Cómo</strong>:</p>
+<ul>
+<li>Inyectar dependencias (parámetros recibidos en constructor)</li>
+<li>Depender de las interfaces (contratos) de estas dependencias y no de implementaciones concretas</li>
+<li>LSP como premisa</li>
+</ul>
+<p><strong>Finalidad</strong>:</p>
+<ul>
+<li>Facilitar la modificación y substitución de implementaciones</li>
+<li>Mejor testabilidad de clases</li>
+</ul>
+<h3 id="violación-de-dip">Violación de DIP</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcher</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> HardcodedInMemoryUsersRepository usersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HardcodedInMemoryUsersRepository<span style="color:#f92672">();</span>
+
+    <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> usersRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HardcodedInMemoryUsersRepository</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;</span> users <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">unmodifiableMap</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+        <span style="color:#f92672">{</span>
+            put<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Rafa&#34;</span><span style="color:#f92672">));</span>
+            put<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Javi&#34;</span><span style="color:#f92672">));</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">});</span>
+
+    <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">ofNullable</span><span style="color:#f92672">(</span>users<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>id<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Desde el propio Test ya se observa este acoplamiento, obligando a saber, en este caso, que el usuario tiene que existir en el HashMap (caso de <em>find_existing_users</em>) o que no va a existir un usuario con un id concreto (caso de <em>not_find_non_existing_users</em>).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcherShould</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">find_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">();</span>
+
+        Integer existingUserId <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedUser <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Rafa&#34;</span><span style="color:#f92672">));</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedUser<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>existingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">not_find_non_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">// We would be coupled to the actual HardcodedInMemoryUsersRepository implementation.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// We don&#39;t have the option to set test users as we would have to do if we had a real database repository.
+</span><span style="color:#75715e"></span>        Integer nonExistingUserId <span style="color:#f92672">=</span> 5<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedEmptyResult <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">();</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedEmptyResult<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nonExistingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="refactor---inyección-de-dependencias">Refactor - Inyección de dependencias</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcher</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> HardcodedInMemoryUsersRepository usersRepository<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserSearcher</span><span style="color:#f92672">(</span>HardcodedInMemoryUsersRepository usersRepository<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">usersRepository</span> <span style="color:#f92672">=</span> usersRepository<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> usersRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>El punto de nuestro aplicación que instancie a nuestro UserSearcher será el responsable de saber cómo debe hacerlo y que otras dependencias puede haber detrás, es decir, conseguir exponer el acoplamiento de las clases.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcherShould</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">find_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Now we&#39;re injecting the HardcodedInMemoryUsersRepository instance through the UserSearcher constructor.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: We&#39;ve moved away from the UserSearcher the instantiation logic of the HardcodedInMemoryUsersRepository class allowing us to centralize it.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: We&#39;re exposing the couplings of the UserSearcher class.
+</span><span style="color:#75715e"></span>        HardcodedInMemoryUsersRepository usersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HardcodedInMemoryUsersRepository<span style="color:#f92672">();</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>usersRepository<span style="color:#f92672">);</span>
+
+        Integer existingUserId <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedUser <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Rafa&#34;</span><span style="color:#f92672">));</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedUser<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>existingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">not_find_non_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        HardcodedInMemoryUsersRepository usersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HardcodedInMemoryUsersRepository<span style="color:#f92672">();</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>usersRepository<span style="color:#f92672">);</span>
+
+        Integer nonExistingUserId <span style="color:#f92672">=</span> 5<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedEmptyResult <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">();</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedEmptyResult<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nonExistingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="refactor---inyección-de-dependencias-de-parámetros">Refactor - Inyección de dependencias de parámetros</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HardcodedInMemoryUsersRepository</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;</span> users<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HardcodedInMemoryUsersRepository</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;</span> users<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> users<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">ofNullable</span><span style="color:#f92672">(</span>users<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>id<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Conseguimos aislar nuestros Test sin que <strong>dependan de la infraestructura</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcherShould</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">find_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Now we&#39;re also injecting the constant parameters needed by the HardcodedInMemoryUsersRepository through its constructor.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: We can send different parameters depending on the environment.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// That is, in our production environment we would have actual users,
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// while in our tests cases we will set only the needed ones to run our test cases
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> rafaId <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        User rafa <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>rafaId<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Rafa&#34;</span><span style="color:#f92672">);</span>
+
+        Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;</span> users <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">unmodifiableMap</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+            <span style="color:#f92672">{</span>
+                put<span style="color:#f92672">(</span>rafaId<span style="color:#f92672">,</span> rafa<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">});</span>
+        HardcodedInMemoryUsersRepository usersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HardcodedInMemoryUsersRepository<span style="color:#f92672">(</span>users<span style="color:#f92672">);</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>usersRepository<span style="color:#f92672">);</span>
+
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedUser <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>rafa<span style="color:#f92672">);</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedUser<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>rafaId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">not_find_non_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        Map<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> User<span style="color:#f92672">&gt;</span> users <span style="color:#f92672">=</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">emptyMap</span><span style="color:#f92672">();</span>
+        HardcodedInMemoryUsersRepository usersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HardcodedInMemoryUsersRepository<span style="color:#f92672">(</span>users<span style="color:#f92672">);</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>usersRepository<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// Win: Now we don&#39;t have to be coupled of the actual HardcodedInMemoryUsersRepository users.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// We can send a random user ID in order to force an empty result because we&#39;ve set an empty map as the system users.
+</span><span style="color:#75715e"></span>        Integer nonExistingUserId <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedEmptyResult <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">();</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedEmptyResult<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nonExistingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="inversión-de-dependencias">Inversión de dependencias</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcher</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> UsersRepository usersRepository<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserSearcher</span><span style="color:#f92672">(</span>UsersRepository usersRepository<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">usersRepository</span> <span style="color:#f92672">=</span> usersRepository<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> usersRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UsersRepository</span> <span style="color:#f92672">{</span>
+    Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserSearcherShould</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">find_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Now we&#39;re injecting to the UserSearcher use case different implementation of the new UserRepository interface.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: We can replace the actual implementation of the UsersRepository used by the UserSearcher.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// That is, we&#39;ll not have to modify a single line of the UserSearcher class despite of changing our whole infrastructure.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// This is a big win in terms of being more tolerant to changes.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: It also make it easier for us to test the UserSearcher without using the actual implementation of the repository used in production.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// This is another big win because this way we can have test such as the following ones which doesn&#39;t actually go to the database in order to retrieve the system users.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// This has a huge impact in terms of the time to wait until all of our test suite is being executed (quicker feedback loop for developers).
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Win: We can reuse the test environment repository using test doubles. See CodelyTvStaffUsersRepository for its particularities
+</span><span style="color:#75715e"></span>        UsersRepository codelyTvStaffUsersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CodelyTvStaffUsersRepository<span style="color:#f92672">();</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>codelyTvStaffUsersRepository<span style="color:#f92672">);</span>
+
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedUser <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span>UserMother<span style="color:#f92672">.</span><span style="color:#a6e22e">rafa</span><span style="color:#f92672">());</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedUser<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>UserMother<span style="color:#f92672">.</span><span style="color:#a6e22e">RAFA_ID</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">not_find_non_existing_users</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Win: Our test are far more readable because they doesn&#39;t have to deal with the internal implementation of the UserRepository.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// The test is 100% focused on orchestrating the Arrange/Act/Assert or Given/When/Then flow.
+</span><span style="color:#75715e"></span>        UsersRepository emptyUsersRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmptyUsersRepository<span style="color:#f92672">();</span>
+        UserSearcher userSearcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserSearcher<span style="color:#f92672">(</span>emptyUsersRepository<span style="color:#f92672">);</span>
+
+        Integer nonExistingUserId <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        Optional<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> expectedEmptyResult <span style="color:#f92672">=</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">();</span>
+
+        assertEquals<span style="color:#f92672">(</span>expectedEmptyResult<span style="color:#f92672">,</span> userSearcher<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nonExistingUserId<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><blockquote>
+<p><strong>Consejo</strong>: Una forma de ver si estamos violando DIP es comprobar nuestras clases del <em>Servicio de aplicación</em> si alguna de las dependencias está apuntando fuera de nuestro <em>Dominio</em></p>
+</blockquote>
 
 
 
@@ -1696,19 +1901,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1596665575"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1596665575"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596665575"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1596665575"></script>
-    <script src="/se-journey/js/featherlight.min.js?1596665575"></script>
-    <script src="/se-journey/js/highlight.pack.js?1596665575"></script>
+    <script src="/se-journey/js/clipboard.min.js?1596697445"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1596697445"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596697445"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1596697445"></script>
+    <script src="/se-journey/js/featherlight.min.js?1596697445"></script>
+    <script src="/se-journey/js/highlight.pack.js?1596697445"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596665575"></script>
-    <script src="/se-journey/js/learn.js?1596665575"></script>
-    <script src="/se-journey/js/hugo-learn.js?1596665575"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596697445"></script>
+    <script src="/se-journey/js/learn.js?1596697445"></script>
+    <script src="/se-journey/js/hugo-learn.js?1596697445"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1596665575" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1596665575"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1596697445" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1596697445"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
