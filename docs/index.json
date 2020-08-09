@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://ivangrod.github.io/se-journey/software-design/hexagonal-architecture/",
+	"title": "Arquitectura Hexagonal",
+	"tags": [],
+	"description": "",
+	"content": "Layers 1.Domain  Conceptos que están en nuestro contexto: Usuario, Producto, Carrito,\u0026hellip; Reglas de negocio que vienen determinadas en exclusiva por nosotros - Servicios de dominio  2.Application  Casos de uso de nuestra aplicación: registrar usuario, publicar producto, añadir producto al carrito,\u0026hellip;  3.Infrastructure  Código que cambia en función de decisiones externas. En esta capa vivirán las implementaciones de las interfaces que definiremos a nivel de dominio. Es decir, nos apoyaremos en el DIP de SOLID para poder desacoplarnos de las dependencias externas.  Regla de dependencia El código que viva en cada una de nuestras capas sólo deberá tener conocimiento de la capa inmediatamente siguiente. Orden de fuera hacia dentro: Infraestructura -\u0026gt; Aplicación -\u0026gt; Dominio.\nVariaciones en elementos de las capas externas no afectan a las internas.\nPorts and Adapters  Puertos Interfaces definidas en la capa de dominio para desacoplarnos de nuestra infraestructura: UserRepository Adaptadores Implementaciones posibles de esos puertos: MySqlUserRepository  "
+},
+{
 	"uri": "https://ivangrod.github.io/se-journey/software-design/",
 	"title": "Software Design",
 	"tags": [],

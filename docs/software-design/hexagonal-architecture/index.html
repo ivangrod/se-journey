@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Testing :: Software Engineer Journey</title>
+    <title>Arquitectura Hexagonal :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1596992012" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/testing/">
+  <body class="" data-url="/se-journey/software-design/hexagonal-architecture/">
     <nav id="sidebar" class="">
 
 
@@ -78,7 +78,7 @@
   
     
     <li data-nav-id="/se-journey/software-design/" title="Software Design" class="dd-item 
-        
+        parent
         
         
         ">
@@ -108,7 +108,7 @@
     
     <li data-nav-id="/se-journey/software-design/hexagonal-architecture/" title="Arquitectura Hexagonal" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/se-journey/software-design/hexagonal-architecture/">
@@ -284,7 +284,7 @@
     
     <li data-nav-id="/se-journey/testing/" title="Testing" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/se-journey/testing/">
@@ -859,6 +859,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -869,7 +871,13 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > Testing
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/software-design/'>Software Design</a> > Arquitectura Hexagonal
+          
+         
           
          
           
@@ -878,6 +886,25 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#layers">Layers</a>
+      <ul>
+        <li><a href="#1domain">1.Domain</a></li>
+        <li><a href="#2application">2.Application</a></li>
+        <li><a href="#3infrastructure">3.Infrastructure</a></li>
+        <li><a href="#regla-de-dependencia">Regla de dependencia</a></li>
+        <li><a href="#ports-and-adapters">Ports and Adapters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -885,9 +912,12 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Arquitectura Hexagonal
+            </h1>
           
 
         
@@ -895,7 +925,31 @@
 
 
 
-	<h1 id="testing">Testing</h1>
+	<h2 id="layers">Layers</h2>
+<p><img src="/se-journey/img/hexagonal_arch.png" alt="hexagonal_layers"></p>
+<h3 id="1domain">1.Domain</h3>
+<ul>
+<li>Conceptos que están en nuestro contexto: Usuario, Producto, Carrito,&hellip;</li>
+<li>Reglas de negocio que vienen determinadas en exclusiva por nosotros - <strong>Servicios de dominio</strong></li>
+</ul>
+<h3 id="2application">2.Application</h3>
+<ul>
+<li>Casos de uso de nuestra aplicación: registrar usuario, publicar producto, añadir producto al carrito,&hellip;</li>
+</ul>
+<h3 id="3infrastructure">3.Infrastructure</h3>
+<ul>
+<li>Código que cambia en función de decisiones externas.</li>
+<li>En esta capa vivirán las implementaciones de las interfaces que definiremos a nivel de dominio. Es decir, nos apoyaremos en el <strong>DIP</strong> de SOLID para poder desacoplarnos de las dependencias externas.</li>
+</ul>
+<h3 id="regla-de-dependencia">Regla de dependencia</h3>
+<p>El código que viva en cada una de nuestras capas sólo deberá tener conocimiento de la capa inmediatamente siguiente. Orden de fuera hacia dentro: Infraestructura -&gt; Aplicación -&gt; Dominio.</p>
+<p>Variaciones en elementos de las capas externas no afectan a las internas.</p>
+<p><img src="/se-journey/img/hexagonal_arch_testing.png" alt="hexagonal_testing"></p>
+<h3 id="ports-and-adapters">Ports and Adapters</h3>
+<ul>
+<li><strong>Puertos</strong> Interfaces definidas en la capa de dominio para desacoplarnos de nuestra infraestructura: <em>UserRepository</em></li>
+<li><strong>Adaptadores</strong> Implementaciones posibles de esos puertos: <em>MySqlUserRepository</em></li>
+</ul>
 
 
 
@@ -905,8 +959,6 @@
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -938,8 +990,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -956,21 +1006,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -983,28 +1018,13 @@
             
         
                     
-            
-        
-                    
                         
             
             
                 
                     
-                
-                
-
-                    
-                    
                         
-                    
-                    
-
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1029,6 +1049,8 @@
                 
 
                     
+                    
+                        
                     
                     
 
@@ -1057,6 +1079,37 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1072,9 +1125,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
