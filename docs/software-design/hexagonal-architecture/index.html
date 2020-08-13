@@ -12,18 +12,18 @@
     <title>Arquitectura Hexagonal :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1596992012" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1596992012" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1597332963" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1597332963" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1596992012"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1597332963"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1596992012"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1596992012"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1597332963"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1597332963"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1596992012"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1597332963"></script>
 
     
   </div>
@@ -932,10 +932,73 @@
 <li>Conceptos que están en nuestro contexto: Usuario, Producto, Carrito,&hellip;</li>
 <li>Reglas de negocio que vienen determinadas en exclusiva por nosotros - <strong>Servicios de dominio</strong></li>
 </ul>
+<h4 id="servicios-de-dominio">Servicios de dominio</h4>
+<ul>
+<li>Agrupación de lógica de negocio que podremos reutilizar desde múltiples servicios de Aplicación</li>
+</ul>
+<p>Ejemplo:</p>
+<p>Tenemos dos casos de uso en nuestra aplicación:</p>
+<ol>
+<li>Obtener un vídeo en base a su identificador</li>
+<li>Modificar el título de un determinado vídeo</li>
+</ol>
+<p>En ambos casos de uso, necesitaremos la lógica de negocio para:</p>
+<ul>
+<li>Ir al repositorio de vídeos a buscar un vídeo determinado en base a su identificador</li>
+<li>Lanzar una excepción de dominio tipo VideoNotFound en caso de no encontrar el vídeo. Importante destacar que quien lanza esta excepción, como comentamos en el vídeo, no es la implementación del repositorio.</li>
+<li>Retornar el vídeo en caso de encontrarlo</li>
+</ul>
+<p>Para evitar duplicar esta lógica de negocio en los dos servicios de Aplicación lo que solemos hacer es <strong>extraerla a un Servicio de Dominio</strong> que invocaremos desde ambos casos de uso.</p>
+<p>Los servicios de dominio <strong>en ningún caso</strong> <strong>publicarán</strong> los eventos de dominio que se puedan producir ni <strong>gestinonarán transacciones</strong>.</p>
+<h4 id="value-objects">Value Objects</h4>
+<p>Los Value Objects (VO) u &ldquo;Objetos de Valor&rdquo;, no son más que clases que se identifican por el valor que representan. Ejemplo: la URL de los vídeos. Si cambia su valor, ya no representará el mismo concepto. Por esto decimos que se identifican por el valor que contienen.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VideoUrl</span> <span style="color:#66d9ef">extends</span> StringValueObject
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> function <span style="color:#a6e22e">__construct</span><span style="color:#f92672">(</span>string $value<span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+        $this<span style="color:#f92672">-&gt;</span>guardValidUrl<span style="color:#f92672">(</span>$value<span style="color:#f92672">);</span> <span style="color:#75715e">// ℹ️ Validación en el momento de instanciación. No permitimos tener un VideoUrl con un null por ejemplo.
+</span><span style="color:#75715e"></span>
+        parent:<span style="color:#f92672">:</span>__construct<span style="color:#f92672">(</span>$value<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> function <span style="color:#a6e22e">guardValidUrl</span><span style="color:#f92672">(</span>string $url<span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">false</span> <span style="color:#f92672">===</span> filter_var<span style="color:#f92672">(</span>$url<span style="color:#f92672">,</span> FILTER_VALIDATE_URL<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#960050;background-color:#1e0010">\</span>InvalidArgumentException<span style="color:#f92672">(</span>sprintf<span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">&#39;</span>The url <span style="color:#f92672">&lt;%</span>s<span style="color:#f92672">&gt;</span> is not well formatted<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span> $url<span style="color:#f92672">));</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p><strong>Semántica de dominio</strong>: Tipos con conceptos de dominio como VideoUrl, UserRange, Rating, etc. nos ayudará a que el código sea más legible y a que nuestro código exprese mejor los conceptos de nuestro dominio.</p>
+</li>
+<li>
+<p><strong>Cohesión</strong></p>
+<ul>
+<li>Evitar comprobaciones redundantes</li>
+<li>Imán de lógica</li>
+</ul>
+</li>
+</ul>
 <h3 id="2application">2.Application</h3>
 <ul>
 <li>Casos de uso de nuestra aplicación: registrar usuario, publicar producto, añadir producto al carrito,&hellip;</li>
 </ul>
+<h4 id="servicios-de-aplicación">Servicios de aplicación</h4>
+<ul>
+<li>Son los puntos de entrada a nuestra aplicación.</li>
+<li>Representan de forma atómica un caso de uso de nuestro sistema. En caso de modificaciones del estado de nuestra aplicación:
+<ul>
+<li>Podrán hacer las de <strong>barrera transaccional</strong> con el sistema de persistencia.</li>
+<li>Publicarán los <strong>eventos de dominio</strong> respectivos.</li>
+</ul>
+</li>
+<li>Coordinan las llamadas a los distintos elementos de nuestro sistema para ejecutar un determinado caso de uso.</li>
+<li>Les llamaremos indistintamente Servicio de Aplicación como <strong>Caso de Uso</strong>.</li>
+</ul>
+<blockquote>
+<p>Pro tip: Inyecta el publisher de eventos en el caso de uso</p>
+</blockquote>
 <h3 id="3infrastructure">3.Infrastructure</h3>
 <ul>
 <li>Código que cambia en función de decisiones externas.</li>
@@ -1449,19 +1512,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1596992012"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1596992012"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1596992012"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1596992012"></script>
-    <script src="/se-journey/js/featherlight.min.js?1596992012"></script>
-    <script src="/se-journey/js/highlight.pack.js?1596992012"></script>
+    <script src="/se-journey/js/clipboard.min.js?1597332963"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1597332963"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1597332963"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1597332963"></script>
+    <script src="/se-journey/js/featherlight.min.js?1597332963"></script>
+    <script src="/se-journey/js/highlight.pack.js?1597332963"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1596992012"></script>
-    <script src="/se-journey/js/learn.js?1596992012"></script>
-    <script src="/se-journey/js/hugo-learn.js?1596992012"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1597332963"></script>
+    <script src="/se-journey/js/learn.js?1597332963"></script>
+    <script src="/se-journey/js/hugo-learn.js?1597332963"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1596992012" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1596992012"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1597332963" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1597332963"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
