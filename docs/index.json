@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://ivangrod.github.io/se-journey/software-design/cqrs/",
+	"title": "Command Query Responsibility Segregation",
+	"tags": [],
+	"description": "",
+	"content": "Command En CQRS, un Command representa la intención de realizar una operación en nuestro sistema que acabe modificando el estado de tal.\n Command -\u0026gt; DTO | Inmutable | Void | Side-effects\n Query En CQRS, una Query representa la intención de pedir unos datos a nuestro sistema sin que ello acabe alterando el estado de tal.\n Query -\u0026gt; DTO | Inmutable | | No side-effects (+ caché)\n Command/Query Bus  Controlador desacoplado de la lógica de negocio. El Handler es el componente encargado de mapear los valores de entrada a objetos de dominio (Value Objects) para que el caso de uso los reciba. (+) Rendimiento. Podemos introducir asincronía aprovechándonos del nivel de indirección introducido entre el entrypoint y la lógica a ejecutar. Decorator -\u0026gt; Handlers / Use cases. Utilizar middlewares para ejecutar lógica transversal.  CommandHandler vs QueryHandler  QueryHandler ahora sí debe tener un retorno\n QueryHandler será el encargado de llamar al Converter que mapea una entidad de dominio a una instancia de tipo Response (Projection).\nEsta proyección solo contiene tipos primitivos -\u0026gt; Bus sólo debería admitir datos en plano.\nOutside \u0026gt; Identificadores de recursos Posibles responsables para generar el identificador:\n  MySqlVideoRepository\n (X) Delegamos la responsabilidad de gestionar los identificadores a un componente de infraestructura. (X) Representaciones de recursos inconsistentes en cliente (X) Complejidad adicional en testing. Generación de identificadores no es determinista.    VideoCreator\n (/) Podemos cambiar la infraestructura manteniendo la lógica de gestión de identificadores. (X) Representaciones de recursos inconsistentes en cliente (X) Complejidad adicional en testing. Generación de identificadores no es determinista.    Cliente (app, JS del frontend, etc.)\n (/) Mantenimiento y cambiabilidad: Podemos cambiar cualquier componente de infraestructura (/) Testing (/) Integridad de representación de recursos en cliente     OJO: No utilizar desde cliente identificadores secuenciales -\u0026gt; Podríamos generar condiciones de carrera\n UUID or GUID as Primary Keys\n"
+},
+{
 	"uri": "https://ivangrod.github.io/se-journey/software-design/hexagonal-architecture/",
 	"title": "Arquitectura Hexagonal",
 	"tags": [],

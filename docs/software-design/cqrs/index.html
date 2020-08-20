@@ -9,21 +9,21 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Categories :: Software Engineer Journey</title>
+    <title>Command Query Responsibility Segregation :: Software Engineer Journey</title>
 
     
-    <link href="/se-journey/css/nucleus.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/fontawesome-all.min.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/hybrid.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/featherlight.min.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/perfect-scrollbar.min.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/auto-complete.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/atom-one-dark-reasonable.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/theme.css?1597952161" rel="stylesheet">
-    <link href="/se-journey/css/hugo-theme.css?1597952161" rel="stylesheet">
+    <link href="/se-journey/css/nucleus.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/fontawesome-all.min.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/hybrid.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/featherlight.min.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/perfect-scrollbar.min.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/auto-complete.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/atom-one-dark-reasonable.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/theme.css?1597952160" rel="stylesheet">
+    <link href="/se-journey/css/hugo-theme.css?1597952160" rel="stylesheet">
     
 
-    <script src="/se-journey/js/jquery-3.3.1.min.js?1597952161"></script>
+    <script src="/se-journey/js/jquery-3.3.1.min.js?1597952160"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/categories/">
+  <body class="" data-url="/se-journey/software-design/cqrs/">
     <nav id="sidebar" class="">
 
 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/se-journey/js/lunr.min.js?1597952161"></script>
-<script type="text/javascript" src="/se-journey/js/auto-complete.js?1597952161"></script>
+<script type="text/javascript" src="/se-journey/js/lunr.min.js?1597952160"></script>
+<script type="text/javascript" src="/se-journey/js/auto-complete.js?1597952160"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/ivangrod.github.io\/se-journey\/";
     
 </script>
-<script type="text/javascript" src="/se-journey/js/search.js?1597952161"></script>
+<script type="text/javascript" src="/se-journey/js/search.js?1597952160"></script>
 
     
   </div>
@@ -78,7 +78,7 @@
   
     
     <li data-nav-id="/se-journey/software-design/" title="Software Design" class="dd-item 
-        
+        parent
         
         
         ">
@@ -108,7 +108,7 @@
     
     <li data-nav-id="/se-journey/software-design/cqrs/" title="Command Query Responsibility Segregation" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/se-journey/software-design/cqrs/">
@@ -897,7 +897,13 @@
             
           
           
-            <a href='/se-journey/'>Software Engineer Journey</a> > Categories
+            
+            
+          
+          
+            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/software-design/'>Software Design</a> > Command Query Responsibility Segregation
+          
+         
           
          
           
@@ -908,7 +914,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#command">Command</a></li>
+    <li><a href="#query">Query</a></li>
+    <li><a href="#commandquery-bus">Command/Query Bus</a></li>
+    <li><a href="#commandhandler-vs-queryhandler">CommandHandler vs QueryHandler</a>
+      <ul>
+        <li><a href="#outside--identificadores-de-recursos">Outside &gt; Identificadores de recursos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -924,7 +941,7 @@
           
             <h1>
               
-              Categories
+              Command Query Responsibility Segregation
             </h1>
           
 
@@ -933,11 +950,65 @@
 
 
 
-
-
+	<h2 id="command">Command</h2>
+<p>En CQRS, un <strong>Command</strong> representa la intención de realizar una operación en nuestro sistema que acabe modificando el estado de tal.</p>
+<blockquote>
+<p>Command -&gt; DTO | Inmutable | Void | Side-effects</p>
+</blockquote>
+<h2 id="query">Query</h2>
+<p>En CQRS, una <strong>Query</strong> representa la intención de pedir unos datos a nuestro sistema sin que ello acabe alterando el estado de tal.</p>
+<blockquote>
+<p>Query -&gt; DTO | Inmutable | <!-- raw HTML omitted --> | No side-effects (+ caché)</p>
+</blockquote>
+<h2 id="commandquery-bus">Command/Query Bus</h2>
+<p><img src="/se-journey/img/cqrs_axon.jpg" alt="CQRS - Axon diagram"></p>
 <ul>
-	
+<li>Controlador desacoplado de la lógica de negocio.</li>
+<li>El Handler es el componente encargado de mapear los valores de entrada a objetos de dominio (Value Objects) para que el caso de uso los reciba.</li>
+<li>(+) <strong>Rendimiento</strong>. Podemos introducir asincronía aprovechándonos del nivel de indirección introducido entre el entrypoint y la lógica a ejecutar.</li>
+<li>Decorator -&gt; Handlers / Use cases. Utilizar middlewares para ejecutar lógica transversal.</li>
 </ul>
+<h2 id="commandhandler-vs-queryhandler">CommandHandler vs QueryHandler</h2>
+<blockquote>
+<p>QueryHandler ahora sí debe tener un retorno</p>
+</blockquote>
+<p>QueryHandler será el encargado de llamar al Converter que mapea una entidad de dominio a una instancia de tipo Response (<strong>Projection</strong>).</p>
+<p>Esta proyección solo contiene tipos primitivos -&gt; Bus sólo debería admitir datos en plano.</p>
+<h3 id="outside--identificadores-de-recursos">Outside &gt; Identificadores de recursos</h3>
+<p>Posibles responsables para generar el identificador:</p>
+<ul>
+<li>
+<p>MySqlVideoRepository</p>
+<ul>
+<li>(X) Delegamos la responsabilidad de gestionar los identificadores a un componente de infraestructura.</li>
+<li>(X) Representaciones de recursos inconsistentes en cliente</li>
+<li>(X) Complejidad adicional en testing. Generación de identificadores no es determinista.</li>
+</ul>
+</li>
+<li>
+<p>VideoCreator</p>
+<ul>
+<li>(/) Podemos cambiar la infraestructura manteniendo la lógica de gestión de identificadores.</li>
+<li>(X) Representaciones de recursos inconsistentes en cliente</li>
+<li>(X) Complejidad adicional en testing. Generación de identificadores no es determinista.</li>
+</ul>
+</li>
+<li>
+<p>Cliente (app, JS del frontend, etc.)</p>
+<ul>
+<li>(/) Mantenimiento y cambiabilidad: Podemos cambiar cualquier componente de infraestructura</li>
+<li>(/) Testing</li>
+<li>(/) Integridad de representación de recursos en cliente</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>OJO: No utilizar desde cliente identificadores secuenciales -&gt; Podríamos generar <strong>condiciones de carrera</strong></p>
+</blockquote>
+<p><a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439">UUID or GUID as Primary Keys</a></p>
+
+
+
 
 
 <footer class=" footline" >
@@ -975,8 +1046,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -992,6 +1061,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1008,6 +1078,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1448,19 +1521,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/se-journey/js/clipboard.min.js?1597952161"></script>
-    <script src="/se-journey/js/perfect-scrollbar.min.js?1597952161"></script>
-    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1597952161"></script>
-    <script src="/se-journey/js/jquery.sticky.js?1597952161"></script>
-    <script src="/se-journey/js/featherlight.min.js?1597952161"></script>
-    <script src="/se-journey/js/highlight.pack.js?1597952161"></script>
+    <script src="/se-journey/js/clipboard.min.js?1597952160"></script>
+    <script src="/se-journey/js/perfect-scrollbar.min.js?1597952160"></script>
+    <script src="/se-journey/js/perfect-scrollbar.jquery.min.js?1597952160"></script>
+    <script src="/se-journey/js/jquery.sticky.js?1597952160"></script>
+    <script src="/se-journey/js/featherlight.min.js?1597952160"></script>
+    <script src="/se-journey/js/highlight.pack.js?1597952160"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1597952161"></script>
-    <script src="/se-journey/js/learn.js?1597952161"></script>
-    <script src="/se-journey/js/hugo-learn.js?1597952161"></script>
+    <script src="/se-journey/js/modernizr.custom-3.6.0.js?1597952160"></script>
+    <script src="/se-journey/js/learn.js?1597952160"></script>
+    <script src="/se-journey/js/hugo-learn.js?1597952160"></script>
 
-    <link href="/se-journey/mermaid/mermaid.css?1597952161" rel="stylesheet" />
-    <script src="/se-journey/mermaid/mermaid.js?1597952161"></script>
+    <link href="/se-journey/mermaid/mermaid.css?1597952160" rel="stylesheet" />
+    <script src="/se-journey/mermaid/mermaid.js?1597952160"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
