@@ -6,10 +6,6 @@
     <description>Recent content in AWS - Security on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2020 10:49:11 +0200</lastBuildDate>
-    
-	<atom:link href="https://ivangrod.github.io/se-journey/cloud/aws/security/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 19 Apr 2020 10:49:11 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/cloud/aws/security/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

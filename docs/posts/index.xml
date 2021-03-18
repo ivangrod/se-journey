@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Software Engineer Journey</title>
+    <link>https://ivangrod.github.io/se-journey/posts/</link>
+    <description>Recent content in Posts on Software Engineer Journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Mar 2021 18:00:00 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/posts/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

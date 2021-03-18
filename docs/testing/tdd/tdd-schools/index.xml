@@ -6,10 +6,6 @@
     <description>Recent content in TDD Schools on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2020 18:40:27 +0200</lastBuildDate>
-    
-	<atom:link href="https://ivangrod.github.io/se-journey/testing/tdd/tdd-schools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 15 Apr 2020 18:40:27 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/testing/tdd/tdd-schools/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

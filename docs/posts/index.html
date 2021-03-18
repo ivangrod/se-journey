@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/se-journey/images/favicon.png" type="image/png">
 
-    <title>Code Review :: Software Engineer Journey</title>
+    <title>Posts :: Software Engineer Journey</title>
 
     
     <link href="/se-journey/css/nucleus.css?1616085992" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/se-journey/culture/code-review/">
+  <body class="" data-url="/se-journey/posts/">
     <nav id="sidebar" class="">
 
 
@@ -265,7 +265,7 @@
   
     
     <li data-nav-id="/se-journey/culture/" title="Culture" class="dd-item
-        parent
+        
         
         
         ">
@@ -291,7 +291,7 @@
  
   
     
-      <li data-nav-id="/se-journey/culture/code-review/" title="Code Review" class="dd-item active">
+      <li data-nav-id="/se-journey/culture/code-review/" title="Code Review" class="dd-item ">
         <a href="/se-journey/culture/code-review/">
         Code Review
         
@@ -648,8 +648,8 @@
   
     
     <li data-nav-id="/se-journey/posts/" title="Posts" class="dd-item
-        
-        
+        parent
+        active
         
         ">
       <a href="/se-journey/posts/">
@@ -838,13 +838,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/se-journey/'>Software Engineer Journey</a> > <a href='/se-journey/culture/'>Culture</a> > Code Review
-          
-        
+            <a href='/se-journey/'>Software Engineer Journey</a> > Posts
           
         
           
@@ -857,38 +851,33 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#3-steps-process">3-steps process</a></li>
-    <li><a href="#guide-for-an-effective-code-review">Guide For An Effective Code Review</a>
+    <li><a href="#cdci"><strong>CD/CI</strong></a>
       <ul>
-        <li><a href="#code-style-guide-severity--low">Code style guide (Severity = Low)</a></li>
-        <li><a href="#software-architecture-severity--medium">Software Architecture (Severity = Medium)</a></li>
-        <li><a href="#software-design-solid-severity--medium">Software Design (SOLID) (Severity = Medium)</a></li>
-        <li><a href="#change-traceability">Change Traceability</a></li>
-        <li><a href="#documentation-coverage-severity--medium">Documentation Coverage (Severity = Medium)</a></li>
-        <li><a href="#new-developer-on-boarding">New Developer On-boarding</a></li>
-        <li><a href="#dependencies-severity--medium">Dependencies (Severity = Medium)</a></li>
-        <li><a href="#antipatterns-severity--high">Antipatterns (Severity = High)</a></li>
-        <li><a href="#maintainability-severity--high">Maintainability (Severity = High)</a></li>
-        <li><a href="#extensibility-severity--medium">Extensibility (Severity = Medium)</a></li>
-        <li><a href="#legibility-severity--high">Legibility (Severity = High)</a></li>
-        <li><a href="#reusability-severity--high">Reusability (Severity = High)</a></li>
-        <li><a href="#security-severity--high">Security (Severity = High)</a></li>
-        <li><a href="#performance-severity--high">Performance (Severity = High)</a></li>
-        <li><a href="#scaleability-severity--high">Scaleability (Severity = High)</a></li>
-        <li><a href="#usability-severity--medium">Usability (Severity = Medium)</a></li>
-        <li><a href="#testing-coverage-severity--high">Testing Coverage (Severity = High)</a></li>
-        <li><a href="#automation-of-builds-and-deployments">Automation Of Builds And Deployments</a></li>
-        <li><a href="#motivation">Motivation</a></li>
-        <li><a href="#scope-and-size-severity--medium">Scope and size (Severity = Medium)</a></li>
-        <li><a href="#refactoring-changes">Refactoring changes</a></li>
-        <li><a href="#measure-the-progress">Measure the progress</a></li>
+        <li><a href="#patterns">Patterns</a></li>
       </ul>
     </li>
-    <li><a href="#checklist-for-developers">Checklist for Developers</a></li>
-    <li><a href="#checklist-for-reviewers">Checklist for Reviewers</a></li>
-    <li><a href="#tips-in-comments-concise-friendly-actionable">Tips in Comments: concise, friendly, actionable</a>
+    <li><a href="#database"><strong>Database</strong></a>
       <ul>
-        <li></li>
+        <li><a href="#nosql">NoSQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#events"><strong>Events</strong></a>
+      <ul>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
+    <li><a href="#fp"><strong>FP</strong></a></li>
+    <li><a href="#microservices"><strong>Microservices</strong></a>
+      <ul>
+        <li><a href="#patterns-1">Patterns</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-architecture"><strong>Software architecture</strong></a></li>
+    <li><a href="#software-principles"><strong>Software principles</strong></a></li>
+    <li><a href="#testing"><strong>Testing</strong></a>
+      <ul>
+        <li><a href="#patterns-2">Patterns</a></li>
+        <li><a href="#bdd">BDD</a></li>
       </ul>
     </li>
   </ul>
@@ -908,289 +897,71 @@
           
             <h1>
               
-              Code Review
+              Posts
             </h1>
           
 
         
 
 
-<blockquote>
-<p>Code review is a human communication process</p>
-</blockquote>
-<h2 id="3-steps-process">3-steps process</h2>
-<ol>
-<li>
-<p>The developer who wrote the code creates a pull request (PR) and lets the team know that the PR was created. (<strong>Slack bot</strong>)</p>
-</li>
-<li>
-<p>Once the PR is created, someone else starts reviewing the code, in accordance with a <a href="#guide-for-an-effective-code-review">guide</a> providing rules, standards and processes.</p>
-</li>
-<li>
-<p>After one or two developers have reviewed the code, one or both steps should be followed:</p>
-<ul>
-<li>The code needs improvement. Then, the developer could either start a discussion regarding the best way to solve the problem, or just follow the suggestions. This step is repeated until all developers are involved and agree on the fact that the code is good enough. The iterations stop and the code can be merged back into the development branch.</li>
-<li>If the code is good enough it can be merged into the development branch.</li>
-</ul>
-</li>
-</ol>
-<h2 id="guide-for-an-effective-code-review">Guide For An Effective Code Review</h2>
-<h3 id="code-style-guide-severity--low">Code style guide (Severity = Low)</h3>
-<hr>
-<p>In may be used to limit method body length, cyclomatic complexity, usage of legacy methods and much more. All this while requiring the format of the code to be common.</p>
-<h4 id="linting-and-code-style-check">Linting and Code Style Check</h4>
-<p>Leave static code analysis and coding style check to machines with tools like <strong>SonarQube</strong> and <strong>ESLint</strong>, and spare human eyes for important parts like business logics and algorithms.</p>
-<p><a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a></p>
-<ul>
-<li><a href="https://github.com/google/google-java-format">https://github.com/google/google-java-format</a></li>
-</ul>
-<h3 id="software-architecture-severity--medium">Software Architecture (Severity = Medium)</h3>
-<hr>
-<p>Software architecture is the process of converting software characteristics such as flexibility, scalability, feasibility, reusability, and security into a structured solution that meets the technical and the business expectations.</p>
-<h3 id="software-design-solid-severity--medium">Software Design (SOLID) (Severity = Medium)</h3>
-<h3 id="change-traceability">Change Traceability</h3>
-<hr>
-<p>It is assumed that changes to the code are done based on specifications. These specs should be re-iterated very briefly in:</p>
-<ul>
-<li>Change log. // TODO</li>
-<li><a href="/se-journey/git/git-commit-message/">Git commit messages</a>.</li>
-<li>The user performing the changes must also be identifiable.</li>
-</ul>
-<blockquote>
-<p>Git history shall be kept clean by properly rebasing feature branches before merging them back into the main development branch. // TODO Rebase feature branches.</p>
-</blockquote>
-<h3 id="documentation-coverage-severity--medium">Documentation Coverage (Severity = Medium)</h3>
-<hr>
-<p>Documentation of the code is not to be a separate process, but rather be done together with the implementation.</p>
-<blockquote>
-<p>Focus also on the “why” and “how” not only on the “what”.</p>
-</blockquote>
-<h4 id="provide-enough-context-for-creating-meaningful-pull-request">Provide enough context for creating meaningful pull request</h4>
-<ul>
-<li><a href="/se-journey/templates/issue/">Issue template</a></li>
-<li><a href="/se-journey/templates/pull-request/">Pull request template</a></li>
-</ul>
-<h3 id="new-developer-on-boarding">New Developer On-boarding</h3>
-<hr>
-<p>The review process provides an opportunity for mentorship and collaboration, and, minimally, diversifies the understanding of code in the code base.</p>
-<h3 id="dependencies-severity--medium">Dependencies (Severity = Medium)</h3>
-<hr>
-<p>The security, licensing and versioning implications of 3rd party and open source solutions must be considered and monitored.</p>
-<h3 id="antipatterns-severity--high">Antipatterns (Severity = High)</h3>
-<h3 id="maintainability-severity--high">Maintainability (Severity = High)</h3>
-<hr>
-<ul>
-<li>Extending</li>
-<li>Testing</li>
-<li>Debugging</li>
-<li>Configuring</li>
-<li>Deploying</li>
-<li>Automating</li>
-</ul>
-<p>May be scored based on the efforts needed for the application</p>
-<h3 id="extensibility-severity--medium">Extensibility (Severity = Medium)</h3>
-<h3 id="legibility-severity--high">Legibility (Severity = High)</h3>
-<hr>
-<p>Legible code is more reusable, bug-free, and future-proof</p>
-<h3 id="reusability-severity--high">Reusability (Severity = High)</h3>
-<hr>
-<p>Components used across the application(s) should be identified and modularised for better reusability and maintainability.</p>
-<h3 id="security-severity--high">Security (Severity = High)</h3>
-<hr>
 
-<section class="attachments ">
-	<label>
-		<i class="fas fa-paperclip" aria-hidden="true"></i>
-		OWASP Secure Code Review Guide
-	</label>
-	
-		
-	
-	<div class="attachments-files">
-	
-		
-		
-			
-				<li>
-					<a href="/se-journey/culture/code-review.files/OWASP_Code_Review_Guide_v2.pdf" >
-						OWASP_Code_Review_Guide_v2.pdf
-					</a>
-					(2368 kb)
-				</li>
-			
-		
-	
-	</div>
-	
-</section>
+	<h2 id="cdci"><strong>CD/CI</strong></h2>
+<h3 id="patterns">Patterns</h3>
+<ul>
+<li><a href="https://medium.com/expedia-group-tech/six-software-anti-patterns-that-kill-your-delivery-4fed09cc1a2b">Anti-patterns Killing Your Delivery</a></li>
+</ul>
+<h2 id="database"><strong>Database</strong></h2>
+<h3 id="nosql">NoSQL</h3>
+<ul>
+<li><a href="http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/">Why You Should Never Use MongoDB</a></li>
+<li><a href="https://medium.com/pinterest-engineering/scaling-cache-infrastructure-at-pinterest-422d6d294ece?source=rss-ef81ef829bcb------2">Scaling Cache Infrastructure at Pinterest</a></li>
+</ul>
+<h2 id="events"><strong>Events</strong></h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/201701-event-driven.html">What do you mean by &ldquo;Event-Driven&rdquo;</a></li>
+</ul>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li><a href="https://stiller.blog/2020/02/rabbitmq-vs-kafka-an-architects-dilemma-part-1/">RabbitMQ vs. Kafka - An Architect&rsquo;s Dilemma</a></li>
+<li><a href="https://www.rabbitmq.com/tutorials/tutorial-two-java.html">RabbitMQ - Work Queues</a></li>
+</ul>
+<h2 id="fp"><strong>FP</strong></h2>
+<ul>
+<li><a href="https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html#disqus_thread">Functors, Applicatives, And Monads In Pictures</a></li>
+</ul>
+<h2 id="microservices"><strong>Microservices</strong></h2>
+<h3 id="patterns-1">Patterns</h3>
+<ul>
+<li><a href="https://microservices.io/patterns/data/database-per-service.html">Database per service</a></li>
+</ul>
+<h2 id="software-architecture"><strong>Software architecture</strong></h2>
+<ul>
+<li><a href="https://samnewman.io/patterns/architectural/bff/">Backends For Frontends</a></li>
+<li><a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">Distributed locking</a></li>
+</ul>
+<h2 id="software-principles"><strong>Software principles</strong></h2>
+<ul>
+<li><a href="https://martinfowler.com/bliki/TellDontAsk.html">TellDontAsk</a></li>
+</ul>
+<h2 id="testing"><strong>Testing</strong></h2>
+<ul>
+<li><a href="https://franiglesias.github.io/building-confidence/">Construir confianza en el código, test a test</a></li>
+</ul>
+<h3 id="patterns-2">Patterns</h3>
+<ul>
+<li><a href="http://xunitpatterns.com/Test%20Double%20Patterns.html">Double patterns</a></li>
+<li><a href="http://xunitpatterns.com/index.html">xUnit Patterns</a></li>
+</ul>
+<h3 id="bdd">BDD</h3>
+<ul>
+<li><a href="https://cucumber.io/blog/bdd/example-mapping-introduction/">Introducing Example Mapping</a></li>
+</ul>
 
 
-<h3 id="performance-severity--high">Performance (Severity = High)</h3>
-<hr>
-<ul>
-<li>Asynchronous</li>
-<li>Parallel execution</li>
-<li>Caching</li>
-<li>Appropriate usage of resources</li>
-<li>Memory leaks</li>
-</ul>
-<h3 id="scaleability-severity--high">Scaleability (Severity = High)</h3>
-<h3 id="usability-severity--medium">Usability (Severity = Medium)</h3>
-<hr>
-<p>The interfaces for other services, applications or 3rd parties shall be well documented and follow standards in order to be usable.</p>
-<p>The APIs should be implementable and testable solely using the documentation available without any dedicated support personnel.</p>
-<h3 id="testing-coverage-severity--high">Testing Coverage (Severity = High)</h3>
-<h3 id="automation-of-builds-and-deployments">Automation Of Builds And Deployments</h3>
-<h3 id="motivation">Motivation</h3>
-<hr>
-<ul>
-<li>Committers are motivated</li>
-<li>Sharing knowledge</li>
-</ul>
-<h3 id="scope-and-size-severity--medium">Scope and size (Severity = Medium)</h3>
-<hr>
-<p>Changes should have a narrow, well-defined, self-contained scope that they cover exhaustively.</p>
-<h4 id="keep-changes-small">Keep changes small</h4>
-<p>Treat each PR as a releasable unit (feature, bug fix) or a cohesive idea which is meaningful to the PR.</p>
-<blockquote>
-<p>Single-piece flow -&gt; LEAN manufacturing</p>
-</blockquote>
-<p>If a CR makes substantive changes to more than ~5 files, or took longer than 1–2 days to write, or would take more than 20 minutes to review, consider splitting it into multiple self-contained CRs.</p>
-<h4 id="review-often-and-shorten-sessions">Review often and shorten sessions</h4>
-<p>Code reviews in reasonable quantity, at a slower pace, for a limited amount of time result in the most effective code review.</p>
-<blockquote>
-<p><strong>3PM code review rule</strong> -&gt; Every day at 3PM is Code Review time. Improving burndown charts.</p>
-</blockquote>
-<h3 id="refactoring-changes">Refactoring changes</h3>
-<hr>
-<blockquote>
-<p>Refactoring changes should not alter behavior</p>
-<p>A behavior-changing changes should avoid refactoring and code formatting changes.</p>
-</blockquote>
-<ul>
-<li>Refactoring changes often touch many lines and files and will consequently be reviewed with less attention.</li>
-<li>Large refactoring changes break cherry-picking, rebasing, and other source control magic.</li>
-<li>Expensive human review time should be spent on the program logic rather than style, syntax, or formatting debates.</li>
-</ul>
-<h3 id="measure-the-progress">Measure the progress</h3>
-<hr>
-<blockquote>
-<p>If you can’t see it, you can’t measure it, you can’t improve it!</p>
-</blockquote>
-<ul>
-<li>SonarQube project dashboard</li>
-<li>Team based code coverage</li>
-<li>PR Comment Notification</li>
-<li>PR size and resolution time. Making a releasable task/change small is a valid skill in DevOps. We try to promote this idea with the <strong>Resolution time vs. PR size chart</strong></li>
-</ul>
-<p><img src="/se-journey/img/bubble_graph_pr.png" alt="bubble_graph"></p>
-<h2 id="checklist-for-developers">Checklist for Developers</h2>
-<p><strong>Implementation</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> My code compiles</li>
-<li><input disabled="" type="checkbox"> I have considered proper use of exceptions</li>
-<li><input disabled="" type="checkbox"> I have made appropriate use of logging</li>
-<li><input disabled="" type="checkbox"> I have eliminated unused imports</li>
-<li><input disabled="" type="checkbox"> I have eliminated IDE warnings</li>
-<li><input disabled="" type="checkbox"> I have considered possible NPEs</li>
-<li><input disabled="" type="checkbox"> Was performance considered?</li>
-<li><input disabled="" type="checkbox"> Was security considered?</li>
-<li><input disabled="" type="checkbox"> Does the code release resources? (HTTP connections, DB connection, files, etc)</li>
-<li><input disabled="" type="checkbox"> Can any code be replaced by calls to external reusable components or library functions?</li>
-<li><input disabled="" type="checkbox"> Thread safety and possible deadlocks</li>
-</ul>
-<p><strong>Legibility and style</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> My code is tidy (indentation, line length, no commented-out code, no spelling mistakes, etc)</li>
-<li><input disabled="" type="checkbox"> The code follows the coding standards</li>
-</ul>
-<p><strong>Maintainability</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> My code includes javadoc where appropriate</li>
-<li><input disabled="" type="checkbox"> My code has been developer-tested and includes unit tests</li>
-<li><input disabled="" type="checkbox"> Are there any leftover stubs or test routines in the code?</li>
-<li><input disabled="" type="checkbox"> Are there any hardcoded, development only things still in the code?</li>
-<li><input disabled="" type="checkbox"> Corner cases well documented or any workaround for a known limitation of the frameworks</li>
-</ul>
-<h2 id="checklist-for-reviewers">Checklist for Reviewers</h2>
-<p><strong>Purpose</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> Does this code accomplish the author’s purpose?</li>
-<li><input disabled="" type="checkbox"> All functions and classes exist for a reason.</li>
-</ul>
-<p><strong>Implementation</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> The functionality fits the current design/architecture</li>
-<li><input disabled="" type="checkbox"> Types have been generalized where possible</li>
-<li><input disabled="" type="checkbox"> Parameterized types have been used appropriately</li>
-<li><input disabled="" type="checkbox"> Frameworks have been used appropriately</li>
-<li><input disabled="" type="checkbox"> Does the change follow standard patterns?</li>
-<li><input disabled="" type="checkbox"> Do you see potential for useful abstractions?</li>
-<li><input disabled="" type="checkbox"> Command classes have been designed to undertake one task only</li>
-<li><input disabled="" type="checkbox"> The code does not use unjustifiable static methods/blocks</li>
-<li><input disabled="" type="checkbox"> Logging used appropriately (proper logging level and details)</li>
-<li><input disabled="" type="checkbox"> NPEs and AIOBs</li>
-<li><input disabled="" type="checkbox"> Exceptions have been used appropriately</li>
-<li><input disabled="" type="checkbox"> Does the change add compile-time or run-time dependencies (especially between sub-projects)?</li>
-<li><input disabled="" type="checkbox"> Potential threading issues have been eliminated where possible</li>
-<li><input disabled="" type="checkbox"> Any security concerns have been addressed</li>
-<li><input disabled="" type="checkbox"> Performance was considered</li>
-</ul>
-<p><strong>Legibility and style</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> Repetitive code has been factored out</li>
-<li><input disabled="" type="checkbox"> The code complies to coding guidelines and code style</li>
-<li><input disabled="" type="checkbox"> Does this code have TODOs?. Have the author submit a ticket on GitHub Issues or JIRA and attach the issue number to the TODO.</li>
-</ul>
-<p><strong>Maintainability</strong></p>
-<ul>
-<li><input disabled="" type="checkbox"> Comments are comprehensible</li>
-<li><input disabled="" type="checkbox"> Comments are neither too numerous nor verbose</li>
-<li><input disabled="" type="checkbox"> Unit tests are present and they covering interesting cases</li>
-<li><input disabled="" type="checkbox"> Does this code need integration tests?</li>
-<li><input disabled="" type="checkbox"> Does this CR introduce the risk of breaking test code, staging stacks, or integrations tests?</li>
-<li><input disabled="" type="checkbox"> Does this change break backward compatibility?</li>
-<li><input disabled="" type="checkbox"> Is it OK to merge the change at this point or should it be pushed into a later release?</li>
-<li><input disabled="" type="checkbox"> Was the external documentation updated?</li>
-</ul>
-<h2 id="tips-in-comments-concise-friendly-actionable">Tips in Comments: concise, friendly, actionable</h2>
-<ul>
-<li>Written in neutral language</li>
-<li>Critique the code, not the author.</li>
-<li>Avoid possessive pronouns</li>
-<li>Avoid absolute judgements</li>
-<li>Try to differentiate between:
-<ul>
-<li>Suggestions (e.g., “Suggestion: extract method to improve legibility”)</li>
-<li>Required changes (e.g., “Add @Override”)</li>
-<li>Points that need discussion or clarification (e.g., “Is this really the correct behavior? If so, please add a comment explaining the logic.”)</li>
-</ul>
-</li>
-</ul>
-<h4 id="examples">Examples</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> countTotalPageVisits<span style="color:#f92672">;</span> <span style="color:#75715e">//R: name variables consistently
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> uniqueUsersCount<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">MyInterface</span> <span style="color:#f92672">{</span>
-  <span style="color:#75715e">/** Returns {@link Optional#empty} if s cannot be extracted. */</span>
-  <span style="color:#66d9ef">public</span> Optional<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">extractString</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">);</span>
-  <span style="color:#75715e">/** Returns null if {@code s} cannot be rewritten. */</span>
-  <span style="color:#75715e">//R: should harmonize return values: use Optional&lt;&gt; here, too
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">rewriteString</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//R: remove and replace by Guava&#39;s MapJoiner
-</span><span style="color:#75715e"></span>String <span style="color:#a6e22e">joinAndConcatenate</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map<span style="color:#f92672">,</span> String keyValueSeparator<span style="color:#f92672">,</span> String keySeparator<span style="color:#f92672">);</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> dayCount<span style="color:#f92672">;</span> <span style="color:#75715e">//R: nit: I usually prefer numFoo over fooCount; up to you, but we should keep it consistent in this project
-</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//R: This performs numIterations+1 iterations, is that intentional?
-</span><span style="color:#75715e">//   If it is, consider changing the numIterations semantics?
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> numIterations<span style="color:#f92672">;</span> <span style="color:#f92672">++</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-  <span style="color:#f92672">...</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">otherService<span style="color:#f92672">.</span><span style="color:#a6e22e">call</span><span style="color:#f92672">();</span> <span style="color:#75715e">//R: I think we should avoid the dependency on OtherService. Can we discuss this in person?
-</span></code></pre></div>
 
-<footer class="footline">
+
+
+<footer class=" footline" >
 	
 </footer>
 
@@ -1328,7 +1099,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1341,7 +1111,6 @@
             
             
                 
-                    
                     
                 
                 
@@ -1361,9 +1130,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1549,6 +1315,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1564,6 +1331,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1677,4 +1447,3 @@
 
   </body>
 </html>
-

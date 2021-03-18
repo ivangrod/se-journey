@@ -73,26 +73,6 @@
   </url>
   
   <url>
-    <loc>https://ivangrod.github.io/se-journey/cloud/aws/ops/</loc>
-    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ivangrod.github.io/se-journey/testing/double-patterns/</loc>
-    <lastmod>2020-04-13T18:58:55+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ivangrod.github.io/se-journey/cloud/aws/infrastructure/</loc>
-    <lastmod>2020-04-19T10:49:11+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ivangrod.github.io/se-journey/testing/testing-resources/</loc>
-    <lastmod>2020-04-13T18:57:36+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ivangrod.github.io/se-journey/testing/</loc>
     <lastmod>2020-04-13T18:55:50+02:00</lastmod>
   </url>
@@ -105,6 +85,11 @@
   <url>
     <loc>https://ivangrod.github.io/se-journey/git/</loc>
     <lastmod>2020-04-13T18:06:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ivangrod.github.io/se-journey/posts/</loc>
+    <lastmod>2021-03-18T18:00:00+02:00</lastmod>
   </url>
   
   <url>

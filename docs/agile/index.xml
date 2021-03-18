@@ -6,10 +6,6 @@
     <description>Recent content in Agile on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Apr 2020 18:59:30 +0200</lastBuildDate>
-    
-	<atom:link href="https://ivangrod.github.io/se-journey/agile/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 13 Apr 2020 18:59:30 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/agile/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

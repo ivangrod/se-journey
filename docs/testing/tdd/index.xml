@@ -6,10 +6,6 @@
     <description>Recent content in Test-Driven Development on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Apr 2020 18:55:59 +0200</lastBuildDate>
-    
-	<atom:link href="https://ivangrod.github.io/se-journey/testing/tdd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 13 Apr 2020 18:55:59 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/testing/tdd/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

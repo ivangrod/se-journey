@@ -6,10 +6,6 @@
     <description>Recent content in AWS - ELB on Software Engineer Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jul 2020 10:49:11 +0200</lastBuildDate>
-    
-	<atom:link href="https://ivangrod.github.io/se-journey/cloud/aws/elb/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 27 Jul 2020 10:49:11 +0200</lastBuildDate><atom:link href="https://ivangrod.github.io/se-journey/cloud/aws/elb/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
