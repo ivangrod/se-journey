@@ -20,7 +20,7 @@ Enfocada en verificar que el comportamiento de los objetos es el esperado. Verif
 
 Focusing on roles, responsibilities and interactions, as opposed to algorithms. It's born out of the furnace of component-based, distributed and service-oriented applications
 
-**Patterns**: [Test Double]({{< ref "/testing/double-patterns.md" >}})
+**Patterns**: [Test Double](http://xunitpatterns.com/Test%20Double%20Patterns.html)
 
 **Approach**:
 
